@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.exdrill.cave_enhancements.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "CreeperMixin",
+    "PhantomMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

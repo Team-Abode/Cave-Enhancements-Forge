@@ -1,4 +1,4 @@
-package com.kekecreations.cave_enhancements;
+package com.kekecreations.cave_enhancements.item;
 
 
 import com.kekecreations.cave_enhancements.entity.Goop;

@@ -19,7 +19,6 @@ public class ModSounds {
 
     public static RegistryObject<SoundEvent> GLOW_PASTE_PLACE__ID = registerSoundEvent("block.glow_paste.place");
 
-    public static RegistryObject<SoundEvent> BLOCK_ROSE_QUARTZ_BREAK_ID = registerSoundEvent("block.rose_quartz.break");
 
     // Goop Blocks
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK_ID = registerSoundEvent("block.goop_block.break");
@@ -46,9 +45,13 @@ public class ModSounds {
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE_ID = registerSoundEvent("entity.dripstone_tortoise.idle");
 
 
+    // Rose Quartz
+    public static RegistryObject<SoundEvent> BLOCK_ROSE_QUARTZ_BREAK_ID = registerSoundEvent("block.rose_quartz.break");
+
+
 
     // Block Sounds
-    public static final ForgeSoundType ROSE_QUARTZ = new ForgeSoundType(1.0F, 1.0F, BLOCK_ROSE_QUARTZ_BREAK_ID, BLOCK_ROSE_QUARTZ_BREAK_ID, BLOCK_ROSE_QUARTZ_BREAK_ID, BLOCK_ROSE_QUARTZ_BREAK_ID, BLOCK_ROSE_QUARTZ_BREAK_ID);
+    public static final SoundType ROSE_QUARTZ  = new SoundType(1.0F, 1.0F, SoundEvents.GLASS_STEP, SoundEvents.GLASS_STEP, SoundEvents.CALCITE_PLACE, SoundEvents.GLASS_HIT, SoundEvents.GLASS_FALL);
     public static final ForgeSoundType GOOP_BLOCK = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK_ID, BLOCK_GOOP_BLOCK_STEP_ID, BLOCK_GOOP_BLOCK_PLACE_ID, BLOCK_GOOP_BLOCK_HIT_ID, BLOCK_GOOP_BLOCK_FALL_ID);
     public static final ForgeSoundType GOOP_DECORATION = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_DECORATION_BREAK_ID, BLOCK_GOOP_DECORATION_STEP_ID, BLOCK_GOOP_DECORATION_PLACE_ID, BLOCK_GOOP_DECORATION_HIT_ID, BLOCK_GOOP_DECORATION_FALL_ID);
 

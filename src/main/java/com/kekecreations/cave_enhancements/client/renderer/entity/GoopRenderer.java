@@ -12,7 +12,7 @@ public class GoopRenderer extends MobRenderer<Goop, GoopModel<Goop>> {
         super(context, new GoopModel<>(context.bakeLayer(GoopModel.ENTITY_MODEL_LAYER)), 0.5f);
     }
 
-    public static final ResourceLocation TEXTURE = new ResourceLocation(CaveEnhancements.MOD_ID, "textures/entity/goop.png");
+    private static final ResourceLocation TEXTURE = new ResourceLocation(CaveEnhancements.MOD_ID, "textures/entity/goop.png");
 
     @Override
     public ResourceLocation getTextureLocation(Goop entity) {

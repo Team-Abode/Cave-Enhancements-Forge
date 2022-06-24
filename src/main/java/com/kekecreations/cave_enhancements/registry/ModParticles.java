@@ -19,12 +19,28 @@ public class ModParticles {
     public static final RegistryObject<SimpleParticleType> SMALL_GOOP_DRIP =
             PARTICLE_TYPES.register("small_goop_drip", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> AMETHYST_BLAST =
+            PARTICLE_TYPES.register("amethyst_blast", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> SOOTHING_NOTE =
+            PARTICLE_TYPES.register("soothing_note", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> HOVERING_NOTE =
+            PARTICLE_TYPES.register("hovering_note", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> ROSE_QUARTZ_AURA =
+            PARTICLE_TYPES.register("rose_quartz_aura", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> SHOCKWAVE =
+            PARTICLE_TYPES.register("shockwave", () -> new SimpleParticleType(true));
+
+    public static final RegistryObject<SimpleParticleType> ROSE_CHIMES =
+            PARTICLE_TYPES.register("rose_chimes", () -> new SimpleParticleType(true));
+
+
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }
 
-
-    public static void registerClient() {
-
-    }
 }

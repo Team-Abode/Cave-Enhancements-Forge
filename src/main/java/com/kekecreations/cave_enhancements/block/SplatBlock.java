@@ -60,5 +60,4 @@ public class SplatBlock extends MultifaceBlock implements SimpleWaterloggedBlock
     public MultifaceSpreader getSpreader() {
         return null;
     }
-
 }
