@@ -52,13 +52,13 @@ public class ModBlocks {
             () -> new RoseQuartzChimesBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ).noOcclusion()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> ROSE_QUARTZ_BLOCK = registerBlock("rose_quartz_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> POLISHED_ROSE_QUARTZ = registerBlock("polished_rose_quartz",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<JaggedRoseQuartzBlock> JAGGED_ROSE_QUARTZ = registerBlock("jagged_rose_quartz",
-            () -> new JaggedRoseQuartzBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).noCollission().sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new JaggedRoseQuartzBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).noCollission().sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<RoseQuartzLampBlock> ROSE_QUARTZ_LAMP = registerBlock("rose_quartz_lamp",
             () -> new RoseQuartzLampBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.LANTERN).lightLevel((state) -> 15)), CreativeModeTab.TAB_DECORATIONS);
@@ -67,25 +67,25 @@ public class ModBlocks {
             () -> new RoseQuartzLampBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.LANTERN).lightLevel((state) -> 15)), CreativeModeTab.TAB_DECORATIONS);
 
     public static final RegistryObject<SlabBlock> POLISHED_ROSE_QUARTZ_SLAB = registerBlock("polished_rose_quartz_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<StairBlock> POLISHED_ROSE_QUARTZ_STAIRS = registerBlock("polished_rose_quartz_stairs",
             () -> new StairBlock(POLISHED_ROSE_QUARTZ.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ).noOcclusion()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<WallBlock> POLISHED_ROSE_QUARTZ_WALL = registerBlock("polished_rose_quartz_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> ROSE_QUARTZ_TILES = registerBlock("rose_quartz_tiles",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<SlabBlock> ROSE_QUARTZ_TILE_SLAB = registerBlock("rose_quartz_tile_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new SlabBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<StairBlock> ROSE_QUARTZ_TILE_STAIRS = registerBlock("rose_quartz_tile_stairs",
-            () -> new StairBlock(ROSE_QUARTZ_TILES.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ).noOcclusion()), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new StairBlock(ROSE_QUARTZ_TILES.get().defaultBlockState(), BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE).noOcclusion()), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<WallBlock> ROSE_QUARTZ_TILE_WALL = registerBlock("rose_quartz_tile_wall",
-            () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(ModSounds.ROSE_QUARTZ)), CreativeModeTab.TAB_BUILDING_BLOCKS);
+            () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
 
 
