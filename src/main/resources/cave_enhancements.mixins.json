@@ -4,9 +4,15 @@
   "package": "com.exdrill.cave_enhancements.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "CreeperMixin",
-    "PhantomMixin"
-  ],
+      "PotionBrewingMixin",
+      "CreeperMixin",
+      "EnchantmentMixin",
+      "PhantomMixin",
+      "RedstoneWireBlockMixin",
+      "DigDurabilityEnchantmentMixin"
+    ],
+    "client": [
+    ],
   "injectors": {
     "defaultRequire": 1
   }

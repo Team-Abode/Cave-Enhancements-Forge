@@ -87,6 +87,102 @@ public class ModBlocks {
     public static final RegistryObject<WallBlock> ROSE_QUARTZ_TILE_WALL = registerBlock("rose_quartz_tile_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
+    public static final RegistryObject<OxidizableReceiverBlock> REDSTONE_RECEIVER = registerBlock(
+            "redstone_receiver",
+            () -> new OxidizableReceiverBlock(
+                    WeatheringCopper.WeatherState.UNAFFECTED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.COLOR_ORANGE)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<OxidizableReceiverBlock> EXPOSED_REDSTONE_RECEIVER = registerBlock(
+            "exposed_redstone_receiver",
+            () -> new OxidizableReceiverBlock(
+                    WeatheringCopper.WeatherState.EXPOSED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<OxidizableReceiverBlock> WEATHERED_REDSTONE_RECEIVER = registerBlock(
+            "weathered_redstone_receiver",
+            () -> new OxidizableReceiverBlock(
+                    WeatheringCopper.WeatherState.WEATHERED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<OxidizableReceiverBlock> OXIDIZED_REDSTONE_RECEIVER = registerBlock(
+            "oxidized_redstone_receiver",
+            () -> new OxidizableReceiverBlock(
+                    WeatheringCopper.WeatherState.OXIDIZED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<ReceiverBlock> WAXED_REDSTONE_RECEIVER = registerBlock(
+            "waxed_redstone_receiver",
+            () -> new ReceiverBlock(
+                    WeatheringCopper.WeatherState.UNAFFECTED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.COLOR_ORANGE)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<ReceiverBlock> WAXED_EXPOSED_REDSTONE_RECEIVER = registerBlock(
+            "waxed_exposed_redstone_receiver",
+            () -> new ReceiverBlock(
+                    WeatheringCopper.WeatherState.EXPOSED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<ReceiverBlock> WAXED_WEATHERED_REDSTONE_RECEIVER = registerBlock(
+            "waxed_weathered_redstone_receiver",
+            () -> new ReceiverBlock(
+                    WeatheringCopper.WeatherState.WEATHERED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
+    public static final RegistryObject<ReceiverBlock> WAXED_OXIDIZED_REDSTONE_RECEIVER = registerBlock(
+            "waxed_oxidized_redstone_receiver",
+            () -> new ReceiverBlock(
+                    WeatheringCopper.WeatherState.OXIDIZED,
+                    BlockBehaviour.Properties.of(Material.METAL)
+                            .color(MaterialColor.TERRACOTTA_LIGHT_GRAY)
+                            .sound(SoundType.COPPER)
+                            .instabreak()
+            ),
+            CreativeModeTab.TAB_REDSTONE
+    );
+
 
 
     //Registry Stuff
