@@ -1,6 +1,7 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
+import com.kekecreations.cave_enhancements.block.entity.LightningAnchorBlockEntity;
 import com.kekecreations.cave_enhancements.block.entity.RoseQuartzChimesBlockEntity;
 import com.kekecreations.cave_enhancements.block.entity.SpectacleCandleBlockEntity;
 import com.kekecreations.cave_enhancements.block.entity.SpectacleCandleCakeBlockEntity;
@@ -28,6 +29,11 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<RoseQuartzChimesBlockEntity>> ROSE_QUARTZ_CHIMES_BLOCK_ENTITY =
             BLOCK_ENTITIES.register("rose_quartz_chimes_block_entity", () ->
                     BlockEntityType.Builder.of(RoseQuartzChimesBlockEntity::new,
+                            ModBlocks.ROSE_QUARTZ_CHIMES.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<LightningAnchorBlockEntity>> LIGHTNING_ANCHOR =
+            BLOCK_ENTITIES.register("lightning_anchor_block_entity", () ->
+                    BlockEntityType.Builder.of(LightningAnchorBlockEntity::new,
                             ModBlocks.ROSE_QUARTZ_CHIMES.get()).build(null));
 
 

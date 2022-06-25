@@ -87,6 +87,11 @@ public class ModBlocks {
     public static final RegistryObject<WallBlock> ROSE_QUARTZ_TILE_WALL = registerBlock("rose_quartz_tile_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10).requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).sound(SoundType.CALCITE)), CreativeModeTab.TAB_BUILDING_BLOCKS);
 
+    public static final RegistryObject<LightningAnchorBlock> LIGHTNING_ANCHOR = registerBlock("lightning_anchor",
+            () -> new LightningAnchorBlock(BlockBehaviour.Properties.of(Material.METAL).strength(4, 100).requiresCorrectToolForDrops().color(MaterialColor.COLOR_ORANGE).sound(SoundType.COPPER)), CreativeModeTab.TAB_REDSTONE);
+
+    public static final RegistryObject<ChargedLightningAnchorBlock> CHARGED_LIGHTNING_ANCHOR = registerBlockwithoutBlockItem("charged_lightning_anchor",
+            () -> new ChargedLightningAnchorBlock(BlockBehaviour.Properties.of(Material.METAL).strength(4, 100).requiresCorrectToolForDrops().color(MaterialColor.COLOR_ORANGE).sound(SoundType.COPPER).lightLevel((state) -> 15)));
 
 
     //Registry Stuff

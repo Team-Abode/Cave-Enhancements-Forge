@@ -16,6 +16,11 @@ apply plugin: "eclipse"
 apply plugin: "maven-publish"
 apply plugin: "org.spongepowered.mixin"
 
+mixin {
+    add sourceSets.main, "cave_enhancements.mixins-refmap.json"
+    config 'cave_enhancements.mixins.json'
+}
+
 
 version = '1.0'
 group = 'com.kekecreations.cave_enhancements' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
@@ -65,7 +70,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'cave_enhancements'
 
             mods {
-                examplemod {
+                cave_enhancements {
                     source sourceSets.main
                 }
             }
@@ -81,7 +86,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'cave_enhancements'
 
             mods {
-                examplemod {
+                cave_enhancements {
                     source sourceSets.main
                 }
             }
@@ -100,7 +105,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'cave_enhancements'
 
             mods {
-                examplemod {
+                cave_enhancements {
                     source sourceSets.main
                 }
             }
@@ -117,7 +122,7 @@ minecraft {
             args '--mod', 'cave_enhancements', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                cave_enhancements {
                     source sourceSets.main
                 }
             }
@@ -143,6 +148,7 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.19-41.0.38'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
