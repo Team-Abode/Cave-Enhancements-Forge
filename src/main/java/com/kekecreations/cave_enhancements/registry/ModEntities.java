@@ -9,7 +9,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,9 +20,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
-
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITIES, CaveEnhancements.MOD_ID);
@@ -62,20 +62,6 @@ public class ModEntities {
                     () -> EntityType.Builder.of(Cruncher::new, MobCategory.CREATURE)
                             .sized(0.8f, 0.8f)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "cruncher").toString()));
-
-
-
-
-
-    @SubscribeEvent
-    public static void initializeAttributes(EntityAttributeCreationEvent event) {
-        event.put(GOOP.get(), Goop.createGoopAttributes().build());
-        event.put(DRIPSTONE_TORTOISE.get(), DripstoneTortoise.createDripstoneTortoiseAttributes().build());
-        event.put(DRIPSTONE_PIKE.get(), DripstonePike.createDripstonePikeAttributes().build());
-        event.put(CRUNCHER.get(), Cruncher.createCruncherAttributes().build());
-    }
-
-
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

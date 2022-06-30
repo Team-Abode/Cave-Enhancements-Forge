@@ -17,8 +17,7 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, CaveEnhancements.MOD_ID);
 
-    public static RegistryObject<SoundEvent> GLOW_PASTE_PLACE__ID = registerSoundEvent("block.glow_paste.place");
-
+    public static RegistryObject<SoundEvent> GLOW_PASTE_PLACE_ID = registerSoundEvent("block.glow_paste.place");
 
     // Goop Blocks
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK_ID = registerSoundEvent("block.goop_block.break");
@@ -37,18 +36,14 @@ public class ModSounds {
     // Goop Entity Sounds
     public static RegistryObject<SoundEvent> ENTITY_GOOP_DEATH_ID = registerSoundEvent("entity.goop.death");
     public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT_ID = registerSoundEvent("entity.goop.hurt");
+    public static RegistryObject<SoundEvent> ITEM_BUCKET_FILL_GOOP = registerSoundEvent("item.bucket.fill.goop");
+    public static RegistryObject<SoundEvent> ITEM_BUCKET_EMPTY_GOOP = registerSoundEvent("item.bucket.empty.goop");
 
     // Dripstone Tortoise Entity Sounds
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT_ID = registerSoundEvent("entity.dripstone_tortoise.hurt");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_DEATH_ID = registerSoundEvent("entity.dripstone_tortoise.death");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_STEP_ID = registerSoundEvent("entity.dripstone_tortoise.step");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE_ID = registerSoundEvent("entity.dripstone_tortoise.idle");
-
-
-    // Rose Quartz
-    public static RegistryObject<SoundEvent> BLOCK_ROSE_QUARTZ_BREAK_ID = registerSoundEvent("block.rose_quartz.break");
-
-
 
     // Block Sounds
     public static final SoundType ROSE_QUARTZ  = new SoundType(1.0F, 1.0F, SoundEvents.GLASS_STEP, SoundEvents.GLASS_STEP, SoundEvents.CALCITE_PLACE, SoundEvents.GLASS_HIT, SoundEvents.GLASS_FALL);

@@ -2,6 +2,7 @@ package com.kekecreations.cave_enhancements.entity;
 
 import com.kekecreations.cave_enhancements.registry.ModItems;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -28,6 +29,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class Goop extends Monster implements GoopBucketable {
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> STICKING_UP = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
@@ -132,7 +134,7 @@ public class Goop extends Monster implements GoopBucketable {
     }
 
     public SoundEvent getBucketedSound() {
-        return SoundEvents.BUCKET_FILL;
+        return ModSounds.ITEM_BUCKET_FILL_GOOP.get();
     }
 
     // Despawn Components

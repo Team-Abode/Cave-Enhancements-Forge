@@ -1,4 +1,4 @@
-package com.kekecreations.cave_enhancements.client;
+package com.kekecreations.cave_enhancements.events;
 
 import com.kekecreations.cave_enhancements.client.model.CruncherModel;
 import com.kekecreations.cave_enhancements.client.model.DripstonePikeModel;
@@ -6,7 +6,6 @@ import com.kekecreations.cave_enhancements.client.model.DripstoneTortoiseModel;
 import com.kekecreations.cave_enhancements.client.model.GoopModel;
 import com.kekecreations.cave_enhancements.client.renderer.blockentity.RoseQuartzChimesBlockEntityRenderer;
 import com.kekecreations.cave_enhancements.client.renderer.entity.*;
-import com.kekecreations.cave_enhancements.entity.DripstonePike;
 import com.kekecreations.cave_enhancements.particle.*;
 import com.kekecreations.cave_enhancements.registry.ModBlockEntities;
 import com.kekecreations.cave_enhancements.registry.ModBlocks;
@@ -16,7 +15,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -28,7 +26,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @Mod.EventBusSubscriber(modid = "cave_enhancements", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientEventBusSubscriber {
+public class ClientEvents {
 
 
     @SubscribeEvent
@@ -47,7 +45,6 @@ public class ClientEventBusSubscriber {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_EXPOSED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_WEATHERED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER.get(), RenderType.cutout());
-
     }
 
     @SubscribeEvent

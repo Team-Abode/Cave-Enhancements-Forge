@@ -2,6 +2,7 @@ package com.kekecreations.cave_enhancements;
 
 import com.kekecreations.cave_enhancements.entity.Cruncher;
 import com.kekecreations.cave_enhancements.entity.Goop;
+import com.kekecreations.cave_enhancements.events.EntityEvents;
 import com.kekecreations.cave_enhancements.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
@@ -48,15 +49,23 @@ public class CaveEnhancements
         modEventBus.addListener(this::commonSetup);
 
         ModBlocks.register(modEventBus);
-        ModItems.register(modEventBus);
-        ModEntities.register(modEventBus);
-        ModParticles.register(modEventBus);
-        ModSounds.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModBiomes.register(modEventBus);
-        ModEffects.register(modEventBus);
+
+        ModItems.register(modEventBus);
         ModBannerPatterns.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
+        ModParticles.register(modEventBus);
+        ModSounds.register(modEventBus);
+
+        ModBiomes.register(modEventBus);
+        ModBiomeModifiers.BIOME_MODIIFERS.register(modEventBus);
+
+        ModEffects.register(modEventBus);
+
+
+        modEventBus.register(new EntityEvents());
         MinecraftForge.EVENT_BUS.register(this);
     }
 
