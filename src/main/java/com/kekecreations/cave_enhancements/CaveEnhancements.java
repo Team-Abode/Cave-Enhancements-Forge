@@ -15,9 +15,12 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.brewing.BrewingRecipe;
 import net.minecraftforge.common.brewing.BrewingRecipeRegistry;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -52,6 +55,7 @@ public class CaveEnhancements
         ModBlockEntities.register(modEventBus);
         ModBiomes.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModBannerPatterns.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -62,11 +66,11 @@ public class CaveEnhancements
 
         event.enqueueWork(() -> {
             BrewingRecipeRegistry.addRecipe(new ModBrewingRecipes(Potions.AWKWARD, ModItems.GOOP.get(), Potions.SLOWNESS));
-
-            SpawnPlacements.register(ModEntities.CRUNCHER.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING, Cruncher::checkCruncherSpawnRules);
         });
 
     }
+
+
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
@@ -83,4 +87,5 @@ public class CaveEnhancements
             LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
         }
     }
+
 }

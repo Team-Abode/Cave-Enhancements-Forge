@@ -22,6 +22,8 @@ import javax.annotation.Nullable;
 
 public class SplatBlock extends MultifaceBlock implements SimpleWaterloggedBlock {
 
+    private final MultifaceSpreader multifaceSpreader = new MultifaceSpreader(this);
+
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public SplatBlock(Properties properties) {
         super(properties);
@@ -58,6 +60,6 @@ public class SplatBlock extends MultifaceBlock implements SimpleWaterloggedBlock
     @Nullable
     @Override
     public MultifaceSpreader getSpreader() {
-        return null;
+        return this.multifaceSpreader;
     }
 }

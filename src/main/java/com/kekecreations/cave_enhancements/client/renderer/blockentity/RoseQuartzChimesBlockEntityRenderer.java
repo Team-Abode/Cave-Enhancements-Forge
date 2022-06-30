@@ -26,7 +26,6 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
 
     public static final Material TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(CaveEnhancements.MOD_ID, "entity/rose_quartz_chimes/chime"));
 
-
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(CaveEnhancements.MOD_ID, "rose_quartz_chimes"), "main");
     private final ModelPart chimes;
     private final ModelPart chime0;

@@ -1,6 +1,7 @@
 package com.kekecreations.cave_enhancements.block;
 
 import com.kekecreations.cave_enhancements.entity.Goop;
+import com.kekecreations.cave_enhancements.registry.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -49,7 +50,7 @@ public class GoopTrapBlock extends Block {
     @Override
     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
         if (!world.isClientSide) {
-            if (entity instanceof LivingEntity livingEntity && !(livingEntity instanceof Warden) && !(livingEntity instanceof Goop)) {
+            if (!entity.getType().is(ModTags.GOOP_TRAP_IMMUNE) && entity instanceof LivingEntity livingEntity) {
                 livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 6, true, true));
             }
         }
