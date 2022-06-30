@@ -43,9 +43,9 @@ public class ModBlockEntities {
                                         ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER.get()).build(null));
 
         public static final RegistryObject<BlockEntityType<LightningAnchorBlockEntity>> LIGHTNING_ANCHOR = BLOCK_ENTITIES
-                        .register("lightning_anchor_block_entity",
+                        .register("lightning_anchor",
                                         () -> BlockEntityType.Builder.of(LightningAnchorBlockEntity::new,
-                                                        ModBlocks.ROSE_QUARTZ_CHIMES.get()).build(null));
+                                                        ModBlocks.LIGHTNING_ANCHOR.get()).build(null));
 
         public static void register(IEventBus eventBus) {
                 BLOCK_ENTITIES.register(eventBus);

@@ -18,6 +18,7 @@ apply plugin: "org.spongepowered.mixin"
 
 mixin {
     add sourceSets.main, "cave_enhancements.refmap.json"
+    config 'cave_enhancements.mixins.json'
 }
 
 

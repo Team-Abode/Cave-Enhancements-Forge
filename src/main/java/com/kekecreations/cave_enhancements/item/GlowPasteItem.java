@@ -1,6 +1,7 @@
 package com.kekecreations.cave_enhancements.item;
 
 import com.kekecreations.cave_enhancements.registry.ModBlocks;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,6 +21,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Properties;
 
 @ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class GlowPasteItem extends BlockItem implements IForgeItem {
     public GlowPasteItem(Properties settings) {
         super(ModBlocks.GLOW_SPLOTCH.get(), settings);
