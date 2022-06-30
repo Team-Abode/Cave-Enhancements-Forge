@@ -237,12 +237,14 @@ public class ModBlocks {
                                         .sound(SoundType.COPPER)),
                         CreativeModeTab.TAB_REDSTONE);
 
-        public static final RegistryObject<ChargedLightningAnchorBlock> CHARGED_LIGHTNING_ANCHOR = registerBlockwithoutBlockItem(
+        public static final RegistryObject<ChargedLightningAnchorBlock> CHARGED_LIGHTNING_ANCHOR = registerBlock(
                         "charged_lightning_anchor",
                         () -> new ChargedLightningAnchorBlock(
                                         BlockBehaviour.Properties.of(Material.METAL).strength(4, 100)
                                                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_ORANGE)
-                                                        .sound(SoundType.COPPER).lightLevel((state) -> 15)));
+                                                        .sound(SoundType.COPPER).lightLevel((state) -> 15)),
+                        CreativeModeTab.TAB_REDSTONE
+                );
 
         // Registry Stuff
         private static <T extends Block> RegistryObject<T> registerBlockwithoutBlockItem(String name,
