@@ -60,7 +60,7 @@ public class RoseQuartzChimesBlock extends BaseEntityBlock {
 
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), (world1, pos, state1, entity) -> RoseQuartzChimesBlockEntity.tick(world1, pos, (RoseQuartzChimesBlockEntity) entity));
+        return createTickerHelper(type, ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), (world1, pos, state1, entity) -> RoseQuartzChimesBlockEntity.tick(world1, pos, entity));
     }
 
     public boolean canSurvive(BlockState state, LevelReader world, BlockPos pos) {

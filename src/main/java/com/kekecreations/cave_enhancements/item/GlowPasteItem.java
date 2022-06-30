@@ -14,18 +14,27 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraftforge.common.extensions.IForgeItem;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Properties;
 
 @ParametersAreNonnullByDefault
-public class GlowPasteItem extends BlockItem {
+public class GlowPasteItem extends BlockItem implements IForgeItem {
     public GlowPasteItem(Properties settings) {
         super(ModBlocks.GLOW_SPLOTCH.get(), settings);
     }
 
 
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
+    }
 
+    @Override
+    public boolean isEnchantable(ItemStack p_41456_) {
+        return false;
+    }
 
     @Override
     public InteractionResult place(BlockPlaceContext blockPlaceContext) {

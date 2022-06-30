@@ -15,10 +15,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraftforge.common.extensions.IForgeBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class ReceiverBlock extends DiodeBlock implements EntityBlock {
+public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBlock {
     public static final BooleanProperty CAN_PASS = BooleanProperty.create("can_pass");
     public WeatheringCopper.WeatherState oxidationLevel;
 
@@ -112,6 +113,13 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock {
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
+    }
+
+    @Override
+    public boolean canConnectRedstone(BlockState state, BlockGetter level, BlockPos pos, @Nullable Direction direction) {
+
+        Direction facing = state.getValue(ReceiverBlock.FACING);
+        return facing == direction || facing.getOpposite() == direction;
     }
 
     // Block Entity
