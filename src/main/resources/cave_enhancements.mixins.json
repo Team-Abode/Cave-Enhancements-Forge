@@ -12,7 +12,6 @@
     "DigDurabilityEnchantmentMixin"
   ],
   "client": [],
-  "refmap": "cave_enhancements.mixins-refmap.json",
   "injectors": {
     "defaultRequire": 1
   }
