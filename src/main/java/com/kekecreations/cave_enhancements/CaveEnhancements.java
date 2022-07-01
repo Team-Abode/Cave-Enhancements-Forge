@@ -2,10 +2,12 @@ package com.kekecreations.cave_enhancements;
 
 import com.kekecreations.cave_enhancements.entity.Cruncher;
 import com.kekecreations.cave_enhancements.entity.Goop;
+import com.kekecreations.cave_enhancements.events.DispenseBehaviors;
 import com.kekecreations.cave_enhancements.events.EntityEvents;
 import com.kekecreations.cave_enhancements.registry.*;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionBrewing;
@@ -71,6 +73,7 @@ public class CaveEnhancements
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             BrewingRecipeRegistry.addRecipe(new ModBrewingRecipes(Potions.AWKWARD, ModItems.GOOP.get(), Potions.SLOWNESS));
+            DispenseBehaviors.init();
         });
     }
 }

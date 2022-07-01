@@ -76,6 +76,7 @@ public class ClientEvents {
         event.registerEntityRenderer(ModEntities.DRIPSTONE_PIKE.get(), DripstonePikeRenderer::new);
         event.registerEntityRenderer(ModEntities.CRUNCHER.get(), CruncherRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), RoseQuartzChimesBlockEntityRenderer::new);
+
     }
 
     @OnlyIn(Dist.CLIENT)

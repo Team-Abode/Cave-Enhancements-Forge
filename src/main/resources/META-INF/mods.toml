@@ -6,7 +6,7 @@ modId="cave_enhancements"
 version="${file.jarVersion}"
 displayName="Cave Enhancements"
 logoFile="caveenhancements.png"
-credits="Thanks for this example mod goes to Java"
+credits=""
 authors="KekeCreations, ExDrill"
 description='''
 Expands upon 1.18 by adding in new exciting features!
