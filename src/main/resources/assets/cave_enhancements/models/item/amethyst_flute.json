@@ -1,6 +1,17 @@
 {
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "cave_enhancements:item/amethyst_flute"
-	}
+  "loader": "forge:separate-perspective",
+  "base": {
+    "parent": "cave_enhancements:item/amethyst_flute_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "cave_enhancements:item/amethyst_flute_gui"
+    },
+    "fixed": {
+      "parent": "cave_enhancements:item/amethyst_flute_other"
+    },
+    "ground": {
+      "parent": "cave_enhancements:item/amethyst_flute_other"
+    }
+  }
 }

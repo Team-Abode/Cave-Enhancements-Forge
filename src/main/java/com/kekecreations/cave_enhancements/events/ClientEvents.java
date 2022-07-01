@@ -28,7 +28,6 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @Mod.EventBusSubscriber(modid = "cave_enhancements", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
 
-
     @SubscribeEvent
     @ParametersAreNonnullByDefault
     public static void clientSetup(FMLClientSetupEvent event) {

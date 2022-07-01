@@ -8,6 +8,9 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraftforge.common.brewing.IBrewingRecipe;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
 public class ModBrewingRecipes implements IBrewingRecipe {
 
     private final Potion input;
