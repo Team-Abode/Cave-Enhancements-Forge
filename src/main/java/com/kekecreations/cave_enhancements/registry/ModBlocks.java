@@ -68,7 +68,7 @@ public class ModBlocks {
                         "rose_quartz_chimes",
                         () -> new RoseQuartzChimesBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2F, 10)
                                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
-                                        .sound(ModSounds.ROSE_QUARTZ).noOcclusion()),
+                                        .sound(SoundType.CALCITE).noOcclusion()),
                         CreativeModeTab.TAB_BUILDING_BLOCKS);
 
         public static final RegistryObject<Block> ROSE_QUARTZ_BLOCK = registerBlock("rose_quartz_block",
@@ -115,7 +115,7 @@ public class ModBlocks {
                         () -> new StairBlock(POLISHED_ROSE_QUARTZ.get().defaultBlockState(),
                                         BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10)
                                                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
-                                                        .sound(ModSounds.ROSE_QUARTZ).noOcclusion()),
+                                                        .sound(SoundType.CALCITE).noOcclusion()),
                         CreativeModeTab.TAB_BUILDING_BLOCKS);
 
         public static final RegistryObject<WallBlock> POLISHED_ROSE_QUARTZ_WALL = registerBlock(

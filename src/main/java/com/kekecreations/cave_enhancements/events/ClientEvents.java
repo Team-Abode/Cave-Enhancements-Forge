@@ -25,11 +25,11 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@ParametersAreNonnullByDefault
 @Mod.EventBusSubscriber(modid = "cave_enhancements", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
 
     @SubscribeEvent
-    @ParametersAreNonnullByDefault
     public static void clientSetup(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.GOOP_SPLAT.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.DRIPPING_GOOP.get(), RenderType.cutout());
@@ -68,24 +68,28 @@ public class ClientEvents {
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        // ENTITIES
+        // Entity Renderers
         event.registerEntityRenderer(ModEntities.GOOP.get(), GoopRenderer::new);
         event.registerEntityRenderer(ModEntities.HARMONIC_ARROW.get(), HarmonicArrowRenderer::new);
         event.registerEntityRenderer(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.DRIPSTONE_TORTOISE.get(), DripstoneTortoiseRenderer::new);
         event.registerEntityRenderer(ModEntities.DRIPSTONE_PIKE.get(), DripstonePikeRenderer::new);
         event.registerEntityRenderer(ModEntities.CRUNCHER.get(), CruncherRenderer::new);
+
+        // Block Entity Renderers
         event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), RoseQuartzChimesBlockEntityRenderer::new);
     }
 
     @OnlyIn(Dist.CLIENT)
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
-
+        // Entity Layers
         event.registerLayerDefinition(GoopModel.ENTITY_MODEL_LAYER, GoopModel::getTexturedModelData);
         event.registerLayerDefinition(DripstonePikeModel.ENTITY_MODEL_LAYER, DripstonePikeModel::getTexturedModelData);
         event.registerLayerDefinition(DripstoneTortoiseModel.ENTITY_MODEL_LAYER, DripstoneTortoiseModel::getTexturedModelData);
         event.registerLayerDefinition(CruncherModel.ENTITY_MODEL_LAYER, CruncherModel::getTexturedModelData);
+
+        // Block Entity Layers
         event.registerLayerDefinition(RoseQuartzChimesBlockEntityRenderer.LAYER_LOCATION, RoseQuartzChimesBlockEntityRenderer::getTexturedModelData);
 
     }
