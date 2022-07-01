@@ -1,10 +1,20 @@
 package com.kekecreations.cave_enhancements.block;
 
 import com.kekecreations.cave_enhancements.block.entity.ReceiverBlockEntity;
+import com.kekecreations.cave_enhancements.registry.ModBlocks;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.DustParticleOptions;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -15,10 +25,16 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.extensions.IForgeBlock;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.Objects;
+
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBlock {
     public static final BooleanProperty CAN_PASS = BooleanProperty.create("can_pass");
     public WeatheringCopper.WeatherState oxidationLevel;
@@ -127,6 +143,37 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new ReceiverBlockEntity(pos, state);
+    }
+
+    @Override
+    public InteractionResult use(BlockState blockState, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        Item item = player.getItemInHand(hand).getItem();
+        if (item instanceof AxeItem) {
+            level.levelEvent(3004, pos, 0);
+            level.playSound(null, pos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+
+            switch (this.oxidationLevel) {
+                case UNAFFECTED -> {
+                    level.setBlock(pos, ModBlocks.REDSTONE_RECEIVER.get().withPropertiesOf(blockState), 3);
+                    return InteractionResult.SUCCESS;
+                }
+                case EXPOSED -> {
+                    level.setBlock(pos, ModBlocks.EXPOSED_REDSTONE_RECEIVER.get().withPropertiesOf(blockState), 3);
+                    return InteractionResult.SUCCESS;
+                }
+                case WEATHERED -> {
+                    level.setBlock(pos, ModBlocks.WEATHERED_REDSTONE_RECEIVER.get().withPropertiesOf(blockState), 3);
+                    return InteractionResult.SUCCESS;
+                }
+                case OXIDIZED -> {
+                    level.setBlock(pos, ModBlocks.OXIDIZED_REDSTONE_RECEIVER.get().withPropertiesOf(blockState), 3);
+                    return InteractionResult.SUCCESS;
+                }
+            }
+
+        }
+        return InteractionResult.PASS;
     }
 
     @Nullable
