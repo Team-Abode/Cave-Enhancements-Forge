@@ -35,7 +35,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<Goop>> GOOP =
             ENTITY_TYPES.register("goop",
-                    () -> EntityType.Builder.of(Goop::new, MobCategory.CREATURE)
+                    () -> EntityType.Builder.of(Goop::new, MobCategory.MONSTER)
                             .sized(0.6f, 0.9f)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "goop").toString()));
 
@@ -53,7 +53,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<DripstoneTortoise>> DRIPSTONE_TORTOISE =
             ENTITY_TYPES.register("dripstone_tortoise",
-                    () -> EntityType.Builder.of(DripstoneTortoise::new, MobCategory.CREATURE)
+                    () -> EntityType.Builder.of(DripstoneTortoise::new, MobCategory.MONSTER)
                             .sized(1.3f, 0.8f)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "dripstone_tortoise").toString()));
 

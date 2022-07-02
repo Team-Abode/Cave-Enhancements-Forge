@@ -86,7 +86,7 @@ public class ModBlocks {
         public static final RegistryObject<JaggedRoseQuartzBlock> JAGGED_ROSE_QUARTZ = registerBlock(
                         "jagged_rose_quartz",
                         () -> new JaggedRoseQuartzBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10)
-                                        .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK).noCollission()
+                                        .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
                                         .sound(SoundType.CALCITE)),
                         CreativeModeTab.TAB_BUILDING_BLOCKS);
 
