@@ -18,13 +18,14 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@SuppressWarnings("deprecation")
 @ParametersAreNonnullByDefault
 @Mod.EventBusSubscriber(modid = "cave_enhancements", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
@@ -44,10 +45,11 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_EXPOSED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_WEATHERED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER.get(), RenderType.cutout());
+
     }
 
     @SubscribeEvent
-    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
+    public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.SMALL_GOOP_DRIP.get(),
                 SmallGoopDripParticle.SmallGoopDripFactory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.HOVERING_NOTE.get(),
