@@ -25,6 +25,7 @@ public class ModSounds {
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_HIT_ID = registerSoundEvent("block.goop_block.hit");
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_PLACE_ID = registerSoundEvent("block.goop_block.place");
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_FALL_ID = registerSoundEvent("block.goop_block.fall");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_SLIDE_ID = registerSoundEvent("block.goop_block.slide");
 
     // Goop Decoration Blocks
     public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_BREAK_ID = registerSoundEvent("block.goop_decoration.break");

@@ -2,8 +2,10 @@ package com.kekecreations.cave_enhancements.item;
 
 import com.kekecreations.cave_enhancements.entity.DripstoneTortoise;
 import com.kekecreations.cave_enhancements.registry.ModParticles;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -11,6 +13,8 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.monster.Ravager;
 import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
@@ -21,6 +25,7 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
+@MethodsReturnNonnullByDefault
 public class AmethystFluteItem extends Item {
     private static final long fearDuration = 40L;
     public AmethystFluteItem(Item.Properties settings) {
@@ -36,28 +41,46 @@ public class AmethystFluteItem extends Item {
         double z = user.getZ();
         BlockPos pos = new BlockPos(x, y, z);
         if (world.isClientSide) {
-            world.addParticle(ModParticles.SOOTHING_NOTE.get(), pos.getX(), pos.getY() + 1D, pos.getZ(), 0, 0.5, 0);
+            world.addParticle(ModParticles.SOOTHING_NOTE.get(), x, y + 1.0D, z, 0, 0.2, 0);
         }
         if (!world.isClientSide) {
-            itemStack.hurtAndBreak(1, user, (userx) -> userx.broadcastBreakEvent(hand));
+
             world.playSound(null, pos, SoundEvents.NOTE_BLOCK_FLUTE, SoundSource.PLAYERS, 1.0F, 1.0F);
+            itemStack.hurtAndBreak(1, user, (userx) -> userx.broadcastBreakEvent(hand));
+
+
+
             user.level.getEntities(user, user.getBoundingBox().inflate(10D), user::hasLineOfSight).forEach(entity -> {
+
                 if (entity instanceof Ravager ravagerEntity) {
+
                     ravagerEntity.handleEntityEvent((byte)39);
                     ravagerEntity.playSound(SoundEvents.RAVAGER_STUNNED, 1.0F, 1.0F);
                     world.broadcastEntityEvent(ravagerEntity, (byte)39);
+
                 } else if (entity instanceof Vex vexEntity) {
-                    vexEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 10, 0));
+
+                    world.addParticle(ModParticles.SOOTHING_NOTE.get(), entity.getX(), entity.getY() + 1.0D, entity.getZ(), 0, 0, 0);
+                    vexEntity.kill();
+
                 } else if (entity instanceof DripstoneTortoise dripstoneTortoise) {
                     dripstoneTortoise.sooth();
                 }
+
+                if (entity instanceof DripstoneTortoise || entity instanceof Ravager || entity instanceof Vex || entity instanceof Creeper || entity instanceof Phantom) {
+                    if (world instanceof ServerLevel server) {
+                        server.sendParticles(ModParticles.SOOTHING_NOTE.get(), entity.getX(), entity.getEyeY() + 0.5D, entity.getZ(), 1, 0, 0, 0,0);
+                    }
+                }
+
+
             });
 
+            user.gameEvent(GameEvent.NOTE_BLOCK_PLAY);
             CompoundTag nbt = itemStack.getOrCreateTag();
             nbt.putLong("AmethystFluteScary", world.getGameTime());
             itemStack.setTag(nbt);
-            user.getCooldowns().addCooldown(this, 400);
-            user.gameEvent(GameEvent.ITEM_INTERACT_START);
+            user.getCooldowns().addCooldown(this, 200);
         }
         return InteractionResultHolder.success(itemStack);
     }

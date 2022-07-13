@@ -3,6 +3,7 @@ package com.kekecreations.cave_enhancements.entity;
 import com.kekecreations.cave_enhancements.registry.ModEntities;
 import com.kekecreations.cave_enhancements.registry.ModItems;
 import com.kekecreations.cave_enhancements.registry.ModParticles;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -18,6 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.List;
 
+@MethodsReturnNonnullByDefault
 public class HarmonicArrow extends AbstractArrow {
 
 
@@ -48,7 +50,7 @@ public class HarmonicArrow extends AbstractArrow {
 
     @Override
     protected void onHitBlock(BlockHitResult blockHitResult) {
-        knockbackEntitiesAround(0.35F);
+        knockbackEntitiesAround(0.45F);
         if (this.level.isClientSide) {
             this.level.addParticle(ModParticles.AMETHYST_BLAST.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }
@@ -57,7 +59,7 @@ public class HarmonicArrow extends AbstractArrow {
 
     @Override
     protected void doPostHurtEffects(LivingEntity target) {
-        knockbackEntitiesAround(0.2F);
+        knockbackEntitiesAround(0.25F);
     }
 
     public void knockbackEntitiesAround( float strength ) {

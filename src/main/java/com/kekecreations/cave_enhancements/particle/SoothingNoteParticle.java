@@ -9,6 +9,8 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 public class SoothingNoteParticle extends SimpleAnimatedParticle {
 
 
@@ -17,14 +19,15 @@ public class SoothingNoteParticle extends SimpleAnimatedParticle {
         this.xd = velocityX;
         this.yd = velocityY;
         this.zd = velocityZ;
-        this.quadSize *= 3F;
+        this.quadSize = 0.25F;
         this.hasPhysics = false;
-        this.gravity = 0.0F;
-        this.lifetime = 60 + this.random.nextInt(12);
+        this.gravity = 0.1F;
+        this.lifetime = 30;
         this.setSpriteFromAge(spriteProvider);
 
     }
 
+    @ParametersAreNonnullByDefault
     @OnlyIn(Dist.CLIENT)
     public static class SoothingNoteFactory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteProvider;
@@ -34,10 +37,7 @@ public class SoothingNoteParticle extends SimpleAnimatedParticle {
         }
 
         public Particle createParticle(SimpleParticleType defaultParticleType, ClientLevel clientWorld, double d, double e, double f, double g, double h, double i) {
-            SoothingNoteParticle glowParticle = new SoothingNoteParticle(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
-            boolean j = true;
-            boolean k = true;
-            return glowParticle;
+            return new SoothingNoteParticle(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }
