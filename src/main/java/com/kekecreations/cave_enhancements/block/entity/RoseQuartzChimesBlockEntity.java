@@ -26,7 +26,7 @@ public class RoseQuartzChimesBlockEntity extends BlockEntity {
 
 
     public RoseQuartzChimesBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.ROSE_QUARTZ_CHIMES.get(), pos, state);
     }
 
     public static void tick(Level world, BlockPos pos, RoseQuartzChimesBlockEntity entity) {

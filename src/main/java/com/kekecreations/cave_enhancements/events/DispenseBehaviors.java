@@ -17,7 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 @ParametersAreNonnullByDefault
 public interface DispenseBehaviors extends DispenseItemBehavior {
 
-    static void init() {
+    static void register() {
         DispenserBlock.registerBehavior(ModItems.HARMONIC_ARROW.get(), new AbstractProjectileDispenseBehavior() {
             /**
              * Return the projectile entity spawned by this dispense behavior.

@@ -18,7 +18,7 @@ import java.util.List;
 public class SpectacleCandleCakeBlockEntity extends BlockEntity {
 
     public SpectacleCandleCakeBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntities.SPECTACLE_CANDLE_CAKE_BLOCK_ENTITY.get(), blockPos, blockState);
+        super(ModBlockEntities.SPECTACLE_CANDLE_CAKE.get(), blockPos, blockState);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state) {

@@ -79,7 +79,7 @@ public class ClientEvents {
         event.registerEntityRenderer(ModEntities.CRUNCHER.get(), CruncherRenderer::new);
 
         // Block Entity Renderers
-        event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES_BLOCK_ENTITY.get(), RoseQuartzChimesBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES.get(), RoseQuartzChimesBlockEntityRenderer::new);
 
     }
 

@@ -13,7 +13,7 @@ public class ReceiverBlockEntity extends BlockEntity {
     public int poweredTicks = 0;
 
     public ReceiverBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.RECEIVER_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.RECEIVER.get(), pos, state);
     }
 
     public void tick(Level world, BlockPos pos, BlockState state) {
