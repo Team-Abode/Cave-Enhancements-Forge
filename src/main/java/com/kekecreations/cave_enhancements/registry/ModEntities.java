@@ -23,7 +23,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModEntities {
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, CaveEnhancements.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);
 
     public static final RegistryObject<EntityType<BigGoopDripProjectile>> BIG_GOOP_DRIP_PROJECTILE_ENTITY =
             ENTITY_TYPES.register("big_goop_drip",

@@ -24,7 +24,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static RegistryObject<Item> GOOP_BUCKET = ITEMS.register("goop_bucket",
-            () -> new GoopBucketItem(ModEntities.GOOP, Fluids.EMPTY, ModSounds.ITEM_BUCKET_EMPTY_GOOP.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
+            () -> new GoopBucketItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
 
     public static final RegistryObject<BlockItem> GOOP = ITEMS.register("goop",
             () -> new BlockItem(ModBlocks.GOOP_SPLAT.get(), new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));

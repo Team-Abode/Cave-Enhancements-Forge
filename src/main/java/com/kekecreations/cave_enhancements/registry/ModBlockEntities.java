@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModBlockEntities {
 
         public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister
-                        .create(ForgeRegistries.BLOCK_ENTITIES, CaveEnhancements.MOD_ID);
+                        .create(ForgeRegistries.BLOCK_ENTITY_TYPES, CaveEnhancements.MOD_ID);
 
         public static final RegistryObject<BlockEntityType<SpectacleCandleBlockEntity>> SPECTACLE_CANDLE_BLOCK_ENTITY = BLOCK_ENTITIES
                         .register("spectacle_candle", () -> BlockEntityType.Builder.of(SpectacleCandleBlockEntity::new,

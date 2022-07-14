@@ -6,7 +6,7 @@ import com.kekecreations.cave_enhancements.entity.ai.goal.FleeTheFluteGoal;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.monster.Creeper;
-import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 public class EntityEvents {
 
     @SubscribeEvent
-    public static void onEntityJoin(EntityJoinWorldEvent event) {
+    public static void onEntityJoin(EntityJoinLevelEvent event) {
         Entity entity = event.getEntity();
 
         if (entity instanceof Creeper creeper) {
