@@ -140,12 +140,19 @@ repositories {
     maven {
         url = "https://maven.jaackson.me"
     }
+    maven {
+        url = "https://www.cursemaven.com"
+    }
 }
 
 dependencies {
     minecraft "net.minecraftforge:forge:1.19-${project.forgeVersion}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraftVersion}-${project.blueprintVersion}")
+
+
+    runtimeOnly fg.deobf("curse.maven:quark-243121:3873471")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3857246")
 }
 
 // Example for how to get properties into the manifest for reading at runtime.
