@@ -22,7 +22,7 @@ mixin {
 }
 
 
-version = '1.0'
+version = "${project.minecraftVersion}-${project.modVersion}"
 group = 'com.kekecreations' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cave_enhancements'
 
