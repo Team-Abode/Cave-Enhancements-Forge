@@ -23,6 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.material.PushReaction;
 import net.minecraftforge.common.extensions.IForgeEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -30,6 +31,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
+@SuppressWarnings("deprecation")
 public class Goop extends Monster implements GoopBucketable {
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> STICKING_UP = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
@@ -70,6 +72,11 @@ public class Goop extends Monster implements GoopBucketable {
         super.defineSynchedData();
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(STICKING_UP, false);
+    }
+
+    @Override
+    public boolean causeFallDamage(float p_147187_, float p_147188_, DamageSource p_147189_) {
+        return false;
     }
 
     public void addAdditionalSaveData(CompoundTag nbt) {
@@ -123,6 +130,11 @@ public class Goop extends Monster implements GoopBucketable {
     @Override
     public boolean isPushable() {
         return false;
+    }
+
+    @Override
+    public PushReaction getPistonPushReaction() {
+        return PushReaction.BLOCK;
     }
 
     // Bucket Components

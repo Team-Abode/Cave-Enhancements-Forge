@@ -1,17 +1,11 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.block.SpectacleCandleBlock;
-import com.kekecreations.cave_enhancements.block.entity.SpectacleCandleBlockEntity;
 import com.kekecreations.cave_enhancements.entity.*;
-import net.minecraft.core.Registry;
+import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityDimensions;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.SpawnPlacements;
-import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -20,7 +14,10 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
+
+    public static final EntitySubRegistryHelper HELPER = CaveEnhancements.REGISTRY_HELPER.getEntitySubHelper();
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);
@@ -65,5 +62,13 @@ public class ModEntities {
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
+    }
+
+    @SubscribeEvent
+    public static void appendAttributes(EntityAttributeCreationEvent event) {
+        event.put(ModEntities.GOOP.get(), Goop.createGoopAttributes().build());
+        event.put(ModEntities.DRIPSTONE_TORTOISE.get(), DripstoneTortoise.createDripstoneTortoiseAttributes().build());
+        event.put(ModEntities.DRIPSTONE_PIKE.get(), DripstonePike.createDripstonePikeAttributes().build());
+        event.put(ModEntities.CRUNCHER.get(), Cruncher.createCruncherAttributes().build());
     }
 }

@@ -17,7 +17,7 @@ public class MobSpawners implements BiomeModifier {
         if (phase == Phase.ADD) {
 
             if (biome.is(Biomes.LUSH_CAVES)) {
-                builder.getMobSpawnSettings().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.CRUNCHER.get(), 75, 1, 1));
+                builder.getMobSpawnSettings().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.CRUNCHER.get(), 5, 1, 1));
             } else if (biome.is(Biomes.DRIPSTONE_CAVES)) {
                 builder.getMobSpawnSettings().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.DRIPSTONE_TORTOISE.get(), 100, 2, 3));
             }
