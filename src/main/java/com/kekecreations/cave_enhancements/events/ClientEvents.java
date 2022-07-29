@@ -12,6 +12,7 @@ import com.kekecreations.cave_enhancements.registry.ModBlocks;
 import com.kekecreations.cave_enhancements.registry.ModEntities;
 import com.kekecreations.cave_enhancements.registry.ModParticles;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -64,6 +65,8 @@ public class ClientEvents {
                 RoseChimesParticle.RoseChimesFactory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.SHOCKWAVE.get(),
                 ShockwaveParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.GOOP_EXPLOSION.get(),
+                HugeExplosionParticle.Provider::new);
     }
 
 

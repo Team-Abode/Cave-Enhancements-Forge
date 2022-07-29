@@ -47,6 +47,10 @@ public class ModBlocks {
                         .color(MaterialColor.SAND)),
                 CreativeModeTab.TAB_BUILDING_BLOCKS);
 
+        public static final RegistryObject<Block> VOLATILE_GOOP = HELPER.createBlock("volatile_goop",
+                () -> new VolatileGoopBlock(BlockBehaviour.Properties.of(Material.CLAY).strength(2.0F, 5.0F).sound(ModSounds.GOOP_BLOCK).color(MaterialColor.SAND)),
+                CreativeModeTab.TAB_BUILDING_BLOCKS);
+
         public static final RegistryObject<Block> GLOW_SPLOTCH = HELPER.createBlockNoItem("glow_splotch",
                         () -> new SplatBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
                                         .sound(SoundType.HONEY_BLOCK).noCollission().noOcclusion()

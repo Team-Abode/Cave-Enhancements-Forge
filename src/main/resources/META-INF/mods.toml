@@ -9,7 +9,7 @@ logoFile="caveenhancements.png"
 credits=""
 authors="KekeCreations, ExDrill"
 description='''
-Expands upon 1.18 by adding in new exciting features!
+Expands upon the underground by adding in new exciting features!
 '''
 
 [[dependencies.cave_enhancements]]
@@ -28,6 +28,6 @@ Expands upon 1.18 by adding in new exciting features!
 [[dependencies.cave_enhancements]]
     modId = "blueprint"
     mandatory = true
-    versionRange = "[6.0.4,)"
+    versionRange = "[6.0.5,)"
     ordering = "BEFORE"
     side = "BOTH"

@@ -37,6 +37,9 @@ public class ModParticles {
     public static final RegistryObject<SimpleParticleType> ROSE_CHIMES =
             PARTICLE_TYPES.register("rose_chimes", () -> new SimpleParticleType(true));
 
+    public static final RegistryObject<SimpleParticleType> GOOP_EXPLOSION =
+            PARTICLE_TYPES.register("goop_explosion", () -> new SimpleParticleType(true));
+
 
 
     public static void register(IEventBus eventBus) {
