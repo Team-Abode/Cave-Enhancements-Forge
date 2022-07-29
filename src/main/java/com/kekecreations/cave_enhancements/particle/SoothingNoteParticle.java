@@ -37,7 +37,7 @@ public class SoothingNoteParticle extends SimpleAnimatedParticle {
         }
 
         public Particle createParticle(SimpleParticleType defaultParticleType, ClientLevel clientWorld, double d, double e, double f, double g, double h, double i) {
-            return new SoothingNoteParticle(clientWorld, d, e, f, 0.0D, 0.0D, 0.0D, this.spriteProvider);
+            return new SoothingNoteParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
         }
     }
 }
