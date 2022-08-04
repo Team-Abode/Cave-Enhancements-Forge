@@ -1,7 +1,7 @@
 package com.kekecreations.cave_enhancements.registry;
 
-import com.kekecreations.cave_enhancements.entity.Cruncher;
-import com.kekecreations.cave_enhancements.entity.DripstoneTortoise;
+import com.kekecreations.cave_enhancements.entity.cruncher.Cruncher;
+import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.level.levelgen.Heightmap;
 

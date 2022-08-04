@@ -1,6 +1,6 @@
-package com.kekecreations.cave_enhancements.entity.ai.goal;
+package com.kekecreations.cave_enhancements.entity.cruncher.goals;
 
-import com.kekecreations.cave_enhancements.entity.Cruncher;
+import com.kekecreations.cave_enhancements.entity.cruncher.Cruncher;
 import com.kekecreations.cave_enhancements.registry.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
@@ -11,12 +11,12 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 import java.util.EnumSet;
 
-public class CruncherEatBlockGoal extends Goal {
+public class EatBlockGoal extends Goal {
     private final Cruncher mob;
     private final Level world;
     private int timer;
 
-    public CruncherEatBlockGoal(Cruncher mob) {
+    public EatBlockGoal(Cruncher mob) {
         this.mob = mob;
         this.world = mob.level;
         this.setFlags(EnumSet.of(Flag.MOVE, Flag.LOOK, Flag.JUMP));
@@ -26,7 +26,7 @@ public class CruncherEatBlockGoal extends Goal {
         if (this.mob.eatingTicks > 0 && this.mob.level.getGameTime() - this.mob.lastEatTick > 120L) {
             BlockPos blockPos = this.mob.blockPosition().below();
 
-            return this.world.getBlockState(blockPos.below()).is(ModTags.CRUNCHER_CONSUMABLES);
+                return this.world.getBlockState(blockPos.below()).is(ModTags.CRUNCHER_CONSUMABLES);
         }
         return false;
     }

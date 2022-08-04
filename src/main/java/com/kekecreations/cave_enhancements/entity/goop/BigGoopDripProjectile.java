@@ -1,4 +1,4 @@
-package com.kekecreations.cave_enhancements.entity;
+package com.kekecreations.cave_enhancements.entity.goop;
 
 import com.kekecreations.cave_enhancements.registry.ModBlocks;
 import com.kekecreations.cave_enhancements.registry.ModEntities;

@@ -1,6 +1,5 @@
-package com.kekecreations.cave_enhancements.entity;
+package com.kekecreations.cave_enhancements.entity.cruncher;
 
-import com.kekecreations.cave_enhancements.entity.ai.goal.CruncherEatBlockGoal;
 import com.kekecreations.cave_enhancements.registry.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -15,7 +14,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.AgeableMob;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -25,7 +27,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -42,7 +43,8 @@ public class Cruncher extends Animal {
 
     private static final EntityDataAccessor<Boolean> IS_EATING_BLOCK = SynchedEntityData.defineId(Cruncher.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> IS_SHEARED = SynchedEntityData.defineId(Cruncher.class, EntityDataSerializers.BOOLEAN);
-    private static final Ingredient TEMPTING_ITEMS;
+    private static final Ingredient TEMPTING_ITEMS = Ingredient.of(Items.GLOW_BERRIES);
+    private static final Predicate<ItemEntity> PICKABLE_DROP_FILTER = (item) -> !item.hasPickUpDelay() && item.isAlive() && item.getItem().getItem() == Items.GLOW_BERRIES;
     public long lastEatTick;
     public int eatingTicks = 0;
     public int eatingAnimation = 0;
@@ -105,6 +107,7 @@ public class Cruncher extends Animal {
         return this.entityData.get(IS_SHEARED);
     }
 
+
     public static boolean checkCruncherSpawnRules(EntityType<? extends Animal> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
         return levelAccessor.getBlockState(blockPos.below()).is(ModTags.CRUNCHERS_SPAWNABLE_ON) && isBrightEnoughToSpawn(levelAccessor, blockPos);
     }
@@ -133,7 +136,6 @@ public class Cruncher extends Animal {
         if (itemStack.isEmpty() && hasItem) {
             hasItem = false;
             this.eatingTicks = 1200;
-            System.out.println("Finished Eating?");
         }
 
         super.tick();
@@ -152,9 +154,9 @@ public class Cruncher extends Animal {
         this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8F));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-        this.goalSelector.addGoal(0, new CruncherEatBlockGoal(this));
+        this.goalSelector.addGoal(0, new EatBlockGoal(this));
         this.goalSelector.addGoal(3, new TemptGoal(this, 1.25, TEMPTING_ITEMS, false));
-        this.goalSelector.addGoal(2, new Cruncher.PickupItemGoal());
+        this.goalSelector.addGoal(2, new PickupItemGoal());
     }
 
     // Interactions
@@ -196,7 +198,7 @@ public class Cruncher extends Animal {
 
     // Attributes
     public static AttributeSupplier.Builder createCruncherAttributes() {
-        return Mob.createMobAttributes()
+        return Animal.createMobAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.15D)
                 .add(Attributes.MAX_HEALTH, 15);
     }
@@ -320,12 +322,5 @@ public class Cruncher extends Animal {
             super.handleEntityEvent(status);
         }
 
-    }
-
-    static final Predicate<ItemEntity> PICKABLE_DROP_FILTER;
-
-    static {
-        TEMPTING_ITEMS = Ingredient.of(Items.GLOW_BERRIES);
-        PICKABLE_DROP_FILTER = (item) -> !item.hasPickUpDelay() && item.isAlive() && item.getItem().getItem() == Items.GLOW_BERRIES;
     }
 }

@@ -1,7 +1,7 @@
 package com.kekecreations.cave_enhancements.client.model;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.entity.Goop;
+import com.kekecreations.cave_enhancements.entity.goop.Goop;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.EntityModel;

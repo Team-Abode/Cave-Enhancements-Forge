@@ -92,7 +92,7 @@ public class ClientEvents {
         // Entity Layers
         event.registerLayerDefinition(GoopModel.ENTITY_MODEL_LAYER, GoopModel::getTexturedModelData);
         event.registerLayerDefinition(DripstonePikeModel.ENTITY_MODEL_LAYER, DripstonePikeModel::getTexturedModelData);
-        event.registerLayerDefinition(DripstoneTortoiseModel.ENTITY_MODEL_LAYER, DripstoneTortoiseModel::getTexturedModelData);
+        event.registerLayerDefinition(DripstoneTortoiseModel.LAYER_LOCATION, DripstoneTortoiseModel::createBodyLayer);
         event.registerLayerDefinition(CruncherModel.ENTITY_MODEL_LAYER, CruncherModel::getTexturedModelData);
 
         // Block Entity Layers

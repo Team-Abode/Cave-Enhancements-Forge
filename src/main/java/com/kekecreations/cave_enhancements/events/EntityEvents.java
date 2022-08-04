@@ -2,7 +2,7 @@ package com.kekecreations.cave_enhancements.events;
 
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.entity.ai.goal.FleeTheFluteGoal;
+import com.kekecreations.cave_enhancements.entity.goals.FleeTheFluteGoal;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
 import net.minecraft.world.entity.monster.Creeper;

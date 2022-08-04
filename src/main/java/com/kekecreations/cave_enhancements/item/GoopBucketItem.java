@@ -1,7 +1,7 @@
 package com.kekecreations.cave_enhancements.item;
 
-import com.kekecreations.cave_enhancements.entity.Goop;
-import com.kekecreations.cave_enhancements.entity.GoopBucketable;
+import com.kekecreations.cave_enhancements.entity.goop.Goop;
+import com.kekecreations.cave_enhancements.entity.goop.GoopBucketable;
 import com.kekecreations.cave_enhancements.registry.ModEntities;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
 import net.minecraft.MethodsReturnNonnullByDefault;

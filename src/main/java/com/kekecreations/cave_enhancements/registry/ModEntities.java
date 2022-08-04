@@ -2,6 +2,11 @@ package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.entity.*;
+import com.kekecreations.cave_enhancements.entity.cruncher.Cruncher;
+import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
+import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
+import com.kekecreations.cave_enhancements.entity.goop.BigGoopDripProjectile;
+import com.kekecreations.cave_enhancements.entity.goop.Goop;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -16,8 +21,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
-
-    public static final EntitySubRegistryHelper HELPER = CaveEnhancements.REGISTRY_HELPER.getEntitySubHelper();
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
             DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);

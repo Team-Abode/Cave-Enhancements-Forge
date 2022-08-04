@@ -2,7 +2,7 @@ package com.kekecreations.cave_enhancements.client.renderer.entity;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.client.model.DripstonePikeModel;
-import com.kekecreations.cave_enhancements.entity.DripstonePike;
+import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

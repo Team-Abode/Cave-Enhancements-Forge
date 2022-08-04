@@ -3,7 +3,7 @@ package com.kekecreations.cave_enhancements.client.renderer.entity;
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.client.model.CruncherModel;
 import com.kekecreations.cave_enhancements.client.renderer.entity.layers.CruncherHeldItemLayer;
-import com.kekecreations.cave_enhancements.entity.Cruncher;
+import com.kekecreations.cave_enhancements.entity.cruncher.Cruncher;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

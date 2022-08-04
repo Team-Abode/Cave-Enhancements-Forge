@@ -2,7 +2,7 @@ package com.kekecreations.cave_enhancements.client.renderer.entity;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.client.model.GoopModel;
-import com.kekecreations.cave_enhancements.entity.Goop;
+import com.kekecreations.cave_enhancements.entity.goop.Goop;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;

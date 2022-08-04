@@ -1,6 +1,6 @@
 package com.kekecreations.cave_enhancements.item;
 
-import com.kekecreations.cave_enhancements.entity.DripstoneTortoise;
+import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import com.kekecreations.cave_enhancements.registry.ModParticles;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -10,8 +10,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.entity.monster.Phantom;
@@ -80,7 +78,7 @@ public class AmethystFluteItem extends Item {
             CompoundTag nbt = itemStack.getOrCreateTag();
             nbt.putLong("AmethystFluteScary", world.getGameTime());
             itemStack.setTag(nbt);
-            user.getCooldowns().addCooldown(this, 200);
+            user.getCooldowns().addCooldown(this, 400);
         }
         return InteractionResultHolder.success(itemStack);
     }

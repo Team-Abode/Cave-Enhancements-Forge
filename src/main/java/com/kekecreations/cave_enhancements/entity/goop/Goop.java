@@ -1,8 +1,7 @@
-package com.kekecreations.cave_enhancements.entity;
+package com.kekecreations.cave_enhancements.entity.goop;
 
 import com.kekecreations.cave_enhancements.registry.ModItems;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
-import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -10,12 +9,14 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.MobType;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.Monster;
@@ -24,14 +25,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.common.extensions.IForgeEntity;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
-@MethodsReturnNonnullByDefault
-@SuppressWarnings("deprecation")
 public class Goop extends Monster implements GoopBucketable {
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> STICKING_UP = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
@@ -55,7 +53,7 @@ public class Goop extends Monster implements GoopBucketable {
 
     // Attributes
     public static AttributeSupplier.Builder createGoopAttributes() {
-        return Mob.createMobAttributes()
+        return Monster.createMonsterAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.0D)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1.0)
                 .add(Attributes.MAX_HEALTH, 15)
@@ -72,11 +70,6 @@ public class Goop extends Monster implements GoopBucketable {
         super.defineSynchedData();
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(STICKING_UP, false);
-    }
-
-    @Override
-    public boolean causeFallDamage(float p_147187_, float p_147188_, DamageSource p_147189_) {
-        return false;
     }
 
     public void addAdditionalSaveData(CompoundTag nbt) {
@@ -129,6 +122,11 @@ public class Goop extends Monster implements GoopBucketable {
 
     @Override
     public boolean isPushable() {
+        return false;
+    }
+
+    @Override
+    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
         return false;
     }
 
@@ -227,17 +225,17 @@ public class Goop extends Monster implements GoopBucketable {
     //Tick For Spawning Drip
     @Override
     public void customServerAiStep() {
-        dripCooldown--;
+       dripCooldown--;
 
-        if(dripCooldown <= 0){
-            dripCooldown = 12;
+       if(dripCooldown <= 0){
+           dripCooldown = 12;
 
-            if(getRandom().nextIntBetweenInclusive(1, 100) == 1) {
-                drip();
-            }
-        }
+           if(getRandom().nextIntBetweenInclusive(1, 100) == 1) {
+               drip();
+           }
+       }
 
-        super.customServerAiStep();
+       super.customServerAiStep();
     }
 
     //Spawn Drip Entity
