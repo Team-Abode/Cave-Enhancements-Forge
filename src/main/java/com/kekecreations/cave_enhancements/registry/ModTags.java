@@ -14,7 +14,7 @@ public class ModTags {
     public static final TagKey<BannerPattern> GOOP_PATTERN_ITEM = TagKey.create(Registry.BANNER_PATTERN_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "goop_pattern_item"));
 
     public static final TagKey<EntityType<?>> GOOP_TRAP_IMMUNE = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "goop_trap_immune"));
-
+    public static final TagKey<EntityType<?>> AMETHYST_FLUTE_IMMUNE = TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "amethyst_flute_immune"));
 
     // Block Tags
     public static final TagKey<Block> RECEIVERS = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "receivers"));

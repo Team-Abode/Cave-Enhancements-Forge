@@ -2,10 +2,11 @@ package com.kekecreations.cave_enhancements.events;
 
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.entity.goals.FleeTheFluteGoal;
+import com.kekecreations.cave_enhancements.item.AmethystFluteItem;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -18,8 +19,7 @@ public class EntityEvents {
         Entity entity = event.getEntity();
 
         if (entity instanceof Creeper creeper) {
-            creeper.goalSelector.addGoal(1, new FleeTheFluteGoal<>(creeper, EntitySelector.NO_CREATIVE_OR_SPECTATOR, 8.0F, 1.25D, 1.25D));
+            creeper.goalSelector.addGoal(0, new AvoidEntityGoal<>(creeper, Player.class, 8.0F, 1.0D, 1.2D, AmethystFluteItem::isScary));
         }
-
     }
 }
