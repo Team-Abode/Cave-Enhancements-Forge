@@ -21,5 +21,5 @@ public class ModTags {
     public static final TagKey<Block> PIKE_DESTROYABLES = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "pike_destroyables"));
     public static final TagKey<Block> CRUNCHER_CONSUMABLES = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "cruncher_consumables"));
     public static final TagKey<Block> CRUNCHERS_SPAWNABLE_ON = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "crunchers_spawnable_on"));
-
+    public static final TagKey<Block> GOOP_SPAWNABLE_ON = TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(CaveEnhancements.MOD_ID, "goop_spawnable_on"));
 }
