@@ -14,7 +14,7 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, CaveEnhancements.MOD_ID);
 
     // Glow Paste
-    public static RegistryObject<SoundEvent> ITEM_GLOW_PASTE_PLACE = registerSoundEvent("block.glow_paste.place");
+    public static RegistryObject<SoundEvent> ITEM_GLOW_PASTE_PLACE = registerSoundEvent("item.glow_paste.place");
 
     // Goop Blocks
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK = registerSoundEvent("block.goop_block.break");
