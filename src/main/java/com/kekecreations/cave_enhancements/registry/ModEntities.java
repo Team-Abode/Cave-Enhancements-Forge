@@ -35,7 +35,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<Goop>> GOOP =
             ENTITY_TYPES.register("goop",
-                    () -> EntityType.Builder.of(Goop::new, MobCategory.MONSTER)
+                    () -> EntityType.Builder.of(Goop::new, MobCategory.AMBIENT)
                             .sized(0.6f, 0.9f)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "goop").toString()));
 

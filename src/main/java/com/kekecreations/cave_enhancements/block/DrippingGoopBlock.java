@@ -82,7 +82,7 @@ public class DrippingGoopBlock extends Block implements SimpleWaterloggedBlock {
 
         if (level.getBlockState(pos).isAir() && itemStack.getItem() == ModBlocks.DRIPPING_GOOP.get().asItem()) {
             level.setBlock(pos, ModBlocks.DRIPPING_GOOP.get().defaultBlockState(), 3);
-            level.playSound(player, pos, ModSounds.BLOCK_GOOP_DECORATION_PLACE_ID.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(player, pos, ModSounds.BLOCK_GOOP_DECORATION_PLACE.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
             if (!player.isCreative()) {
                 itemStack.shrink(1);
             }
@@ -122,7 +122,7 @@ public class DrippingGoopBlock extends Block implements SimpleWaterloggedBlock {
 
     private void slidingEffects(Level level, Entity entity) {
         if (level.random.nextInt(30) == 0) {
-            entity.playSound(ModSounds.BLOCK_GOOP_BLOCK_SLIDE_ID.get(), 1.0F, 1.0F);
+            entity.playSound(ModSounds.BLOCK_GOOP_BLOCK_SLIDE.get(), 1.0F, 1.0F);
         }
         if (level instanceof ServerLevel server && server.random.nextInt(5) == 0) {
 

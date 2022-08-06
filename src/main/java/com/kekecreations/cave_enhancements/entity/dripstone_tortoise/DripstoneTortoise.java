@@ -93,22 +93,22 @@ public class DripstoneTortoise extends PathfinderMob implements NeutralMob {
 
     @Override
     protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_DEATH_ID.get();
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_DEATH.get();
     }
 
     @Override
     protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_HURT_ID.get();
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_HURT.get();
     }
 
     @Override
     protected SoundEvent getAmbientSound() {
-        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_IDLE_ID.get();
+        return ModSounds.ENTITY_DRIPSTONE_TORTOISE_IDLE.get();
     }
 
     @Override
     protected void playStepSound(BlockPos pos, BlockState state) {
-        SoundEvent sound = ModSounds.ENTITY_DRIPSTONE_TORTOISE_STEP_ID.get();
+        SoundEvent sound = ModSounds.ENTITY_DRIPSTONE_TORTOISE_STEP.get();
         this.playSound(sound, 0.15F, 0.5F);
     }
 

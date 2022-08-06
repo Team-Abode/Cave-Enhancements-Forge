@@ -84,7 +84,7 @@ public class BigGoopDripProjectile extends ThrowableItemProjectile {
 
                 if (level.getBlockState(pos).is(Blocks.AIR)) {
                     level.setBlockAndUpdate(pos, ModBlocks.GOOP_TRAP.get().defaultBlockState());
-                    level.playSound(null, pos, ModSounds.BLOCK_GOOP_BLOCK_PLACE_ID.get(), SoundSource.BLOCKS, 1F, 1F);
+                    level.playSound(null, pos, ModSounds.BLOCK_GOOP_BLOCK_PLACE.get(), SoundSource.BLOCKS, 1F, 1F);
                 }
             }
 

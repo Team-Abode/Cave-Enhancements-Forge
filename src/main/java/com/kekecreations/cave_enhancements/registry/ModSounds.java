@@ -1,12 +1,8 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,39 +13,37 @@ public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, CaveEnhancements.MOD_ID);
 
-    public static RegistryObject<SoundEvent> GLOW_PASTE_PLACE_ID = registerSoundEvent("block.glow_paste.place");
+    // Glow Paste
+    public static RegistryObject<SoundEvent> ITEM_GLOW_PASTE_PLACE = registerSoundEvent("block.glow_paste.place");
 
     // Goop Blocks
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK_ID = registerSoundEvent("block.goop_block.break");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_STEP_ID = registerSoundEvent("block.goop_block.step");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_HIT_ID = registerSoundEvent("block.goop_block.hit");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_PLACE_ID = registerSoundEvent("block.goop_block.place");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_FALL_ID = registerSoundEvent("block.goop_block.fall");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_SLIDE_ID = registerSoundEvent("block.goop_block.slide");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK = registerSoundEvent("block.goop_block.break");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_STEP = registerSoundEvent("block.goop_block.step");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_HIT = registerSoundEvent("block.goop_block.hit");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_PLACE = registerSoundEvent("block.goop_block.place");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_FALL = registerSoundEvent("block.goop_block.fall");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_SLIDE = registerSoundEvent("block.goop_block.slide");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_BREAK = registerSoundEvent("block.goop_decoration.break");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_STEP = registerSoundEvent("block.goop_decoration.step");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_HIT = registerSoundEvent("block.goop_decoration.hit");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_PLACE = registerSoundEvent("block.goop_decoration.place");
+    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_FALL = registerSoundEvent("block.goop_decoration.fall");
 
-    // Goop Decoration Blocks
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_BREAK_ID = registerSoundEvent("block.goop_decoration.break");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_STEP_ID = registerSoundEvent("block.goop_decoration.step");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_HIT_ID = registerSoundEvent("block.goop_decoration.hit");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_PLACE_ID = registerSoundEvent("block.goop_decoration.place");
-    public static RegistryObject<SoundEvent> BLOCK_GOOP_DECORATION_FALL_ID = registerSoundEvent("block.goop_decoration.fall");
-
-    // Goop Entity Sounds
-    public static RegistryObject<SoundEvent> ENTITY_GOOP_DEATH_ID = registerSoundEvent("entity.goop.death");
-    public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT_ID = registerSoundEvent("entity.goop.hurt");
+    // Goop Sounds
+    public static RegistryObject<SoundEvent> ENTITY_GOOP_DEATH = registerSoundEvent("entity.goop.death");
+    public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT = registerSoundEvent("entity.goop.hurt");
     public static RegistryObject<SoundEvent> ITEM_BUCKET_FILL_GOOP = registerSoundEvent("item.bucket.fill.goop");
     public static RegistryObject<SoundEvent> ITEM_BUCKET_EMPTY_GOOP = registerSoundEvent("item.bucket.empty.goop");
 
-    // Dripstone Tortoise Entity Sounds
-    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT_ID = registerSoundEvent("entity.dripstone_tortoise.hurt");
-    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_DEATH_ID = registerSoundEvent("entity.dripstone_tortoise.death");
-    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_STEP_ID = registerSoundEvent("entity.dripstone_tortoise.step");
-    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE_ID = registerSoundEvent("entity.dripstone_tortoise.idle");
+    // Dripstone Tortoise Sounds
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT = registerSoundEvent("entity.dripstone_tortoise.hurt");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_DEATH = registerSoundEvent("entity.dripstone_tortoise.death");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_STEP = registerSoundEvent("entity.dripstone_tortoise.step");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE = registerSoundEvent("entity.dripstone_tortoise.idle");
 
-    // Block Sounds
-    public static final SoundType ROSE_QUARTZ  = new SoundType(1.0F, 1.0F, SoundEvents.GLASS_STEP, SoundEvents.GLASS_STEP, SoundEvents.CALCITE_PLACE, SoundEvents.GLASS_HIT, SoundEvents.GLASS_FALL);
-    public static final ForgeSoundType GOOP_BLOCK = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK_ID, BLOCK_GOOP_BLOCK_STEP_ID, BLOCK_GOOP_BLOCK_PLACE_ID, BLOCK_GOOP_BLOCK_HIT_ID, BLOCK_GOOP_BLOCK_FALL_ID);
-    public static final ForgeSoundType GOOP_DECORATION = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_DECORATION_BREAK_ID, BLOCK_GOOP_DECORATION_STEP_ID, BLOCK_GOOP_DECORATION_PLACE_ID, BLOCK_GOOP_DECORATION_HIT_ID, BLOCK_GOOP_DECORATION_FALL_ID);
+    // Block Sound Types
+    public static final ForgeSoundType GOOP_BLOCK = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK, BLOCK_GOOP_BLOCK_STEP, BLOCK_GOOP_BLOCK_PLACE, BLOCK_GOOP_BLOCK_HIT, BLOCK_GOOP_BLOCK_FALL);
+    public static final ForgeSoundType GOOP_DECORATION = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_DECORATION_BREAK, BLOCK_GOOP_DECORATION_STEP, BLOCK_GOOP_DECORATION_PLACE, BLOCK_GOOP_DECORATION_HIT, BLOCK_GOOP_DECORATION_FALL);
 
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
