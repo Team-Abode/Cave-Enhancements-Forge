@@ -1,13 +1,12 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.entity.*;
+import com.kekecreations.cave_enhancements.entity.HarmonicArrow;
 import com.kekecreations.cave_enhancements.entity.cruncher.Cruncher;
 import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
 import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import com.kekecreations.cave_enhancements.entity.goop.BigGoopDripProjectile;
 import com.kekecreations.cave_enhancements.entity.goop.Goop;
-import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
