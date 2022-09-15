@@ -1,6 +1,5 @@
 package com.kekecreations.cave_enhancements.events;
 
-
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.item.AmethystFluteItem;
 import net.minecraft.world.entity.Entity;

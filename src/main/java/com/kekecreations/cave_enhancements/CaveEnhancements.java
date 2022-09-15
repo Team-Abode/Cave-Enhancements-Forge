@@ -1,6 +1,6 @@
 package com.kekecreations.cave_enhancements;
 
-import com.kekecreations.cave_enhancements.events.DispenseBehaviors;
+import com.kekecreations.cave_enhancements.dispenser.*;
 import com.kekecreations.cave_enhancements.registry.*;
 import com.mojang.logging.LogUtils;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
@@ -46,7 +46,8 @@ public class CaveEnhancements
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            DispenseBehaviors.register();
+            HarmonicArrowDispenseBehavior.register();
+            GoopDispenseBehavior.register();
             ModSpawnPlacements.register();
             ModPotions.registerRecipes();
         });

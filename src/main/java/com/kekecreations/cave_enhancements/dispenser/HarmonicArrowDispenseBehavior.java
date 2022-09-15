@@ -1,4 +1,4 @@
-package com.kekecreations.cave_enhancements.events;
+package com.kekecreations.cave_enhancements.dispenser;
 
 import com.kekecreations.cave_enhancements.entity.HarmonicArrow;
 import com.kekecreations.cave_enhancements.registry.ModItems;
@@ -12,26 +12,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.DispenserBlock;
 import org.jetbrains.annotations.NotNull;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
-@ParametersAreNonnullByDefault
-public interface DispenseBehaviors extends DispenseItemBehavior {
+public interface HarmonicArrowDispenseBehavior extends DispenseItemBehavior {
 
     static void register() {
         DispenserBlock.registerBehavior(ModItems.HARMONIC_ARROW.get(), new AbstractProjectileDispenseBehavior() {
-            /**
-             * Return the projectile entity spawned by this dispense behavior.
-             */
+
             @Override
             protected @NotNull Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
                 AbstractArrow arrow = new HarmonicArrow(worldIn, position.x(), position.y(), position.z());
                 arrow.pickup = AbstractArrow.Pickup.ALLOWED;
                 return arrow;
             }
-                @Override
-                protected float getPower() {
-                    return 0.5F;
-                }
-            });
-        }
+            @Override
+            protected float getPower() {
+                return 1.0F;
+            }
+        });
     }
+}
