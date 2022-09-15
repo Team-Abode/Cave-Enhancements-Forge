@@ -32,14 +32,18 @@ public class ModSounds {
     // Goop Sounds
     public static RegistryObject<SoundEvent> ENTITY_GOOP_DEATH = registerSoundEvent("entity.goop.death");
     public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT = registerSoundEvent("entity.goop.hurt");
-    public static RegistryObject<SoundEvent> ITEM_BUCKET_FILL_GOOP = registerSoundEvent("item.bucket.fill.goop");
-    public static RegistryObject<SoundEvent> ITEM_BUCKET_EMPTY_GOOP = registerSoundEvent("item.bucket.empty.goop");
 
     // Dripstone Tortoise Sounds
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT = registerSoundEvent("entity.dripstone_tortoise.hurt");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_DEATH = registerSoundEvent("entity.dripstone_tortoise.death");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_STEP = registerSoundEvent("entity.dripstone_tortoise.step");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE = registerSoundEvent("entity.dripstone_tortoise.idle");
+
+
+    // Misc
+    public static RegistryObject<SoundEvent> ITEM_BUCKET_FILL_GOOP = registerSoundEvent("item.bucket.fill.goop");
+    public static RegistryObject<SoundEvent> ITEM_BUCKET_EMPTY_GOOP = registerSoundEvent("item.bucket.empty.goop");
+    public static RegistryObject<SoundEvent> BLOCK_ROSE_QUARTZ_CHIMES_CHIME = registerSoundEvent("block.rose_quartz_chimes.chime");
 
     // Block Sound Types
     public static final ForgeSoundType GOOP_BLOCK = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK, BLOCK_GOOP_BLOCK_STEP, BLOCK_GOOP_BLOCK_PLACE, BLOCK_GOOP_BLOCK_HIT, BLOCK_GOOP_BLOCK_FALL);

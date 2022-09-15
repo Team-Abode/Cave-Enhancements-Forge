@@ -37,7 +37,7 @@ public class ModBlocks {
                 CreativeModeTab.TAB_BUILDING_BLOCKS);
 
         public static final RegistryObject<Block> GOOP_SPLAT = HELPER.createBlockNoItem("goop_splat",
-                        () -> new SplatBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
+                        () -> new GoopSplatBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
                                         .sound(ModSounds.GOOP_DECORATION).noCollission().noOcclusion()
                                         .color(MaterialColor.SAND)));
 
@@ -52,7 +52,7 @@ public class ModBlocks {
                 CreativeModeTab.TAB_BUILDING_BLOCKS);
 
         public static final RegistryObject<Block> GLOW_SPLOTCH = HELPER.createBlockNoItem("glow_splotch",
-                        () -> new SplatBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
+                        () -> new GlowSplotchBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
                                         .sound(SoundType.HONEY_BLOCK).noCollission().noOcclusion()
                                         .color(MaterialColor.SAND).lightLevel((state) -> 8)));
 

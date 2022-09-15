@@ -28,7 +28,7 @@ import java.util.Objects;
 @ParametersAreNonnullByDefault
 public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<RoseQuartzChimesBlockEntity> {
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(CaveEnhancements.MOD_ID, "textures/entity/rose_quartz_chimes/chime.png");
+    public static final Material TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(CaveEnhancements.MOD_ID, "entity/rose_quartz_chimes/chime"));
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(CaveEnhancements.MOD_ID, "rose_quartz_chimes"), "main");
     private final ModelPart chimes;
@@ -50,7 +50,7 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
         this.chime5 = this.chimes.getChild("chime5");
     }
 
-    public static @Nonnull LayerDefinition getTexturedModelData() {
+    public static LayerDefinition getTexturedModelData() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
@@ -83,19 +83,12 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
         return LayerDefinition.create(meshdefinition, 16, 16);
     }
 
-    @Override
     public void render(RoseQuartzChimesBlockEntity entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
         this.chimes.xRot = 3.141592653589793F;
-        float intensity;
-        float g = entity.ticking + tickDelta;
+        float age = entity.ticks + (tickDelta / 10);
 
-        if (Objects.requireNonNull(entity.getLevel()).isRaining()) {
-            intensity = 3.1415927F * 2 ;
-        } else {
-            intensity = 3.1415927F * 4;
-        }
+        float rot = Mth.sin(age / 3.1415927F) / 15F;
 
-        float rot = Mth.sin(g / intensity) / 10.0F;
 
         this.chime0.zRot = rot;
         this.chime1.zRot = rot;
@@ -106,7 +99,7 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
 
 
 
-        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
+        VertexConsumer vertexConsumer = TEXTURE.buffer(vertexConsumers, RenderType::entityCutout);
         this.chimes.render(matrices, vertexConsumer, light, overlay);
     }
 }
