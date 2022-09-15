@@ -2,10 +2,7 @@ package com.kekecreations.cave_enhancements.registry;
 
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.item.AmethystFluteItem;
-import com.kekecreations.cave_enhancements.item.GlowPasteItem;
-import com.kekecreations.cave_enhancements.item.GoopBucketItem;
-import com.kekecreations.cave_enhancements.item.HarmonicArrowItem;
+import com.kekecreations.cave_enhancements.item.*;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -27,7 +24,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GOOP = HELPER.createItem("goop",
-            () -> new BlockItem(ModBlocks.GOOP_SPLAT.get(), new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+            () -> new GoopItem(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 
     public static final RegistryObject<Item> ROSE_QUARTZ = HELPER.createItem("rose_quartz",
             () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));

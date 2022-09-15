@@ -85,6 +85,9 @@
   "subtitles.entity.goop.death": "Goop dies",
   "subtitles.item.bucket.fill_goop": "Goop poured",
 
+  "subtitles.item.amethyst_flute.use": "Soothing note plays",
+  "subtitles.block.rose_quartz_chimes.chime": "Block chimes",
+
   "subtitles.entity.dripstone_tortoise.hurt": "Dripstone Tortoise hurts",
   "subtitles.entity.dripstone_tortoise.death": "Dripstone Tortoise dies",
   "subtitles.entity.dripstone_tortoise.step": "Dripstone Tortoise steps",
