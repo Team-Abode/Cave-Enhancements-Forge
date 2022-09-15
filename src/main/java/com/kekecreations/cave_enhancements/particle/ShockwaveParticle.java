@@ -41,7 +41,9 @@ public class ShockwaveParticle extends Particle {
         float y = (float)(Mth.lerp(tickDelta, this.yo, this.y) - cameraPos.y());
         float z = (float)(Mth.lerp(tickDelta, this.zo, this.z) - cameraPos.z());
 
-        float size = this.getSize(tickDelta) * this.age / 20F * 25F + tickDelta / 20F * 25F;
+        float size = (this.age + tickDelta) / 20F * 25F;
+
+
 
         float minU = this.getMinU();
         float maxU = this.getMaxU();
@@ -53,6 +55,14 @@ public class ShockwaveParticle extends Particle {
 
         float xVO = 0.5f;
         float yVO = 1F/16F;
+
+        float UE = maxU - minU;
+        maxU = 15F / 16F * UE + minU;
+        minU += 1F / 16F * UE;
+
+        float VE = maxV - minV;
+        maxV =  9F / 16F * VE + minV;
+        minV += 7F / 16F * VE;
 
         addBand(vertexConsumer, xVO, yVO, size, x, y, z - 0.5f * size, minU, maxU, minV, maxV, light, 0f);
         addBand(vertexConsumer, xVO, yVO, size, x, y, z + 0.5f * size, minU, maxU, minV, maxV, light, 0f);

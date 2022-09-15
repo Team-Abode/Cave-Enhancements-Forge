@@ -80,7 +80,7 @@ public class ClientEvents {
         // Entity Renderers
         event.registerEntityRenderer(ModEntities.GOOP.get(), GoopRenderer::new);
         event.registerEntityRenderer(ModEntities.HARMONIC_ARROW.get(), HarmonicArrowRenderer::new);
-        event.registerEntityRenderer(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(ModEntities.BIG_GOOP_DRIP.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.DRIPSTONE_TORTOISE.get(), DripstoneTortoiseRenderer::new);
         event.registerEntityRenderer(ModEntities.DRIPSTONE_PIKE.get(), DripstonePikeRenderer::new);
         event.registerEntityRenderer(ModEntities.CRUNCHER.get(), CruncherRenderer::new);
