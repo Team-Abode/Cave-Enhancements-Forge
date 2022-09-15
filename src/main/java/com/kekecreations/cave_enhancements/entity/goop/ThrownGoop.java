@@ -1,12 +1,12 @@
 package com.kekecreations.cave_enhancements.entity.goop;
 
-import com.kekecreations.cave_enhancements.registry.*;
-import net.minecraft.core.BlockPos;
+import com.kekecreations.cave_enhancements.registry.ModDamageSource;
+import com.kekecreations.cave_enhancements.registry.ModEffects;
+import com.kekecreations.cave_enhancements.registry.ModEntities;
+import com.kekecreations.cave_enhancements.registry.ModItems;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -15,35 +15,32 @@ import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class BigGoopDripProjectile extends ThrowableItemProjectile {
-    public BigGoopDripProjectile(EntityType<? extends ThrowableItemProjectile> entityType, Level world) {
+public class ThrownGoop extends ThrowableItemProjectile {
+    public ThrownGoop(EntityType<? extends ThrowableItemProjectile> entityType, Level world) {
         super(entityType, world);
     }
 
-    public BigGoopDripProjectile(Level world, LivingEntity owner) {
-        super(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY.get(), owner, world); // null will be changed later
+    public ThrownGoop(Level world, LivingEntity owner) {
+        super(ModEntities.THROWN_GOOP.get(), owner, world);
     }
 
-    public BigGoopDripProjectile(Level world, double x, double y, double z) {
-        super(ModEntities.BIG_GOOP_DRIP_PROJECTILE_ENTITY.get(), x, y, z, world); // null will be changed later
+    public ThrownGoop(Level world, double x, double y, double z) {
+        super(ModEntities.THROWN_GOOP.get(), x, y, z, world);
     }
 
-    //Item projectile is rendered as
     @Override
     protected Item getDefaultItem() {
-        return ModItems.BIG_GOOP_DRIP.get();
+        return ModItems.GOOP.get();
     }
 
-    //On hit particles
     @OnlyIn(Dist.CLIENT)
     private ParticleOptions getParticleParameters() {
-        return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(ModItems.BIG_GOOP_DRIP.get(), 1));
+        return new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(ModItems.GOOP.get(), 1));
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -66,31 +63,17 @@ public class BigGoopDripProjectile extends ThrowableItemProjectile {
         Entity entity = entityHitResult.getEntity();
 
         if (entity instanceof LivingEntity livingEntity) {
-            livingEntity.hurt(ModDamageSource.GOOP_DRIP, 5.0F);
-            livingEntity.addEffect(new MobEffectInstance(ModEffects.VISCOUS.get(), 100, 1, true, false));
+            livingEntity.hurt(ModDamageSource.GOOP_DRIP, 2.0F);
+            if (!livingEntity.hasEffect(ModEffects.VISCOUS.get())) {
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.VISCOUS.get(), 200, 0, false, true));
+            }
         }
-
         hitEntity = true;
     }
 
     protected void onHit(HitResult hitResult) {
         super.onHit(hitResult);
-        if (!this.level.isClientSide) {
-            if (!hitEntity) {
-
-                BlockPos pos = new BlockPos(hitResult.getLocation());
-
-                if (level.getBlockState(pos).is(Blocks.AIR)) {
-                    level.setBlockAndUpdate(pos, ModBlocks.GOOP_TRAP.get().defaultBlockState());
-                    level.playSound(null, pos, ModSounds.BLOCK_GOOP_BLOCK_PLACE.get(), SoundSource.BLOCKS, 1F, 1F);
-                }
-            }
-
             this.level.broadcastEntityEvent(this, (byte)3);
-
             this.discard();
         }
     }
-
-
-}

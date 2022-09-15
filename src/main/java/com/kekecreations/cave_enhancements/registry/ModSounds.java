@@ -15,6 +15,7 @@ public class ModSounds {
 
     // Glow Paste
     public static RegistryObject<SoundEvent> ITEM_GLOW_PASTE_PLACE = registerSoundEvent("item.glow_paste.place");
+    public static RegistryObject<SoundEvent> ITEM_AMETHYST_FLUTE_USE = registerSoundEvent("item.amethyst_flute.use");
 
     // Goop Blocks
     public static RegistryObject<SoundEvent> BLOCK_GOOP_BLOCK_BREAK = registerSoundEvent("block.goop_block.break");
@@ -32,6 +33,7 @@ public class ModSounds {
     // Goop Sounds
     public static RegistryObject<SoundEvent> ENTITY_GOOP_DEATH = registerSoundEvent("entity.goop.death");
     public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT = registerSoundEvent("entity.goop.hurt");
+    public static RegistryObject<SoundEvent> ITEM_GOOP_THROW = registerSoundEvent("item.goop.throw");
 
     // Dripstone Tortoise Sounds
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT = registerSoundEvent("entity.dripstone_tortoise.hurt");

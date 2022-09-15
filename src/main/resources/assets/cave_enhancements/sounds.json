@@ -7,13 +7,20 @@
   },
   "item.amethyst_flute.use": {
     "sounds": [
-      "cave_enhancements:item/amethyst_flute/use"
+        "cave_enhancements:item/amethyst_flute/use"
     ],
     "subtitle": "subtitles.item.amethyst_flute.use"
   },
+  "item.goop.throw": {
+    "sounds": [
+        "cave_enhancements:item/goop/throw1",
+        "cave_enhancements:item/goop/throw2"
+    ],
+    "subtitle": "subtitles.item.goop.throw"
+  },
   "block.rose_quartz_chimes.chime": {
     "sounds": [
-      "cave_enhancements:block/rose_quartz_chimes/chime"
+        "cave_enhancements:block/rose_quartz_chimes/chime"
     ],
     "subtitle": "subtitles.block.rose_quartz_chimes.chime"
   },
@@ -62,6 +69,13 @@
     ],
     "subtitle": "subtitles.block.generic.place"
   },
+  "block.goop_block.slide": {
+    "sounds": [
+      "cave_enhancements:block/goop_block/slide1",
+      "cave_enhancements:block/goop_block/slide2"
+    ],
+    "subtitle": "subtitles.block.goop_block.slide"
+  },
   "block.goop_decoration.break": {
     "sounds": [
       "cave_enhancements:block/goop_block/step1",
@@ -107,13 +121,6 @@
     ],
     "subtitle": "subtitles.block.generic.place"
   },
-  "block.goop_block.slide": {
-    "sounds": [
-      "cave_enhancements:block/goop_block/slide1",
-      "cave_enhancements:block/goop_block/slide2"
-    ],
-    "subtitle": "subtitles.block.goop_block.slide"
-  },
   "entity.goop.hurt": {
     "sounds": [
       "cave_enhancements:block/goop_block/step1",
@@ -133,16 +140,16 @@
     "subtitle": "subtitles.entity.goop.death"
   },
   "item.bucket.fill.goop": {
-    "sounds": [
-      "cave_enhancements:item/bucket/fill_goop"
-    ],
-    "subtitle": "subtitles.item.bucket.fill_goop"
+      "sounds": [
+        "cave_enhancements:item/bucket/fill_goop"
+      ],
+      "subtitle": "subtitles.item.bucket.fill_goop"
   },
   "item.bucket.empty.goop": {
-    "sounds": [
-      "cave_enhancements:item/bucket/empty_goop"
-    ],
-    "subtitle": "subtitles.item.bucket.empty"
+      "sounds": [
+        "cave_enhancements:item/bucket/empty_goop"
+      ],
+      "subtitle": "subtitles.item.bucket.empty"
   },
   "entity.dripstone_tortoise.hurt": {
     "sounds": [

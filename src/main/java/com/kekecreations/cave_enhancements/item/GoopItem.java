@@ -1,13 +1,17 @@
 package com.kekecreations.cave_enhancements.item;
 
+import com.kekecreations.cave_enhancements.entity.goop.ThrownGoop;
 import com.kekecreations.cave_enhancements.registry.ModBlocks;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -21,6 +25,24 @@ public class GoopItem extends Item {
 
     public GoopItem(Properties properties) {
         super(properties);
+    }
+
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        ItemStack itemStack = player.getItemInHand(usedHand);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.ITEM_GOOP_THROW.get(), SoundSource.NEUTRAL, 0.5F, 1.0F);
+        if (!level.isClientSide) {
+            ThrownGoop thrownGoop = new ThrownGoop(level, player);
+            thrownGoop.setItem(itemStack);
+            thrownGoop.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 1.5F, 1.0F);
+            level.addFreshEntity(thrownGoop);
+        }
+
+        player.awardStat(Stats.ITEM_USED.get(this));
+        if (!player.getAbilities().instabuild) {
+            itemStack.shrink(1);
+        }
+
+        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
     @Override

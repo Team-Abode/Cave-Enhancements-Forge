@@ -24,9 +24,9 @@ public interface DispenseBehaviors extends DispenseItemBehavior {
              */
             @Override
             protected @NotNull Projectile getProjectile(Level worldIn, Position position, ItemStack stackIn) {
-                AbstractArrow abstractarrowentity = new HarmonicArrow(worldIn, position.x(), position.y(), position.z());
-                abstractarrowentity.pickup = AbstractArrow.Pickup.ALLOWED;
-                return abstractarrowentity;
+                AbstractArrow arrow = new HarmonicArrow(worldIn, position.x(), position.y(), position.z());
+                arrow.pickup = AbstractArrow.Pickup.ALLOWED;
+                return arrow;
             }
                 @Override
                 protected float getPower() {

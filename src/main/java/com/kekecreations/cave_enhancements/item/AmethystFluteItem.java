@@ -2,6 +2,7 @@ package com.kekecreations.cave_enhancements.item;
 
 import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import com.kekecreations.cave_enhancements.registry.ModParticles;
+import com.kekecreations.cave_enhancements.registry.ModSounds;
 import com.kekecreations.cave_enhancements.registry.ModTags;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -41,7 +42,7 @@ public class AmethystFluteItem extends Item {
         double z = user.getZ();
         BlockPos pos = new BlockPos(x, y, z);
 
-        world.playSound(null, pos, SoundEvents.NOTE_BLOCK_FLUTE, SoundSource.PLAYERS, 1.0F, 1.0F);
+        world.playSound(null, pos, ModSounds.ITEM_AMETHYST_FLUTE_USE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
         user.level.getEntities(user, user.getBoundingBox().inflate(10D)).forEach(entity -> {
 
             if (!world.isClientSide()) {

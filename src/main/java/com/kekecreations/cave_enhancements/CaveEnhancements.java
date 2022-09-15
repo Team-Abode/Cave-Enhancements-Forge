@@ -47,7 +47,6 @@ public class CaveEnhancements
         event.enqueueWork(() -> {
             DispenseBehaviors.register();
             ModSpawnPlacements.register();
-            ModBrewingRecipes.register();
         });
     }
 }

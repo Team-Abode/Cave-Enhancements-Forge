@@ -1,7 +1,7 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
-import com.kekecreations.cave_enhancements.effect.StickingMobEffect;
+import com.kekecreations.cave_enhancements.effect.ViscousMobEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -17,7 +17,7 @@ public class ModEffects {
             = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, CaveEnhancements.MOD_ID);
 
     public static final RegistryObject<MobEffect> VISCOUS = MOB_EFFECTS.register("viscous",
-            () -> new StickingMobEffect(MobEffectCategory.HARMFUL, 0xf0dead).addAttributeModifier(Attributes.MOVEMENT_SPEED, "89266f72-4f61-4151-ac06-104ea9a17f22", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL));
+            () -> new ViscousMobEffect(MobEffectCategory.HARMFUL, 0xf0dead).addAttributeModifier(Attributes.MOVEMENT_SPEED, "89266f72-4f61-4151-ac06-104ea9a17f22", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL));
 
 
 

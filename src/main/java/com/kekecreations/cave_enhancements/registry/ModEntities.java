@@ -7,6 +7,8 @@ import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstonePi
 import com.kekecreations.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import com.kekecreations.cave_enhancements.entity.goop.BigGoopDripProjectile;
 import com.kekecreations.cave_enhancements.entity.goop.Goop;
+import com.kekecreations.cave_enhancements.entity.goop.ThrownGoop;
+import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -21,8 +23,13 @@ import net.minecraftforge.registries.RegistryObject;
 @Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEntities {
 
-    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);
+    public static final EntitySubRegistryHelper HELPER = CaveEnhancements.REGISTRY_HELPER.getEntitySubHelper();
+
+    public static final RegistryObject<EntityType<Goop>> GOOP = HELPER.createLivingEntity("goop", Goop::new, MobCategory.AMBIENT, 0.6f, 0.9f);
+    public static final RegistryObject<EntityType<DripstoneTortoise>> DRIPSTONE_TORTOISE = HELPER.createLivingEntity("dripstone_tortoise", DripstoneTortoise::new, MobCategory.MONSTER,1.3F, 0.8F);
+    public static final RegistryObject<EntityType<Cruncher>> CRUNCHER = HELPER.createLivingEntity("cruncher", Cruncher::new, MobCategory.CREATURE, 0.8F, 0.8F);
+
+    public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);
 
     public static final RegistryObject<EntityType<BigGoopDripProjectile>> BIG_GOOP_DRIP_PROJECTILE_ENTITY =
             ENTITY_TYPES.register("big_goop_drip",
@@ -32,11 +39,6 @@ public class ModEntities {
                             .setUpdateInterval(10)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "big_goop_drip").toString()));
 
-    public static final RegistryObject<EntityType<Goop>> GOOP =
-            ENTITY_TYPES.register("goop",
-                    () -> EntityType.Builder.of(Goop::new, MobCategory.AMBIENT)
-                            .sized(0.6f, 0.9f)
-                            .build(new ResourceLocation(CaveEnhancements.MOD_ID, "goop").toString()));
 
     public static final RegistryObject<EntityType<HarmonicArrow>> HARMONIC_ARROW =
             ENTITY_TYPES.register("harmonic_arrow",
@@ -50,17 +52,11 @@ public class ModEntities {
                             .sized(0.3f, 0.3f)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "dripstone_pike").toString()));
 
-    public static final RegistryObject<EntityType<DripstoneTortoise>> DRIPSTONE_TORTOISE =
-            ENTITY_TYPES.register("dripstone_tortoise",
-                    () -> EntityType.Builder.of(DripstoneTortoise::new, MobCategory.MONSTER)
-                            .sized(1.3f, 0.8f)
-                            .build(new ResourceLocation(CaveEnhancements.MOD_ID, "dripstone_tortoise").toString()));
-
-    public static final RegistryObject<EntityType<Cruncher>> CRUNCHER =
-            ENTITY_TYPES.register("cruncher",
-                    () -> EntityType.Builder.of(Cruncher::new, MobCategory.CREATURE)
-                            .sized(0.8f, 0.8f)
-                            .build(new ResourceLocation(CaveEnhancements.MOD_ID, "cruncher").toString()));
+    public static final RegistryObject<EntityType<ThrownGoop>> THROWN_GOOP =
+            ENTITY_TYPES.register("thrown_goop",
+                    () -> EntityType.Builder.<ThrownGoop>of(ThrownGoop::new, MobCategory.MISC)
+                            .sized(0.3F, 0.3F)
+                            .build(new ResourceLocation(CaveEnhancements.MOD_ID, "thrown_goop").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
