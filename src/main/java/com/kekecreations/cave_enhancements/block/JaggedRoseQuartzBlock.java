@@ -82,7 +82,7 @@ public class JaggedRoseQuartzBlock extends DropExperienceBlock implements Simple
             double d = (double)l + random.nextDouble();
             double e = (double)j + 0.5D;
             double f = (double)k + random.nextDouble();
-            world.addParticle(ModParticles.ROSE_QUARTZ_AURA.get(), d, e, f, Mth.nextFloat(random, -1, 1) / 50, 0.01D, Mth.nextFloat(random, -1, 1) / 50);
+            world.addParticle(ModParticles.SHIMMER.get(), d, e, f, Mth.nextFloat(random, -1, 1) / 50, 0.01D, Mth.nextFloat(random, -1, 1) / 50);
         }
     }
 

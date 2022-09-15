@@ -40,7 +40,7 @@ public class HarmonicArrow extends AbstractArrow {
     public void tick() {
         super.tick();
         if (this.level.isClientSide && !this.inGround) {
-            this.level.addParticle(ModParticles.HOVERING_NOTE.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.5D, 0.0D);
+            this.level.addParticle(ModParticles.HARMONIC_NOTE.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.5D, 0.0D);
         }
     }
 
@@ -48,7 +48,7 @@ public class HarmonicArrow extends AbstractArrow {
     protected void onHitBlock(BlockHitResult blockHitResult) {
         knockbackEntitiesAround(0.45F);
         if (this.level.isClientSide) {
-            this.level.addParticle(ModParticles.AMETHYST_BLAST.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
+            this.level.addParticle(ModParticles.HARMONIC_WAVE.get(), this.getX(), this.getY(), this.getZ(), 0.0D, 0.0D, 0.0D);
         }
         super.onHitBlock(blockHitResult);
     }

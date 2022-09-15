@@ -10,12 +10,12 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RoseQuartzAuraParticle extends SimpleAnimatedParticle {
+public class ShimmerParticle extends SimpleAnimatedParticle {
     double velX = -1;
     double velY = -1;
     double velZ = -1;
 
-    RoseQuartzAuraParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
+    ShimmerParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         velX = velocityX;
         velY = velocityY;
@@ -47,15 +47,15 @@ public class RoseQuartzAuraParticle extends SimpleAnimatedParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class RoseQuartzFactory implements ParticleProvider<SimpleParticleType> {
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteProvider;
 
-        public RoseQuartzFactory(SpriteSet spriteProvider) {
+        public Factory(SpriteSet spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
         public Particle createParticle(SimpleParticleType defaultParticleType, ClientLevel clientWorld, double d, double e, double f, double g, double h, double i) {
-            RoseQuartzAuraParticle glowParticle = new RoseQuartzAuraParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
+            ShimmerParticle glowParticle = new ShimmerParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
 
             return glowParticle;
         }

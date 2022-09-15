@@ -11,8 +11,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 import javax.annotation.Nullable;
 
-public class HoveringNoteParticle extends SimpleAnimatedParticle {
-    protected HoveringNoteParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
+public class StagnantParticle extends SimpleAnimatedParticle {
+    protected StagnantParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.lifetime = 10;
         this.setSpriteFromAge(spriteProvider);
@@ -31,7 +31,7 @@ public class HoveringNoteParticle extends SimpleAnimatedParticle {
         @Nullable
         @Override
         public Particle createParticle(SimpleParticleType parameters, ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new HoveringNoteParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
+            return new StagnantParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.spriteProvider);
         }
     }
 

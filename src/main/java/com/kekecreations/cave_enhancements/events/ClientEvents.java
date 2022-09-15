@@ -52,19 +52,23 @@ public class ClientEvents {
     @SubscribeEvent
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.SMALL_GOOP_DRIP.get(),
-                SmallGoopDripParticle.SmallGoopDripFactory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticles.HOVERING_NOTE.get(),
-                HoveringNoteParticle.Factory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticles.AMETHYST_BLAST.get(),
-                AmethystBlastParticle.Factory::new);
+                SmallGoopDripParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.HARMONIC_NOTE.get(),
+                StagnantParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.HARMONIC_WAVE.get(),
+                HarmonicWaveParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.SOOTHING_NOTE.get(),
                 SoothingNoteParticle.SoothingNoteFactory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticles.ROSE_QUARTZ_AURA.get(),
-                RoseQuartzAuraParticle.RoseQuartzFactory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticles.ROSE_CHIMES.get(),
-                RoseChimesParticle.RoseChimesFactory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.SHIMMER.get(),
+                ShimmerParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.STAGNANT_SHIMMER.get(),
+                StagnantParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.ROSE_CHIME.get(),
+                RoseChimeParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.SHOCKWAVE.get(),
                 ShockwaveParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticles.CHARGE.get(),
+                StagnantParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.GOOP_EXPLOSION.get(),
                 HugeExplosionParticle.Provider::new);
     }

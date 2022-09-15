@@ -10,9 +10,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class RoseChimesParticle extends SimpleAnimatedParticle {
+public class RoseChimeParticle extends SimpleAnimatedParticle {
 
-    RoseChimesParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
+    RoseChimeParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.xd = 0.1 * (random.nextIntBetweenInclusive(0, 2) * 2 - 1);
         this.yd = 0.1 * (random.nextIntBetweenInclusive(0, 2) * 2 - 1);
@@ -33,10 +33,10 @@ public class RoseChimesParticle extends SimpleAnimatedParticle {
     }
 
     @OnlyIn(Dist.CLIENT)
-    public static class RoseChimesFactory implements ParticleProvider<SimpleParticleType> {
+    public static class Factory implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteProvider;
 
-        public RoseChimesFactory(SpriteSet spriteProvider) {
+        public Factory(SpriteSet spriteProvider) {
             this.spriteProvider = spriteProvider;
         }
 
@@ -47,7 +47,7 @@ public class RoseChimesParticle extends SimpleAnimatedParticle {
             int velocity = clientWorld.random.nextIntBetweenInclusive(-1, 1);
 
 
-            return new RoseChimesParticle(clientWorld, d + (velocity * 0.5F), e + (velocity * 0.5F), f + (velocity * 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
+            return new RoseChimeParticle(clientWorld, d + (velocity * 0.5F), e + (velocity * 0.5F), f + (velocity * 0.5F), 0.0D, 0.0D, 0.0D, this.spriteProvider);
         }
     }
 }

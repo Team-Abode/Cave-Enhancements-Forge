@@ -1,6 +1,7 @@
 package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
+import com.kekecreations.cave_enhancements.effect.ReversalMobEffect;
 import com.kekecreations.cave_enhancements.effect.ViscousMobEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,8 +20,8 @@ public class ModEffects {
     public static final RegistryObject<MobEffect> VISCOUS = MOB_EFFECTS.register("viscous",
             () -> new ViscousMobEffect(MobEffectCategory.HARMFUL, 0xf0dead).addAttributeModifier(Attributes.MOVEMENT_SPEED, "89266f72-4f61-4151-ac06-104ea9a17f22", -0.5F, AttributeModifier.Operation.MULTIPLY_TOTAL));
 
-
-
+    public static final RegistryObject<MobEffect> REVERSAL = MOB_EFFECTS.register("reversal",
+            () -> new ReversalMobEffect(MobEffectCategory.BENEFICIAL, 0xf7addc));
 
     public static void register(IEventBus eventBus) {
         MOB_EFFECTS.register(eventBus);

@@ -9,10 +9,10 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class AmethystBlastParticle extends SimpleAnimatedParticle {
+public class HarmonicWaveParticle extends SimpleAnimatedParticle {
 
 
-    AmethystBlastParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
+    HarmonicWaveParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
         this.xd = velocityX;
         this.yd = velocityY;
@@ -35,7 +35,7 @@ public class AmethystBlastParticle extends SimpleAnimatedParticle {
 
         public Particle createParticle(SimpleParticleType defaultParticleType, ClientLevel clientWorld, double d, double e, double f, double g, double h, double i) {
 
-            return new AmethystBlastParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
+            return new HarmonicWaveParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
         }
     }
 }

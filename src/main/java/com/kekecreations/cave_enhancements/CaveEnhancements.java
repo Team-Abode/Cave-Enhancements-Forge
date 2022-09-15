@@ -38,6 +38,7 @@ public class CaveEnhancements
         ModBiomes.register(modEventBus);
         ModBiomeModifiers.BIOME_MODIIFERS.register(modEventBus);
 
+        ModPotions.register(modEventBus);
         ModEffects.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -47,6 +48,7 @@ public class CaveEnhancements
         event.enqueueWork(() -> {
             DispenseBehaviors.register();
             ModSpawnPlacements.register();
+            ModPotions.registerRecipes();
         });
     }
 }
