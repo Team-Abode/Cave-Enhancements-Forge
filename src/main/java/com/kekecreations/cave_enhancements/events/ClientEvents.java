@@ -80,6 +80,7 @@ public class ClientEvents {
         event.registerEntityRenderer(ModEntities.DRIPSTONE_TORTOISE.get(), DripstoneTortoiseRenderer::new);
         event.registerEntityRenderer(ModEntities.DRIPSTONE_PIKE.get(), DripstonePikeRenderer::new);
         event.registerEntityRenderer(ModEntities.CRUNCHER.get(), CruncherRenderer::new);
+        event.registerEntityRenderer(ModEntities.THROWN_GOOP.get(), ThrownItemRenderer::new);
 
         // Block Entity Renderers
         event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES.get(), RoseQuartzChimesBlockEntityRenderer::new);
