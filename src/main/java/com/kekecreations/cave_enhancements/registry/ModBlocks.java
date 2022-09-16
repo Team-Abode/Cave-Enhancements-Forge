@@ -34,7 +34,7 @@ public class ModBlocks {
                 () -> new DrippingGoopBlock(BlockBehaviour.Properties.of(Material.CLAY)
                         .sound(ModSounds.GOOP_DECORATION).noOcclusion().noCollission()
                         .lightLevel((state) -> 2).color(MaterialColor.SAND)),
-                CreativeModeTab.TAB_BUILDING_BLOCKS);
+                CreativeModeTab.TAB_DECORATIONS);
 
         public static final RegistryObject<Block> GOOP_SPLAT = HELPER.createBlockNoItem("goop_splat",
                         () -> new GoopSplatBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
@@ -49,7 +49,7 @@ public class ModBlocks {
 
         public static final RegistryObject<Block> VOLATILE_GOOP = HELPER.createBlock("volatile_goop",
                 () -> new VolatileGoopBlock(BlockBehaviour.Properties.of(Material.CLAY).strength(2.0F, 5.0F).sound(ModSounds.GOOP_BLOCK).color(MaterialColor.SAND)),
-                CreativeModeTab.TAB_BUILDING_BLOCKS);
+                CreativeModeTab.TAB_REDSTONE);
 
         public static final RegistryObject<Block> GLOW_SPLOTCH = HELPER.createBlockNoItem("glow_splotch",
                         () -> new GlowSplotchBlock(BlockBehaviour.Properties.of(Material.CLAY).instabreak()
@@ -60,7 +60,7 @@ public class ModBlocks {
                         () -> new SpectacleCandleBlock(
                                         BlockBehaviour.Properties.of(Material.DECORATION).sound(SoundType.CANDLE)
                                                         .lightLevel(CandleBlock.LIGHT_EMISSION).strength(0.1F, 0F)),
-                        CreativeModeTab.TAB_BUILDING_BLOCKS);
+                        CreativeModeTab.TAB_DECORATIONS);
 
         public static final RegistryObject<Block> SPECTACLE_CANDLE_CAKE = HELPER.createBlockNoItem(
                         "spectacle_candle_cake",
@@ -80,7 +80,7 @@ public class ModBlocks {
                         () -> new JaggedRoseQuartzBlock(BlockBehaviour.Properties.of(Material.STONE).strength(0.8F, 10)
                                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
                                         .sound(SoundType.CALCITE)),
-                        CreativeModeTab.TAB_BUILDING_BLOCKS);
+                        CreativeModeTab.TAB_DECORATIONS);
 
         public static final RegistryObject<Block> POLISHED_ROSE_QUARTZ = HELPER.createBlock("polished_rose_quartz",
                 () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10)
@@ -170,7 +170,7 @@ public class ModBlocks {
                 () -> new RoseQuartzChimesBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2F, 10)
                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
                         .sound(SoundType.CALCITE).noOcclusion()),
-                CreativeModeTab.TAB_BUILDING_BLOCKS);
+                CreativeModeTab.TAB_DECORATIONS);
 
         public static final RegistryObject<Block> REDSTONE_RECEIVER = HELPER.createBlock(
                         "redstone_receiver",

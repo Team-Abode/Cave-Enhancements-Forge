@@ -4,15 +4,18 @@ import com.kekecreations.cave_enhancements.entity.goop.Goop;
 import com.kekecreations.cave_enhancements.entity.goop.GoopBucketable;
 import com.kekecreations.cave_enhancements.registry.ModEntities;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
+import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -23,11 +26,15 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 @MethodsReturnNonnullByDefault
 public class GoopBucketItem extends Item {
+    private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.TADPOLE_BUCKET);
 
     public GoopBucketItem(Properties properties) {
         super(properties);
     }
 
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        FILLER.fillItem(this, pCategory, pItems);
+    }
 
     private void spawnGoop(ServerLevel level, ItemStack stack, BlockPos pos) {
         Goop goop = (Goop) ModEntities.GOOP.get().spawn(level, stack, null, pos, MobSpawnType.BUCKET, true, false);

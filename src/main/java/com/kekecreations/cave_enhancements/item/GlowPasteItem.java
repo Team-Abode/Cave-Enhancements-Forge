@@ -2,9 +2,11 @@ package com.kekecreations.cave_enhancements.item;
 
 import com.kekecreations.cave_enhancements.registry.ModBlocks;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
+import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -14,10 +16,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -32,9 +31,14 @@ import java.util.Properties;
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
 public class GlowPasteItem extends Item {
+    private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.SPYGLASS);
 
     public GlowPasteItem(Properties properties) {
         super(properties);
+    }
+
+    public void fillItemCategory(CreativeModeTab pCategory, NonNullList<ItemStack> pItems) {
+        FILLER.fillItem(this, pCategory, pItems);
     }
 
     @Override

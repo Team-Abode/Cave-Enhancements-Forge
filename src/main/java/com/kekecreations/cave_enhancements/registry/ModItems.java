@@ -3,6 +3,7 @@ package com.kekecreations.cave_enhancements.registry;
 
 import com.kekecreations.cave_enhancements.CaveEnhancements;
 import com.kekecreations.cave_enhancements.item.*;
+import com.teamabnormals.blueprint.common.item.BlueprintBannerPatternItem;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.*;
@@ -27,7 +28,7 @@ public class ModItems {
             () -> new GoopItem(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
 
     public static final RegistryObject<Item> ROSE_QUARTZ = HELPER.createItem("rose_quartz",
-            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_MATERIALS)));
+            () -> new Item(new Item.Properties().tab(CreativeModeTab.TAB_BREWING)));
 
     public static final RegistryObject<Item> GLOW_PASTE = HELPER.createItem("glow_paste",
             () -> new GlowPasteItem(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS).stacksTo(1).durability(32)));
@@ -42,7 +43,7 @@ public class ModItems {
             () -> new GoopBucketItem(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1)));
 
     public static final RegistryObject<Item> GOOP_BANNER_PATTERN = HELPER.createItem("goop_banner_pattern",
-            () -> new BannerPatternItem(ModTags.GOOP_PATTERN_ITEM,new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+            () -> new BlueprintBannerPatternItem(ModTags.GOOP_PATTERN_ITEM,new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
     public static final RegistryObject<Item> GOOP_SPAWN_EGG = HELPER.createItem("goop_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.GOOP, 13946012, 11637089, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));

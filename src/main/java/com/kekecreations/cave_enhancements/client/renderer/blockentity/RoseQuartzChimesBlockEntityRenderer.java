@@ -28,7 +28,7 @@ import java.util.Objects;
 @ParametersAreNonnullByDefault
 public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<RoseQuartzChimesBlockEntity> {
 
-    public static final Material TEXTURE = new Material(TextureAtlas.LOCATION_BLOCKS, new ResourceLocation(CaveEnhancements.MOD_ID, "entity/rose_quartz_chimes/chime"));
+    public static final ResourceLocation TEXTURE = new ResourceLocation(CaveEnhancements.MOD_ID, "entity/rose_quartz_chimes/chime");
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(CaveEnhancements.MOD_ID, "rose_quartz_chimes"), "main");
     private final ModelPart chimes;
@@ -99,7 +99,7 @@ public class RoseQuartzChimesBlockEntityRenderer implements BlockEntityRenderer<
 
 
 
-        VertexConsumer vertexConsumer = TEXTURE.buffer(vertexConsumers, RenderType::entityCutout);
+        VertexConsumer vertexConsumer = vertexConsumers.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
         this.chimes.render(matrices, vertexConsumer, light, overlay);
     }
 }
