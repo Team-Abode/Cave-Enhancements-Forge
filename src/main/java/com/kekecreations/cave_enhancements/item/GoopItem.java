@@ -62,7 +62,7 @@ public class GoopItem extends Item {
         if (state != null) {
             RandomSource randomSource = level.getRandom();
 
-            level.setBlock(pos, state, 11);
+            level.setBlockAndUpdate(pos, state);
             level.playSound(player, pos, ModSounds.BLOCK_GOOP_DECORATION_PLACE.get(), SoundSource.BLOCKS, 0.5F, randomSource.nextFloat() * 0.2F + 0.9F);
             level.gameEvent(GameEvent.BLOCK_PLACE, pos, GameEvent.Context.of(player, clickedState));
 

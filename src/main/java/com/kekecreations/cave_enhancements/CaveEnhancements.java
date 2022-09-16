@@ -48,6 +48,7 @@ public class CaveEnhancements
         event.enqueueWork(() -> {
             HarmonicArrowDispenseBehavior.register();
             GoopDispenseBehavior.register();
+            VolatileGoopDispenseBehavior.register();
             ModSpawnPlacements.register();
             ModPotions.registerRecipes();
         });
