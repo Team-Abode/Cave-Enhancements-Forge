@@ -46,6 +46,7 @@ public class ModSounds {
     public static RegistryObject<SoundEvent> ITEM_BUCKET_FILL_GOOP = registerSoundEvent("item.bucket.fill.goop");
     public static RegistryObject<SoundEvent> ITEM_BUCKET_EMPTY_GOOP = registerSoundEvent("item.bucket.empty.goop");
     public static RegistryObject<SoundEvent> BLOCK_ROSE_QUARTZ_CHIMES_CHIME = registerSoundEvent("block.rose_quartz_chimes.chime");
+    public static RegistryObject<SoundEvent> EFFECT_REVERSAL_REVERSE = registerSoundEvent("effect.reversal.reverse");
 
     // Block Sound Types
     public static final ForgeSoundType GOOP_BLOCK = new ForgeSoundType(1.0F, 1.0F, BLOCK_GOOP_BLOCK_BREAK, BLOCK_GOOP_BLOCK_STEP, BLOCK_GOOP_BLOCK_PLACE, BLOCK_GOOP_BLOCK_HIT, BLOCK_GOOP_BLOCK_FALL);

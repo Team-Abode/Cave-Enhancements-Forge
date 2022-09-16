@@ -3,7 +3,11 @@ package com.kekecreations.cave_enhancements;
 import com.kekecreations.cave_enhancements.dispenser.*;
 import com.kekecreations.cave_enhancements.registry.*;
 import com.mojang.logging.LogUtils;
+import com.teamabnormals.blueprint.common.world.storage.tracking.DataProcessors;
+import com.teamabnormals.blueprint.common.world.storage.tracking.TrackedData;
+import com.teamabnormals.blueprint.common.world.storage.tracking.TrackedDataManager;
 import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -17,6 +21,8 @@ public class CaveEnhancements
 {
     public static final String MOD_ID = "cave_enhancements";
     public static final Logger LOGGER = LogUtils.getLogger();
+
+    public static final TrackedData<Integer> REVERSAL_DAMAGE = TrackedData.Builder.create(DataProcessors.INT, () -> 0).enableSaving().build();
 
     public static final RegistryHelper REGISTRY_HELPER = new RegistryHelper(MOD_ID);
 
@@ -45,6 +51,7 @@ public class CaveEnhancements
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        TrackedDataManager.INSTANCE.registerData(new ResourceLocation(CaveEnhancements.MOD_ID, "reversal_damage"), REVERSAL_DAMAGE);
         event.enqueueWork(() -> {
             HarmonicArrowDispenseBehavior.register();
             GoopDispenseBehavior.register();

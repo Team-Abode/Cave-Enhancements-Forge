@@ -27,8 +27,8 @@ public class ModPotions {
 
     public static final DeferredRegister<Potion> POTIONS = DeferredRegister.create(ForgeRegistries.POTIONS, CaveEnhancements.MOD_ID);
 
-    public static final RegistryObject<Potion> REVERSAL = POTIONS.register("reversal", () -> new Potion(new MobEffectInstance(ModEffects.REVERSAL.get(), 3600)));
-    public static final RegistryObject<Potion> LONG_REVERSAL = POTIONS.register("long_reversal", () -> new Potion(new MobEffectInstance(ModEffects.REVERSAL.get(), 9600)));
+    public static final RegistryObject<Potion> REVERSAL = POTIONS.register("reversal", () -> new Potion(new MobEffectInstance(ModEffects.REVERSAL.get(), 1800)));
+    public static final RegistryObject<Potion> LONG_REVERSAL = POTIONS.register("long_reversal", () -> new Potion(new MobEffectInstance(ModEffects.REVERSAL.get(), 3600)));
 
 
 }
