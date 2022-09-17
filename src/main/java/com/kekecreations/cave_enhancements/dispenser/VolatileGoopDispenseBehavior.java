@@ -25,6 +25,7 @@ public interface VolatileGoopDispenseBehavior extends DispenseItemBehavior {
                 if (level.getBlockState(blockPos).isAir()) {
                     level.setBlockAndUpdate(blockPos, ModBlocks.VOLATILE_GOOP.get().defaultBlockState().setValue(VolatileGoopBlock.FACING, direction));
                     level.gameEvent(null, GameEvent.BLOCK_PLACE, blockPos);
+                    stack.shrink(1);
                 } else {
                     this.setSuccess(false);
                 }
