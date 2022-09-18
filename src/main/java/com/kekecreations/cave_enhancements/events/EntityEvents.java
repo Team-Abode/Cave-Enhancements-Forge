@@ -5,7 +5,6 @@ import com.kekecreations.cave_enhancements.item.AmethystFluteItem;
 import com.kekecreations.cave_enhancements.registry.ModEffects;
 import com.kekecreations.cave_enhancements.registry.ModSounds;
 import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -18,10 +17,6 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
-import org.checkerframework.checker.units.qual.C;
-
-import java.util.Objects;
 
 @Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class EntityEvents {
@@ -45,7 +40,6 @@ public class EntityEvents {
 
         if (attacker instanceof LivingEntity livingAttacker && livingAttacker.hasEffect(ModEffects.REVERSAL.get())) {
             if (attackerDataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) > 0) {
-                System.out.println("I play sound!");
                 livingAttacker.level.playSound(null, livingAttacker.getOnPos(), ModSounds.EFFECT_REVERSAL_REVERSE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
             attackerDataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, 0);
