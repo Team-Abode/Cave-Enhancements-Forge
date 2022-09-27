@@ -37,7 +37,7 @@ public class TestFeature extends Feature<NoneFeatureConfiguration> {
         RandomSource random = level.getRandom();
         for (int i = 0; i < random.nextInt(randomValue) + baseValue; i++) {
             if (level.getBlockState(pos.above(i)).getMaterial().isReplaceable()) {
-                level.setBlock(pos.above(i), ModBlocks.ROSE_QUARTZ_BLOCK.get().defaultBlockState(), 4);
+                level.setBlock(pos.above(i), ModBlocks.ROSE_QUARTZ_BLOCK.get().defaultBlockState(), 3);
             }
         }
     }
