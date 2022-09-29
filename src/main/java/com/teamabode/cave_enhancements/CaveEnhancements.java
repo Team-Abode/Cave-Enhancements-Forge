@@ -43,7 +43,7 @@ public class CaveEnhancements
 
         ModFeatures.FEATURES.register(modEventBus);
         ModFeatures.ConfiguredFeatures.CONFIGURED_FEATURES.register(modEventBus);
-        ModFeatures.PlacedFeatures.PLACED_FEATURES.register(modEventBus);
+        ModFeatures.ModPlacedFeatures.PLACED_FEATURES.register(modEventBus);
 
         ModBiomes.register(modEventBus);
         ModBiomeModifiers.BIOME_MODIIFERS.register(modEventBus);
