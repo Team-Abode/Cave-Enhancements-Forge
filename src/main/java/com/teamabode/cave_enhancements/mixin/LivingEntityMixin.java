@@ -23,7 +23,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(method = "getJumpPower", at = @At("HEAD"), cancellable = true)
     private void getJumpPower(CallbackInfoReturnable<Float> cir) {
-        boolean hasEffect = this.hasEffect(ModEffects.VISCOUS.get());
+        boolean hasEffect = this.hasEffect(ModEffects.STICKY.get());
 
         if (hasEffect) {
             cir.setReturnValue(0.21F * this.getBlockJumpFactor());

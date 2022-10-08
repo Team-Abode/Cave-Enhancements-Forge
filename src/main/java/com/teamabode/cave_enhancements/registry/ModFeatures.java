@@ -3,11 +3,15 @@ package com.teamabode.cave_enhancements.registry;
 import com.google.common.collect.ImmutableList;
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.block.DrippingGoopBlock;
+import com.teamabode.cave_enhancements.world.feature.GoopStrandFeature;
+import com.teamabode.cave_enhancements.world.feature.RoseQuartzCrystalConfiguration;
+import com.teamabode.cave_enhancements.world.feature.RoseQuartzCrystalFeature;
 import com.teamabode.cave_enhancements.world.feature.TestFeature;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
+import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -19,6 +23,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
+import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -38,6 +43,9 @@ public class ModFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, CaveEnhancements.MOD_ID);
 
+    public static final Feature<RoseQuartzCrystalConfiguration> ROSE_QUARTZ_CRYSTAL = new RoseQuartzCrystalFeature();
+    public static final Feature<NoneFeatureConfiguration> GOOP_STRAND = new GoopStrandFeature();
+
 
     public static final RegistryObject<Feature<NoneFeatureConfiguration>> TEST_FEATURE = FEATURES.register("test_feature", () -> new TestFeature(NoneFeatureConfiguration.CODEC));
 
@@ -51,6 +59,9 @@ public class ModFeatures {
         public static final RegistryObject<ConfiguredFeature<?, ?>> FLOOR_GOOP_PATCH = CONFIGURED_FEATURES.register("floor_goop_patch", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.BASE_STONE_OVERWORLD, BlockStateProvider.simple(ModBlocks.GOOP_BLOCK.get()), PlacementUtils.inlinePlaced(NOTHING), CaveSurface.FLOOR, ConstantInt.of(1), 0.0F, 2, 0.05F, UniformInt.of(8, 10), 0.5F)));
         public static final RegistryObject<ConfiguredFeature<?, ?>> CEILING_GOOP_PATCH = CONFIGURED_FEATURES.register("ceiling_goop_patch", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.BASE_STONE_OVERWORLD, BlockStateProvider.simple(ModBlocks.GOOP_BLOCK.get()), PlacementUtils.inlinePlaced(NOTHING), CaveSurface.CEILING, ConstantInt.of(1), 0.0F, 3, 0.05F, UniformInt.of(12, 14), 0.5F)));
         public static final RegistryObject<ConfiguredFeature<?, ?>> DRIPPING_GOOP = CONFIGURED_FEATURES.register("dripping_goop", () -> new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration( List.of(BlockColumnConfiguration.layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(UniformInt.of(6, 12), 1).add(UniformInt.of(2, 5), 1).add(UniformInt.of(8, 10), 2).build()), BlockStateProvider.simple(ModBlocks.DRIPPING_GOOP.get().defaultBlockState().setValue(DrippingGoopBlock.HANGING, false))), BlockColumnConfiguration.layer(ConstantInt.of(1), BlockStateProvider.simple(ModBlocks.DRIPPING_GOOP.get().defaultBlockState().setValue(DrippingGoopBlock.HANGING, true)))), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, true)));
+        //public static final RegistryObject<ConfiguredFeature<NoneFeatureConfiguration, ?>> GOOP_STRAND = CONFIGURED_FEATURES.register("goop_strand", () -> new ConfiguredFeature<>(ModFeatures.GOOP_STRAND, new NoneFeatureConfiguration()));
+        //public static final RegistryObject<ConfiguredFeature<RoseQuartzCrystalConfiguration, ?>> ROSE_QUARTZ_CRYSTALS = register("rose_quartz_crystals", () -> new ConfiguredFeature<>(ModFeatures.ROSE_QUARTZ_CRYSTAL, new RoseQuartzCrystalConfiguration(RoseQuartzCrystalFeature.RoseQuartzCrystalFormation.DIAGONAL_DOWN)));
+        public static final RegistryObject<ConfiguredFeature<OreConfiguration, ?>> ORE_CALCITE = CONFIGURED_FEATURES.register("ore_calcite", () -> new ConfiguredFeature<>(Feature.ORE, new OreConfiguration(OreFeatures.NATURAL_STONE, Blocks.CALCITE.defaultBlockState(), 64, 1.0F)));
     }
     
     @SuppressWarnings("unchecked")
@@ -95,6 +106,33 @@ public class ModFeatures {
                 RandomOffsetPlacement.vertical(ConstantInt.of(-1)),
                 BiomeFilter.biome()
         ));
+        /*public static final RegistryObject<PlacedFeature> GOOP_STRAND = register("goop_strand", ConfiguredFeatures.GOOP_STRAND, List.of(
+                CountPlacement.of(70),
+                InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+                EnvironmentScanPlacement.scanningFor(Direction.UP, BlockPredicate.hasSturdyFace(Direction.DOWN), BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, 12),
+                BiomeFilter.biome()
+        ));
+
+
+        public static final RegistryObject<PlacedFeature> ROSE_QUARTZ_CRYSTALS = register("rose_quartz_crystals", ModConfiguredFeatures.ROSE_QUARTZ_CRYSTALS, List.of(
+                CountPlacement.of(188),
+                InSquarePlacement.spread(),
+                PlacementUtils.RANGE_BOTTOM_TO_MAX_TERRAIN_HEIGHT,
+                EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.hasSturdyFace(Direction.UP), BlockPredicate.matchesBlocks(Blocks.WATER), 12),
+                RandomOffsetPlacement.vertical(ConstantInt.of(1)),
+                BiomeFilter.biome()
+        ));ç
+         */
+
+
+        public static final RegistryObject<PlacedFeature> ORE_CALCITE = register("ore_calcite", ConfiguredFeatures.ORE_CALCITE, List.of(
+                CountPlacement.of(25),
+                InSquarePlacement.spread(),
+                HeightRangePlacement.uniform(VerticalAnchor.absolute(0), VerticalAnchor.TOP),
+                BiomeFilter.biome()
+        ));
+
 
         private static RegistryObject<PlacedFeature> register(String name, RegistryObject<? extends ConfiguredFeature<?, ?>> feature, List<PlacementModifier> placementModifiers) {
             return PLACED_FEATURES.register(name, () -> new PlacedFeature((Holder<ConfiguredFeature<?, ?>>) feature.getHolder().get(), ImmutableList.copyOf(placementModifiers)));

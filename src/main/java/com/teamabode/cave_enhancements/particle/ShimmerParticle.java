@@ -11,9 +11,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class ShimmerParticle extends SimpleAnimatedParticle {
-    double velX = -1;
-    double velY = -1;
-    double velZ = -1;
+    double velX;
+    double velY;
+    double velZ;
 
     ShimmerParticle(ClientLevel world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteProvider) {
         super(world, x, y, z, spriteProvider, 0.0F);
@@ -23,27 +23,25 @@ public class ShimmerParticle extends SimpleAnimatedParticle {
         this.xd = velX;
         this.yd = velY;
         this.zd = velZ;
-        this.quadSize *= 1.5F;
+        this.quadSize = 0.1F;
         this.hasPhysics = false;
         this.gravity = 0.0F;
-        this.lifetime = 25 * 10;
+        this.lifetime = 2500;
         this.setSpriteFromAge(spriteProvider);
     }
 
-    @Override
     public void tick() {
         super.tick();
 
         xd = velX;
         yd = velY;
         zd = velZ;
+        int magnitude = 1;
+        int smoothness = 300;
 
-        float magnitude = 1F;
-        float smoothness = 300;
-
-        velX += random.nextIntBetweenInclusive((int) -magnitude, (int) magnitude) / smoothness;
-        velY += random.nextIntBetweenInclusive((int) -magnitude, (int) magnitude) / smoothness;
-        velZ += random.nextIntBetweenInclusive((int) -magnitude, (int) magnitude) / smoothness;
+        velX += (float) random.nextIntBetweenInclusive(-magnitude, magnitude) / smoothness;
+        velY += (float) random.nextIntBetweenInclusive(-magnitude, magnitude) / smoothness;
+        velZ += (float) random.nextIntBetweenInclusive(-magnitude, magnitude) / smoothness;
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -55,9 +53,7 @@ public class ShimmerParticle extends SimpleAnimatedParticle {
         }
 
         public Particle createParticle(SimpleParticleType defaultParticleType, ClientLevel clientWorld, double d, double e, double f, double g, double h, double i) {
-            ShimmerParticle glowParticle = new ShimmerParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
-
-            return glowParticle;
+            return new ShimmerParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
         }
     }
 }
