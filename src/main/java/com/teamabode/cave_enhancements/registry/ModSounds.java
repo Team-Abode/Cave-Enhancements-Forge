@@ -35,11 +35,25 @@ public class ModSounds {
     public static RegistryObject<SoundEvent> ENTITY_GOOP_HURT = registerSoundEvent("entity.goop.hurt");
     public static RegistryObject<SoundEvent> ITEM_GOOP_THROW = registerSoundEvent("item.goop.throw");
 
+    // Cruncher Sounds
+    public static RegistryObject<SoundEvent> ENTITY_CRUNCHER_HURT = registerSoundEvent("entity.cruncher.hurt");
+    public static RegistryObject<SoundEvent> ENTITY_CRUNCHER_DEATH = registerSoundEvent("entity.cruncher.death");
+    public static RegistryObject<SoundEvent> ENTITY_CRUNCHER_STEP = registerSoundEvent("entity.cruncher.step");
+    public static RegistryObject<SoundEvent> ENTITY_CRUNCHER_IDLE = registerSoundEvent("entity.cruncher.idle");
+
+    // Glow Berry Juice
+    public static RegistryObject<SoundEvent> ITEM_GLOW_BERRY_JUICE_DRINK = registerSoundEvent("item.glow_berry_juice.drink");
+
     // Dripstone Tortoise Sounds
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HURT = registerSoundEvent("entity.dripstone_tortoise.hurt");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_DEATH = registerSoundEvent("entity.dripstone_tortoise.death");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_STEP = registerSoundEvent("entity.dripstone_tortoise.step");
     public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_IDLE = registerSoundEvent("entity.dripstone_tortoise.idle");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_BABY_DEATH = registerSoundEvent("entity.dripstone_tortoise.baby_death");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_BABY_HURT = registerSoundEvent("entity.dripstone_tortoise.baby_hurt");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_HATCH_EGG = registerSoundEvent("entity.dripstone_tortoise.hatch_egg");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_BREAK_EGG = registerSoundEvent("entity.dripstone_tortoise.break_egg");
+    public static RegistryObject<SoundEvent> ENTITY_DRIPSTONE_TORTOISE_CRACK_EGG = registerSoundEvent("entity.dripstone_tortoise.crack_egg");
 
 
     // Misc

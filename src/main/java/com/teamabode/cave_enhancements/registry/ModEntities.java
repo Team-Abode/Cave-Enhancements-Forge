@@ -51,7 +51,7 @@ public class ModEntities {
 
     public static final RegistryObject<EntityType<DripstonePike>> DRIPSTONE_PIKE =
             ENTITY_TYPES.register("dripstone_pike",
-                    () -> EntityType.Builder.of(DripstonePike::new, MobCategory.MISC)
+                    () -> EntityType.Builder.<DripstonePike>of(DripstonePike::new, MobCategory.MISC)
                             .sized(0.3f, 0.3f)
                             .clientTrackingRange(8)
                             .build(new ResourceLocation(CaveEnhancements.MOD_ID, "dripstone_pike").toString()));
@@ -72,7 +72,6 @@ public class ModEntities {
     public static void appendAttributes(EntityAttributeCreationEvent event) {
         event.put(ModEntities.GOOP.get(), Goop.createGoopAttributes().build());
         event.put(ModEntities.DRIPSTONE_TORTOISE.get(), DripstoneTortoise.createDripstoneTortoiseAttributes().build());
-        event.put(ModEntities.DRIPSTONE_PIKE.get(), DripstonePike.createDripstonePikeAttributes().build());
         event.put(ModEntities.CRUNCHER.get(), Cruncher.createCruncherAttributes().build());
     }
 }

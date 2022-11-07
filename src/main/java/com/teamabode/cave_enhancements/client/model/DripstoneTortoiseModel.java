@@ -1,5 +1,7 @@
 package com.teamabode.cave_enhancements.client.model;
 
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.client.animation.DripstoneTortoiseAnimation;
 import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
@@ -12,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Mob;
 
-@SuppressWarnings("unused")
 public class DripstoneTortoiseModel<E extends Mob> extends HierarchicalModel<DripstoneTortoise> {
 
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(CaveEnhancements.MOD_ID, "dripstone_tortoise"), "main");
@@ -42,7 +43,7 @@ public class DripstoneTortoiseModel<E extends Mob> extends HierarchicalModel<Dri
 		PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.offset(0.0F, 24.0F, 0.0F));
 
 		PartDefinition body = root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(0, 0).addBox(-7.5F, 1.0F, -7.0F, 15.0F, 22.0F, 8.0F, new CubeDeformation(0.0F))
-		.texOffs(0, 30).addBox(-5.5F, 3.0F, -10.0F, 11.0F, 18.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -13.0F, -10.0F, 1.5708F, 0.0F, 0.0F));
+				.texOffs(0, 30).addBox(-5.5F, 3.0F, -10.0F, 11.0F, 18.0F, 3.0F, new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F, -13.0F, -10.0F, 1.5708F, 0.0F, 0.0F));
 
 		PartDefinition left_front_leg = body.addOrReplaceChild("left_front_leg", CubeListBuilder.create().texOffs(28, 44).mirror().addBox(-2.0F, -2.0F, -6.0F, 4.0F, 4.0F, 6.0F, new CubeDeformation(0.0F)).mirror(false), PartPose.offset(6.0F, 2.0F, -7.0F));
 
@@ -75,12 +76,22 @@ public class DripstoneTortoiseModel<E extends Mob> extends HierarchicalModel<Dri
 		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
-	@Override
+	public void renderToBuffer(PoseStack poseStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
+		if (this.young) {
+			poseStack.pushPose();
+			poseStack.scale(0.4F, 0.4F, 0.4F);
+			poseStack.translate(0.0F, 2.2F, 0.0F);
+			root.render(poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+			poseStack.popPose();
+		} else {
+			root.render(poseStack, buffer, packedLight, packedOverlay, red, green, blue, alpha);
+		}
+	}
+
 	public ModelPart root() {
 		return this.root;
 	}
 
-	@Override
 	public void setupAnim(DripstoneTortoise entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.root.getAllParts().forEach(ModelPart::resetPose);
 		this.head.xRot = headPitch * 0.017453292F;

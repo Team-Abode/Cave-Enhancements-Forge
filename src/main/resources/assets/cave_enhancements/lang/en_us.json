@@ -4,6 +4,8 @@
   "item.cave_enhancements.amethyst_flute": "Amethyst Flute",
   "item.cave_enhancements.harmonic_arrow": "Harmonic Arrow",
 
+  "item.cave_enhancements.glow_berry_juice": "Glow Berry Juice",
+
   "item.cave_enhancements.goop": "Goop",
   "item.cave_enhancements.goop_bucket": "Bucket of Goop",
   "item.cave_enhancements.goop_banner_pattern": "Banner Pattern",
@@ -15,6 +17,8 @@
   "block.cave_enhancements.dripping_goop": "Dripping Goop",
   "block.cave_enhancements.goop_trap": "Goop Trap",
   "block.cave_enhancements.volatile_goop": "Volatile Goop",
+
+  "block.cave_enhancements.dripstone_tortoise_egg": "Dripstone Tortoise Egg",
 
   "block.cave_enhancements.lightning_anchor": "Lightning Anchor",
   "block.cave_enhancements.charged_lightning_anchor": "Charged Lightning Anchor",
@@ -72,10 +76,7 @@
   "item.cave_enhancements.dripstone_tortoise_spawn_egg": "Dripstone Tortoise Spawn Egg",
   "item.cave_enhancements.cruncher_spawn_egg": "Cruncher Spawn Egg",
 
-
-
   "item.cave_enhancements.rose_quartz": "Rose Quartz",
-
 
   "item.glow_paste.place": "Block placed",
 
@@ -90,8 +91,18 @@
 
   "subtitles.entity.dripstone_tortoise.hurt": "Dripstone Tortoise hurts",
   "subtitles.entity.dripstone_tortoise.death": "Dripstone Tortoise dies",
-  "subtitles.entity.dripstone_tortoise.step": "Dripstone Tortoise steps",
+  "subtitles.entity.dripstone_tortoise.step": "Dripstone Tortoise stomps",
   "subtitles.entity.dripstone_tortoise.idle": "Dripstone Tortoise sighs",
+  "subtitles.entity.dripstone_tortoise.baby_hurt": "Dripstone Tortoise hurts",
+  "subtitles.entity.dripstone_tortoise.baby_death": "Dripstone Tortoise dies",
+  "subtitles.entity.dripstone_tortoise.break_egg": "Egg breaks",
+  "subtitles.entity.dripstone_tortoise.crack_egg": "Egg cracks",
+  "subtitles.entity.dripstone_tortoise.hatch_egg": "Egg hatches",
+
+  "subtitles.entity.cruncher.idle": "Cruncher squeaks",
+  "subtitles.entity.cruncher.hurt": "Cruncher hurts",
+  "subtitles.entity.cruncher.step": "Cruncher steps",
+  "subtitles.entity.cruncher.death": "Cruncher dies",
 
   "subtitles.effect.reversal.reverse": "Damage reverse applies",
 

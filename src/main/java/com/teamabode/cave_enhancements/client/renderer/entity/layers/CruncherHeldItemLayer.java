@@ -15,11 +15,11 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
-public class CruncherHeldItemLayer extends RenderLayer<Cruncher, CruncherModel<Cruncher>> {
+public class CruncherHeldItemLayer extends RenderLayer<Cruncher, CruncherModel> {
 
     private final ItemInHandRenderer heldItemRenderer;
 
-    public CruncherHeldItemLayer(RenderLayerParent<Cruncher, CruncherModel<Cruncher>> featureRendererContext, ItemInHandRenderer heldItemRenderer) {
+    public CruncherHeldItemLayer(RenderLayerParent<Cruncher, CruncherModel> featureRendererContext, ItemInHandRenderer heldItemRenderer) {
         super(featureRendererContext);
         this.heldItemRenderer = heldItemRenderer;
     }
@@ -29,8 +29,8 @@ public class CruncherHeldItemLayer extends RenderLayer<Cruncher, CruncherModel<C
 
         matrixStack.translate(0, 1.25, 0);
 
-        matrixStack.mulPose(Vector3f.YP.rotation(getParentModel().head.yRot));
-        matrixStack.mulPose(Vector3f.XP.rotation(getParentModel().head.xRot));
+        matrixStack.mulPose(Vector3f.YP.rotation(getParentModel().root().getChild("body").getChild("head").yRot));
+        matrixStack.mulPose(Vector3f.XP.rotation(getParentModel().root().getChild("body").getChild("head").xRot));
 
         matrixStack.translate(0, -.2, -.5);
 

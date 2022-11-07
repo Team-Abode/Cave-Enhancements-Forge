@@ -29,6 +29,14 @@ public class ModBlocks {
                                         .speedFactor(0.3F).jumpFactor(0.9F).sound(ModSounds.GOOP_BLOCK)),
                         CreativeModeTab.TAB_BUILDING_BLOCKS);
 
+        public static final RegistryObject<Block> DRIPSTONE_TORTOISE_EGG = HELPER.createBlock("dripstone_tortoise_egg",
+                () -> new DripstoneTortoiseEggBlock(BlockBehaviour.Properties.of(Material.EGG)
+                        .strength(1.0f)
+                        .sound(SoundType.METAL)
+                        .noOcclusion()
+                        .randomTicks()),
+                CreativeModeTab.TAB_MISC);
+
 
         public static final RegistryObject<Block> DRIPPING_GOOP = HELPER.createBlock("dripping_goop",
                 () -> new DrippingGoopBlock(BlockBehaviour.Properties.of(Material.CLAY)

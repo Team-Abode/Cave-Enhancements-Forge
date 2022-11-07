@@ -5,6 +5,7 @@ import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.item.*;
 import com.teamabnormals.blueprint.common.item.BlueprintBannerPatternItem;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
@@ -49,4 +50,6 @@ public class ModItems {
     public static final RegistryObject<Item> DRIPSTONE_TORTOISE_SPAWN_EGG = HELPER.createItem("dripstone_tortoise_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.DRIPSTONE_TORTOISE, 8156236, 6967114, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
 
+    public static final RegistryObject<Item> GLOW_BERRY_JUICE = HELPER.createItem("glow_berry_juice",
+            () -> new GlowBerryJuiceItem(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).stacksTo(16).food(new FoodProperties.Builder().saturationMod(0.6F).nutrition(4).build())));
 }

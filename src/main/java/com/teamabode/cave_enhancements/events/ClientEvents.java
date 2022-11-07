@@ -96,9 +96,9 @@ public class ClientEvents {
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         // Entity Layers
         event.registerLayerDefinition(GoopModel.ENTITY_MODEL_LAYER, GoopModel::getTexturedModelData);
-        event.registerLayerDefinition(DripstonePikeModel.ENTITY_MODEL_LAYER, DripstonePikeModel::getTexturedModelData);
+        event.registerLayerDefinition(DripstonePikeModel.LAYER_LOCATION, DripstonePikeModel::getTexturedModelData);
         event.registerLayerDefinition(DripstoneTortoiseModel.LAYER_LOCATION, DripstoneTortoiseModel::createBodyLayer);
-        event.registerLayerDefinition(CruncherModel.ENTITY_MODEL_LAYER, CruncherModel::getTexturedModelData);
+        event.registerLayerDefinition(CruncherModel.LAYER_LOCATION, CruncherModel::createBodyLayer);
 
         // Block Entity Layers
         event.registerLayerDefinition(RoseQuartzChimesBlockEntityRenderer.LAYER_LOCATION, RoseQuartzChimesBlockEntityRenderer::getTexturedModelData);

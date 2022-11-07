@@ -7,7 +7,9 @@
   "mixins": [
     "PhantomMixin",
     "OverworldBiomeBuilderMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "EnchantmentMixin",
+    "DigDurabilityEnchantmentMixin"
   ],
   "client": [],
   "injectors": {

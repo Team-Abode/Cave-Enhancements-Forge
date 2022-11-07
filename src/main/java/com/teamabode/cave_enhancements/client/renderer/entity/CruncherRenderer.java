@@ -9,13 +9,12 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.NotNull;
 
-public class CruncherRenderer extends MobRenderer<Cruncher, CruncherModel<Cruncher>> {
+public class CruncherRenderer extends MobRenderer<Cruncher, CruncherModel> {
     public CruncherRenderer(EntityRendererProvider.Context context) {
-        super(context, new CruncherModel<>(context.bakeLayer(CruncherModel.ENTITY_MODEL_LAYER)), 0.5f);
+        super(context, new CruncherModel(context.bakeLayer(CruncherModel.LAYER_LOCATION)), 0.5f);
         this.addLayer(new CruncherHeldItemLayer(this, context.getItemInHandRenderer()));
     }
 
-    @Override
     public ResourceLocation getTextureLocation(@NotNull Cruncher entity) {
         return new ResourceLocation(CaveEnhancements.MOD_ID, "textures/entity/cruncher/cruncher.png");
     }
