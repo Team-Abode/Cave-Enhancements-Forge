@@ -26,10 +26,10 @@ public class CaveBiomes {
     }
 
     private static void goopCavesFeatures(BiomeGenerationSettings.Builder builder) {
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.GOOP_SPLAT.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.FLOOR_GOOP_PATCH.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.CEILING_GOOP_PATCH.getHolder().get());
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.ORE_GOOP.getHolder().get());
-        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.GOOP_SPLAT.getHolder().get());
+        builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.GOOP_STRAND.getHolder().get());
         builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModFeatures.ModPlacedFeatures.DRIPPING_GOOP.getHolder().get());
     }
 
@@ -37,9 +37,7 @@ public class CaveBiomes {
         builder.addCarver(GenerationStep.Carving.LIQUID, Carvers.CAVE);
         builder.addCarver(GenerationStep.Carving.LIQUID, Carvers.CAVE_EXTRA_UNDERGROUND);
         builder.addCarver(GenerationStep.Carving.LIQUID, Carvers.CANYON);
-        //builder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, ModPlacedFeatures.ROSE_QUARTZ_CRYSTALS);
         BiomeDefaultFeatures.addDefaultCrystalFormations(builder);
-        builder.addFeature(GenerationStep.Decoration.UNDERGROUND_ORES, ModFeatures.ModPlacedFeatures.ORE_CALCITE.getHolder().get());
         BiomeDefaultFeatures.addDefaultOres(builder);
     }
 

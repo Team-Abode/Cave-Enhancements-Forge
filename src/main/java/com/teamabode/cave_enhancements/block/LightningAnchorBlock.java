@@ -23,23 +23,19 @@ public class LightningAnchorBlock extends BaseEntityBlock {
         super(settings);
     }
 
-    @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new LightningAnchorBlockEntity(pos, state);
     }
 
-    @Override
     public @NotNull RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
     @Nullable
-    @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
         return createTickerHelper(type, ModBlockEntities.LIGHTNING_ANCHOR.get(), (world1, pos, state1, entity) -> LightningAnchorBlockEntity.tick(world1, pos, entity));
     }
 
-    @Override
     public @NotNull PushReaction getPistonPushReaction(BlockState state) {
         return PushReaction.IGNORE;
     }
