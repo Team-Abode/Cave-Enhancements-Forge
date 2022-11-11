@@ -4,14 +4,10 @@ import com.google.common.collect.ImmutableList;
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.block.DrippingGoopBlock;
 import com.teamabode.cave_enhancements.world.feature.GoopStrandFeature;
-import com.teamabode.cave_enhancements.world.feature.RoseQuartzCrystalConfiguration;
-import com.teamabode.cave_enhancements.world.feature.RoseQuartzCrystalFeature;
-import com.teamabode.cave_enhancements.world.feature.TestFeature;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
-import net.minecraft.data.worldgen.features.OreFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.random.SimpleWeightedRandomList;
@@ -23,14 +19,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.MultifaceBlock;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
-import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.MultifaceGrowthConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.levelgen.feature.configurations.VegetationPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.placement.*;
-import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -43,7 +40,7 @@ public class ModFeatures {
 
     public static final DeferredRegister<Feature<?>> FEATURES = DeferredRegister.create(ForgeRegistries.FEATURES, CaveEnhancements.MOD_ID);
 
-    public static final Feature<NoneFeatureConfiguration> GOOP_STRAND = new GoopStrandFeature();
+    public static final RegistryObject<GoopStrandFeature> GOOP_STRAND = FEATURES.register("goop_strand", GoopStrandFeature::new);
 
     public static final class ConfiguredFeatures {
 
@@ -54,7 +51,7 @@ public class ModFeatures {
         public static final RegistryObject<ConfiguredFeature<?, ?>> FLOOR_GOOP_PATCH = CONFIGURED_FEATURES.register("floor_goop_patch", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.BASE_STONE_OVERWORLD, BlockStateProvider.simple(ModBlocks.GOOP_BLOCK.get()), PlacementUtils.inlinePlaced(NOTHING), CaveSurface.FLOOR, ConstantInt.of(1), 0.0F, 2, 0.05F, UniformInt.of(8, 10), 0.5F)));
         public static final RegistryObject<ConfiguredFeature<?, ?>> CEILING_GOOP_PATCH = CONFIGURED_FEATURES.register("ceiling_goop_patch", () -> new ConfiguredFeature<>(Feature.VEGETATION_PATCH, new VegetationPatchConfiguration(BlockTags.BASE_STONE_OVERWORLD, BlockStateProvider.simple(ModBlocks.GOOP_BLOCK.get()), PlacementUtils.inlinePlaced(NOTHING), CaveSurface.CEILING, ConstantInt.of(1), 0.0F, 3, 0.05F, UniformInt.of(12, 14), 0.5F)));
         public static final RegistryObject<ConfiguredFeature<?, ?>> DRIPPING_GOOP = CONFIGURED_FEATURES.register("dripping_goop", () -> new ConfiguredFeature<>(Feature.BLOCK_COLUMN, new BlockColumnConfiguration( List.of(BlockColumnConfiguration.layer(new WeightedListInt(SimpleWeightedRandomList.<IntProvider>builder().add(UniformInt.of(6, 12), 1).add(UniformInt.of(2, 5), 1).add(UniformInt.of(8, 10), 2).build()), BlockStateProvider.simple(ModBlocks.DRIPPING_GOOP.get().defaultBlockState().setValue(DrippingGoopBlock.HANGING, false))), BlockColumnConfiguration.layer(ConstantInt.of(1), BlockStateProvider.simple(ModBlocks.DRIPPING_GOOP.get().defaultBlockState().setValue(DrippingGoopBlock.HANGING, true)))), Direction.DOWN, BlockPredicate.ONLY_IN_AIR_OR_WATER_PREDICATE, true)));
-        public static final RegistryObject<ConfiguredFeature<NoneFeatureConfiguration, ?>> GOOP_STRAND = CONFIGURED_FEATURES.register("goop_strand", () -> new ConfiguredFeature<>(ModFeatures.GOOP_STRAND, new NoneFeatureConfiguration()));
+        public static final RegistryObject<ConfiguredFeature<NoneFeatureConfiguration, ?>> GOOP_STRAND = CONFIGURED_FEATURES.register("goop_strand", () -> new ConfiguredFeature<>(ModFeatures.GOOP_STRAND.get(), new NoneFeatureConfiguration()));
     }
     
     @SuppressWarnings("unchecked")
