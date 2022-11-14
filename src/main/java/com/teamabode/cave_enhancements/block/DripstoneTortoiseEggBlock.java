@@ -1,15 +1,20 @@
 package com.teamabode.cave_enhancements.block;
 
+import com.teamabnormals.blueprint.core.util.item.filling.TargetedItemCategoryFiller;
 import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
 import com.teamabode.cave_enhancements.registry.ModEntities;
 import com.teamabode.cave_enhancements.registry.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -28,7 +33,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class DripstoneTortoiseEggBlock extends Block implements SimpleWaterloggedBlock {
-
+    private static final TargetedItemCategoryFiller FILLER = new TargetedItemCategoryFiller(() -> Items.TURTLE_EGG);
     public static final IntegerProperty HATCH = IntegerProperty.create("hatch", 0, 2);
     public static final BooleanProperty WATERLOGGED = BooleanProperty.create("waterlogged");
     private static final VoxelShape SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 10.0D, 11.0D);
@@ -36,6 +41,10 @@ public class DripstoneTortoiseEggBlock extends Block implements SimpleWaterlogge
     public DripstoneTortoiseEggBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(HATCH, 0).setValue(WATERLOGGED, false));
+    }
+
+    public void fillItemCategory(CreativeModeTab pTab, NonNullList<ItemStack> pItems) {
+        FILLER.fillItem(this.asItem(), pTab, pItems);
     }
 
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

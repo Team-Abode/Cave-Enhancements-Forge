@@ -126,7 +126,7 @@ repositories {
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:1.19-${project.forgeVersion}"
+    minecraft "net.minecraftforge:forge:${project.minecraftVersion}-${project.forgeVersion}"
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
     implementation fg.deobf("com.teamabnormals:blueprint:${project.minecraftVersion}-${project.blueprintVersion}")
 }
