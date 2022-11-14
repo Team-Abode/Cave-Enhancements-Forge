@@ -22,9 +22,6 @@ public class ModParticles {
     public static final RegistryObject<SimpleParticleType> SOOTHING_NOTE =
             PARTICLE_TYPES.register("soothing_note", () -> new SimpleParticleType(true));
 
-    public static final RegistryObject<SimpleParticleType> HARMONIC_NOTE =
-            PARTICLE_TYPES.register("harmonic_note", () -> new SimpleParticleType(true));
-
     public static final RegistryObject<SimpleParticleType> SHIMMER =
             PARTICLE_TYPES.register("shimmer", () -> new SimpleParticleType(true));
 
