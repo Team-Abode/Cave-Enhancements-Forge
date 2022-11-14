@@ -53,8 +53,6 @@ public class ClientEvents {
     public static void registerParticleFactories(final RegisterParticleProvidersEvent event) {
         Minecraft.getInstance().particleEngine.register(ModParticles.SMALL_GOOP_DRIP.get(),
                 SmallGoopDripParticle.Factory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticles.HARMONIC_NOTE.get(),
-                StagnantParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.HARMONIC_WAVE.get(),
                 HarmonicWaveParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticles.SOOTHING_NOTE.get(),

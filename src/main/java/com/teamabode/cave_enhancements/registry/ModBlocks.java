@@ -14,6 +14,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.rmi.registry.Registry;
 import java.util.function.ToIntFunction;
 
 @SuppressWarnings({"unused", "deprecation"})
@@ -169,7 +170,15 @@ public class ModBlocks {
         public static final RegistryObject<Block> SOUL_ROSE_QUARTZ_LAMP = HELPER.createBlock(
                 "soul_rose_quartz_lamp",
                 () -> new RoseQuartzLampBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10)
-                        .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
+                        .requiresCorrectToolForDrops().color(MaterialColor.COLOR_BLUE)
+                        .sound(SoundType.LANTERN).lightLevel((state) -> 15)),
+                CreativeModeTab.TAB_DECORATIONS);
+
+        public static final RegistryObject<Block> ENDER_ROSE_QUARTZ_LAMP = HELPER.createCompatBlock(
+                "endergetic",
+                "ender_rose_quartz_lamp",
+                () -> new RoseQuartzLampBlock(BlockBehaviour.Properties.of(Material.STONE).strength(1F, 10)
+                        .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PURPLE)
                         .sound(SoundType.LANTERN).lightLevel((state) -> 15)),
                 CreativeModeTab.TAB_DECORATIONS);
 
@@ -272,8 +281,7 @@ public class ModBlocks {
                                         BlockBehaviour.Properties.of(Material.METAL).strength(4, 100)
                                                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_ORANGE)
                                                         .sound(SoundType.COPPER).lightLevel((state) -> 15)),
-                        CreativeModeTab.TAB_REDSTONE
-                );
+                        CreativeModeTab.TAB_REDSTONE);
 
 
 
