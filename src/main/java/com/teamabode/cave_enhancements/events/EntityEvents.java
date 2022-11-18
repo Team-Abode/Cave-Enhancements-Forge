@@ -22,15 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 public class EntityEvents {
 
     @SubscribeEvent
-    public static void onEntityJoin(EntityJoinLevelEvent event) {
-        Entity entity = event.getEntity();
-
-        if (entity instanceof Creeper creeper) {
-            creeper.goalSelector.addGoal(0, new AvoidEntityGoal<>(creeper, Player.class, 8.0F, 1.0D, 1.2D, AmethystFluteItem::isScary));
-        }
-    }
-
-    @SubscribeEvent
     public static void onEntityHurt(LivingHurtEvent event) {
         DamageSource source = event.getSource();
         LivingEntity entity = event.getEntity();

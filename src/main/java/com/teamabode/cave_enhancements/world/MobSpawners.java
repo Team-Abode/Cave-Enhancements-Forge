@@ -12,18 +12,16 @@ import net.minecraftforge.common.world.BiomeModifier;
 import net.minecraftforge.common.world.ModifiableBiomeInfo;
 
 public class MobSpawners implements BiomeModifier {
-    @Override
     public void modify(Holder<Biome> biome, Phase phase, ModifiableBiomeInfo.BiomeInfo.Builder builder) {
         if (phase == Phase.ADD) {
             if (biome.is(Biomes.LUSH_CAVES)) {
-                builder.getMobSpawnSettings().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.CRUNCHER.get(), 5, 1, 1));
+                builder.getMobSpawnSettings().addSpawn(MobCategory.AXOLOTLS, new MobSpawnSettings.SpawnerData(ModEntities.CRUNCHER.get(), 50, 1, 1));
             } else if (biome.is(Biomes.DRIPSTONE_CAVES)) {
-                builder.getMobSpawnSettings().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.DRIPSTONE_TORTOISE.get(), 100, 2, 3));
+                builder.getMobSpawnSettings().addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(ModEntities.DRIPSTONE_TORTOISE.get(), 75, 1, 2));
             }
         }
     }
 
-    @Override
     public Codec<? extends BiomeModifier> codec() {
         return ModBiomeModifiers.MOB_SPAWNERS.get();
     }

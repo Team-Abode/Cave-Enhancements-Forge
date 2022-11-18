@@ -52,7 +52,7 @@ public class ModBlocks {
 
         public static final RegistryObject<Block> GOOP_TRAP = HELPER.createBlock("goop_trap",
                 () -> new GoopTrapBlock(BlockBehaviour.Properties.of(Material.VEGETABLE).strength(2.0F, 5.0F)
-                        .sound(ModSounds.GOOP_BLOCK).speedFactor(0.01F).jumpFactor(0.3F).friction(0.8F)
+                        .sound(ModSounds.GOOP_BLOCK).speedFactor(0.1F).jumpFactor(0.3F)
                         .color(MaterialColor.SAND)),
                 CreativeModeTab.TAB_BUILDING_BLOCKS);
 

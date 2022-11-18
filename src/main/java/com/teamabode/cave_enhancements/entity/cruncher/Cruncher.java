@@ -287,7 +287,14 @@ public class Cruncher extends Animal {
 
     // Spawn Rules
     public static boolean checkCruncherSpawnRules(EntityType<? extends Animal> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
-        return levelAccessor.getBlockState(blockPos.below()).is(ModTags.CRUNCHERS_SPAWNABLE_ON) && levelAccessor.getRawBrightness(blockPos, 0) >= 12;
+        return levelAccessor.getBlockState(blockPos.below()).is(ModTags.CRUNCHERS_SPAWNABLE_ON);
+    }
+
+    public boolean checkSpawnRules(LevelAccessor pLevel, MobSpawnType pSpawnReason) {
+        if (pSpawnReason.equals(MobSpawnType.SPAWNER)) {
+            return true;
+        }
+        return pLevel.getRandom().nextBoolean();
     }
 
     // Attribute Builder

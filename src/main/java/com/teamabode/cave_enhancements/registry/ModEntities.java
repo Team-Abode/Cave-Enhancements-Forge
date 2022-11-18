@@ -5,7 +5,7 @@ import com.teamabode.cave_enhancements.entity.HarmonicArrow;
 import com.teamabode.cave_enhancements.entity.cruncher.Cruncher;
 import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
 import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstoneTortoise;
-import com.teamabode.cave_enhancements.entity.goop.BigGoopDripProjectile;
+import com.teamabode.cave_enhancements.entity.goop.BigGoopDrip;
 import com.teamabode.cave_enhancements.entity.goop.Goop;
 import com.teamabode.cave_enhancements.entity.goop.ThrownGoop;
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
@@ -25,16 +25,16 @@ public class ModEntities {
 
     public static final EntitySubRegistryHelper HELPER = CaveEnhancements.REGISTRY_HELPER.getEntitySubHelper();
 
-    public static final RegistryObject<EntityType<Goop>> GOOP = HELPER.createLivingEntity("goop", Goop::new, MobCategory.AMBIENT, 0.6f, 0.9f);
+    public static final RegistryObject<EntityType<Goop>> GOOP = HELPER.createLivingEntity("goop", Goop::new, MobCategory.MONSTER, 0.6f, 0.9f);
     public static final RegistryObject<EntityType<DripstoneTortoise>> DRIPSTONE_TORTOISE = HELPER.createLivingEntity("dripstone_tortoise", DripstoneTortoise::new, MobCategory.MONSTER,1.3F, 0.8F);
-    public static final RegistryObject<EntityType<Cruncher>> CRUNCHER = HELPER.createLivingEntity("cruncher", Cruncher::new, MobCategory.CREATURE, 0.8F, 0.8F);
+    public static final RegistryObject<EntityType<Cruncher>> CRUNCHER = HELPER.createLivingEntity("cruncher", Cruncher::new, MobCategory.MONSTER, 0.8F, 0.8F);
 
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CaveEnhancements.MOD_ID);
 
 
-    public static final RegistryObject<EntityType<BigGoopDripProjectile>> BIG_GOOP_DRIP =
+    public static final RegistryObject<EntityType<BigGoopDrip>> BIG_GOOP_DRIP =
             ENTITY_TYPES.register("big_goop_drip",
-                    () -> EntityType.Builder.<BigGoopDripProjectile>of(BigGoopDripProjectile::new, MobCategory.CREATURE)
+                    () -> EntityType.Builder.<BigGoopDrip>of(BigGoopDrip::new, MobCategory.MISC)
                             .sized(0.25f, 0.25f)
                             .clientTrackingRange(4)
                             .setUpdateInterval(10)

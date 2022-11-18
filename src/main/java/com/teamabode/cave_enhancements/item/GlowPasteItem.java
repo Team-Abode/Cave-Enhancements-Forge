@@ -19,6 +19,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
@@ -38,7 +39,6 @@ public class GlowPasteItem extends Item {
         FILLER.fillItem(this, pCategory, pItems);
     }
 
-    @Override
     public InteractionResult useOn(UseOnContext context) {
 
         BlockPlaceContext blockPlaceContext = new BlockPlaceContext(context);
@@ -77,7 +77,6 @@ public class GlowPasteItem extends Item {
         return InteractionResult.FAIL;
     }
 
-    @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
 
         ItemStack itemStack = player.getItemInHand(usedHand);
@@ -90,7 +89,10 @@ public class GlowPasteItem extends Item {
             offHandItemStack.shrink(1);
             return InteractionResultHolder.consume(itemStack);
         }
-
         return InteractionResultHolder.fail(itemStack);
+    }
+
+    public boolean isEnchantable(ItemStack pStack) {
+        return false;
     }
 }

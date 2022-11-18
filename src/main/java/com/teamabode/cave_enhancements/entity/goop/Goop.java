@@ -1,8 +1,8 @@
 package com.teamabode.cave_enhancements.entity.goop;
 
+import com.teamabode.cave_enhancements.registry.ModBlocks;
 import com.teamabode.cave_enhancements.registry.ModItems;
 import com.teamabode.cave_enhancements.registry.ModSounds;
-import com.teamabode.cave_enhancements.registry.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -10,13 +10,15 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
+import net.minecraft.util.TimeUtil;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -27,33 +29,25 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.AABB;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @ParametersAreNonnullByDefault
 public class Goop extends Monster implements GoopBucketable {
     private static final EntityDataAccessor<Boolean> FROM_BUCKET = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Boolean> STICKING_UP = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DRIP_COOLDOWN = SynchedEntityData.defineId(Goop.class, EntityDataSerializers.INT);
 
-    public Level level;
-
-    public Goop(EntityType<? extends Monster> entityType, Level world) {
-        super(entityType, world);
+    public Goop(EntityType<? extends Monster> entityType, Level level) {
+        super(entityType, level);
         this.xpReward = 5;
-        this.level = world;
+        this.setDripCooldown(TimeUtil.rangeOfSeconds(50, 70).sample(getRandom()));
     }
 
-    // Sounds
-    protected SoundEvent getDeathSound() {
-        return ModSounds.ENTITY_GOOP_DEATH.get();
-    }
-
-    protected SoundEvent getHurtSound(DamageSource source) {
-        return ModSounds.ENTITY_GOOP_HURT.get();
-    }
-
-    // Attributes
     public static AttributeSupplier.Builder createGoopAttributes() {
         return Monster.createMonsterAttributes()
                 .add(Attributes.MOVEMENT_SPEED, 0.0D)
@@ -62,104 +56,60 @@ public class Goop extends Monster implements GoopBucketable {
                 .add(Attributes.ARMOR, 2);
     }
 
-    // Mob Group
-    public MobType getMobType() {
-        return MobType.UNDEFINED;
-    }
-
-    // Nbt Related Stuff
     public void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(FROM_BUCKET, false);
         this.entityData.define(STICKING_UP, false);
+        this.entityData.define(DRIP_COOLDOWN, 0);
     }
 
-    public void addAdditionalSaveData(CompoundTag nbt) {
-        super.addAdditionalSaveData(nbt);
-
-        nbt.putBoolean("FromBucket", this.isFromBucket());
-        nbt.putBoolean("StickingUp", this.isStickingUp());
+    public void addAdditionalSaveData(CompoundTag tag) {
+        super.addAdditionalSaveData(tag);
+        tag.putBoolean("FromBucket", this.fromBucket());
+        tag.putBoolean("StickingUp", this.isStickingUp());
+        tag.putInt("DripCooldown", this.getDripCooldown());
     }
 
-    public void readAdditionalSaveData(CompoundTag nbt) {
-        super.readAdditionalSaveData(nbt);
-
-        setFromBucket(nbt.getBoolean("FromBucket"));
-        setStickingUp(nbt.getBoolean("StickingUp"));
+    public void readAdditionalSaveData(CompoundTag tag) {
+        super.readAdditionalSaveData(tag);
+        setFromBucket(tag.getBoolean("FromBucket"));
+        setStickingUp(tag.getBoolean("StickingUp"));
+        setDripCooldown(tag.getInt("DripCooldown"));
     }
 
-    public void copyDataToStack(ItemStack stack) {
-        GoopBucketable.copyDataToStack(this, stack);
+    public void saveDefaultDataToBucketTag(ItemStack stack) {
+        GoopBucketable.saveDefaultDataToBucketTag(this, stack);
         stack.getOrCreateTag();
     }
 
-    @Override
-    public void copyDataFromNbt(CompoundTag nbt) {
-        GoopBucketable.copyDataFromNbt(this, nbt);
-
-        if (nbt.contains("StickingUp")) {
-            this.isStickingUp();
-        }
+    public void loadDefaultDataFromBucketTag(CompoundTag nbt) {
+        GoopBucketable.loadDefaultDataFromBucketTag(this, nbt);
     }
 
-    public boolean isFromBucket() {
+    public boolean fromBucket() {
         return this.entityData.get(FROM_BUCKET);
-    }
-    public boolean isStickingUp() {
-        return this.entityData.get(STICKING_UP);
     }
 
     public void setFromBucket(boolean fromBucket) {
         this.entityData.set(FROM_BUCKET, fromBucket);
     }
 
+    public boolean isStickingUp() {
+        return this.entityData.get(STICKING_UP);
+    }
+
     public void setStickingUp(boolean stickingUp) {
         this.entityData.set(STICKING_UP, stickingUp);
     }
 
-    // Components
-    public boolean canBreatheUnderwater() {
-        return false;
+    public int getDripCooldown() {
+        return this.entityData.get(DRIP_COOLDOWN);
     }
 
-    @Override
-    public boolean isPushable() {
-        return false;
+    public void setDripCooldown(int dripCooldown) {
+        this.entityData.set(DRIP_COOLDOWN, dripCooldown);
     }
 
-    @Override
-    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
-        return false;
-    }
-
-    @Override
-    public PushReaction getPistonPushReaction() {
-        return PushReaction.BLOCK;
-    }
-
-    // Bucket Components
-    public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        return GoopBucketable.tryBucket(player, hand, this).orElse(super.mobInteract(player, hand));
-    }
-    public ItemStack getBucketItem() {
-        return new ItemStack(ModItems.GOOP_BUCKET.get());
-    }
-
-    public SoundEvent getBucketedSound() {
-        return ModSounds.ITEM_BUCKET_FILL_GOOP.get();
-    }
-
-    // Despawn Components
-    public boolean requiresCustomPersistence() {
-        return super.requiresCustomPersistence() || this.isFromBucket();
-    }
-
-    public boolean removeWhenFarAway(double distanceSquared) {
-        return !this.isFromBucket() && !this.hasCustomName();
-    }
-
-
-    //Spawn Event
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor serverWorld, DifficultyInstance difficulty, MobSpawnType spawnReason, @Nullable SpawnGroupData entityData, @Nullable CompoundTag entityNbt) {
         level = serverWorld.getLevel();
         double x = this.getX();
@@ -167,11 +117,8 @@ public class Goop extends Monster implements GoopBucketable {
         double z = this.getZ();
         double origY = y;
         BlockPos blockUpPos = new BlockPos(x, y + 1, z);
-        if (spawnReason != MobSpawnType.NATURAL) {
-            if (serverWorld.getBlockState(blockUpPos).entityCanStandOnFace(level, blockUpPos, this, Direction.DOWN)) {
-                setStickingUp(true);
-            }
-        }
+
+
         if (spawnReason == MobSpawnType.NATURAL) {
             if (!level.isClientSide()) {
                 while(y < level.getMaxBuildHeight() && !serverWorld.getBlockState(blockUpPos).entityCanStandOnFace(level, blockUpPos, this, Direction.DOWN)){
@@ -182,14 +129,14 @@ public class Goop extends Monster implements GoopBucketable {
                     y = this.getY();
                     blockUpPos = new BlockPos(x, y + 1, z);
                 }
-                if(y >= level.getMaxBuildHeight()){
+                if (y >= level.getMaxBuildHeight()){
                     y = origY;
                     teleportToWithTicket(x, y + 0.1D, z);
                 }
             }
-
-
             setStickingUp(true);
+        } else {
+            setStickingUp(serverWorld.getBlockState(blockUpPos).entityCanStandOnFace(level, blockUpPos, this, Direction.DOWN));
         }
         if (spawnReason == MobSpawnType.BUCKET) {
             return entityData;
@@ -197,14 +144,12 @@ public class Goop extends Monster implements GoopBucketable {
         return super.finalizeSpawn(serverWorld, difficulty, spawnReason, entityData, entityNbt);
     }
 
-    public static boolean checkGoopSpawnRules(LevelAccessor levelAccessor, BlockPos blockPos) {
-        return levelAccessor.getBlockState(blockPos.below()).is(ModTags.GOOP_SPAWNABLE_ON);
+    public static boolean checkGoopSpawnRules(EntityType<? extends Monster> entityType, LevelAccessor levelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
+        return levelAccessor.getRawBrightness(blockPos, 0) == 0;
     }
 
-    //Tick for checking if sticking up
-    @Override
     public void aiStep() {
-        if(!level.isClientSide){
+        if (!level.isClientSide){
             if(isStickingUp()) {
                 this.setDeltaMovement(this.getDeltaMovement().multiply(0D, 0D, 0D));
 
@@ -215,44 +160,81 @@ public class Goop extends Monster implements GoopBucketable {
 
                     BlockPos blockUpPos = new BlockPos(x, y + 1, z);
 
-                    if(!level.getBlockState(blockUpPos).entityCanStandOnFace(level, blockUpPos, this, Direction.DOWN)){
+                    if (!level.getBlockState(blockUpPos).entityCanStandOnFace(level, blockUpPos, this, Direction.DOWN)){
                         setStickingUp(false);
                     }
                 }
             }
+
         }
         super.aiStep();
     }
 
-    public int dripCooldown = 12;
-
-
-
-    //Tick For Spawning Drip
-    @Override
     public void customServerAiStep() {
-       dripCooldown--;
+       this.setDripCooldown(this.getDripCooldown() - 1);
 
-       if(dripCooldown <= 0){
-           dripCooldown = 12;
-
-           if(getRandom().nextIntBetweenInclusive(1, 100) == 1) {
-               drip();
+       if (this.tickCount % 40 == 0) {
+           List<LivingEntity> list = level.getEntitiesOfClass(LivingEntity.class, new AABB(this.getX(), this.getY(), this.getZ(), this.getX(), this.getY() - 20, this.getZ()));
+           for (LivingEntity livingEntity : list) {
+               if (livingEntity.level.getBlockState(livingEntity.blockPosition()).is(ModBlocks.GOOP_TRAP.get()) && livingEntity.isAlive()) {
+                   this.drip();
+               }
            }
        }
-
+       if (this.getDripCooldown() <= 0) {
+           this.drip();
+           this.setDripCooldown(TimeUtil.rangeOfSeconds(50, 70).sample(random));
+       }
        super.customServerAiStep();
     }
 
-    //Spawn Drip Entity
-    public void drip(){
+    private void drip(){
         if(this.isStickingUp()) {
-            double x = this.getX();
-            double y = this.getY();
-            double z = this.getZ();
-
-            BigGoopDripProjectile bigGoopDripEntity = new BigGoopDripProjectile(level, x, y, z);
+            BigGoopDrip bigGoopDripEntity = new BigGoopDrip(level, this);
+            bigGoopDripEntity.setPos(this.position());
             level.addFreshEntity(bigGoopDripEntity);
         }
+    }
+
+    @NotNull
+    public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        return GoopBucketable.bucketMobPickup(player, hand, this).orElse(super.mobInteract(player, hand));
+    }
+
+    public boolean isPushable() {
+        return false;
+    }
+
+    @NotNull
+    public PushReaction getPistonPushReaction() {
+        return PushReaction.BLOCK;
+    }
+
+    public boolean causeFallDamage(float fallDistance, float multiplier, DamageSource source) {
+        return false;
+    }
+
+    public ItemStack getBucketItemStack() {
+        return new ItemStack(ModItems.GOOP_BUCKET.get());
+    }
+
+    public SoundEvent getPickupSound() {
+        return ModSounds.ITEM_BUCKET_FILL_GOOP.get();
+    }
+
+    public boolean requiresCustomPersistence() {
+        return super.requiresCustomPersistence() || this.fromBucket();
+    }
+
+    public boolean removeWhenFarAway(double distanceSquared) {
+        return !this.fromBucket() && !this.hasCustomName();
+    }
+
+    protected SoundEvent getDeathSound() {
+        return ModSounds.ENTITY_GOOP_DEATH.get();
+    }
+
+    protected SoundEvent getHurtSound(DamageSource source) {
+        return ModSounds.ENTITY_GOOP_HURT.get();
     }
 }
