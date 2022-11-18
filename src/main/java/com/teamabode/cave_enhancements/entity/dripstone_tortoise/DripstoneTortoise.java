@@ -156,16 +156,30 @@ public class DripstoneTortoise extends Animal implements NeutralMob {
         return false;
     }
 
+    public static boolean isDarkEnoughToSpawn(ServerLevelAccessor serverLevelAccessor, BlockPos blockPos, RandomSource randomSource) {
+        if (serverLevelAccessor.getBrightness(LightLayer.SKY, blockPos) > randomSource.nextInt(32)) {
+            return false;
+        } else {
+            DimensionType dimensionType = serverLevelAccessor.dimensionType();
+            int i = dimensionType.monsterSpawnBlockLightLimit();
+            if (i < 15 && serverLevelAccessor.getBrightness(LightLayer.BLOCK, blockPos) > i) {
+                return false;
+            } else {
+                int j = serverLevelAccessor.getLevel().isThundering() ? serverLevelAccessor.getMaxLocalRawBrightness(blockPos, 10) : serverLevelAccessor.getMaxLocalRawBrightness(blockPos);
+                return j <= dimensionType.monsterSpawnLightTest().sample(randomSource);
+            }
+        }
+    }
 
     public static boolean checkDripstoneTortoiseSpawnRules(EntityType<? extends DripstoneTortoise> entityType, ServerLevelAccessor serverLevelAccessor, MobSpawnType mobSpawnType, BlockPos blockPos, RandomSource randomSource) {
-        return serverLevelAccessor.getRawBrightness(blockPos, 0) == 0;
+        return isDarkEnoughToSpawn(serverLevelAccessor, blockPos, randomSource);
     }
 
     public boolean checkSpawnRules(LevelAccessor pLevel, MobSpawnType pSpawnReason) {
         if (pSpawnReason.equals(MobSpawnType.SPAWNER)) {
             return true;
         }
-        return this.random.nextInt(5) == 0;
+        return this.getWalkTargetValue(this.blockPosition(), level) >= -0.5F && random.nextInt(3) == 0;
     }
 
     public int getRemainingPersistentAngerTime() {
