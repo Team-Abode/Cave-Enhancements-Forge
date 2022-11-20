@@ -24,7 +24,7 @@ mixin {
 }
 
 
-version = "${project.minecraftVersion}-FORGE-${project.modVersion}"
+version = "${project.minecraftVersion}-${project.modVersion}-forge"
 group = 'com.teamabode' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'cave_enhancements'
 
