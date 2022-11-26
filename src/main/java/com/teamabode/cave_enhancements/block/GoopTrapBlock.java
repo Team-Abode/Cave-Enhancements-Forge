@@ -76,7 +76,7 @@ public class GoopTrapBlock extends Block implements SimpleWaterloggedBlock {
     public void entityInside(BlockState state, Level world, BlockPos pos, Entity entity) {
         if (!world.isClientSide) {
             if (!entity.getType().is(ModTags.GOOP_TRAP_IMMUNE) && entity instanceof LivingEntity livingEntity) {
-                livingEntity.addEffect(new MobEffectInstance(ModEffects.STICKY.get(), 20, 1, true, true));
+                livingEntity.addEffect(new MobEffectInstance(ModEffects.STICKY.get(), 20, 8, true, true));
             }
         }
     }
