@@ -8,6 +8,7 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -65,8 +66,8 @@ public class GlowPasteItem extends Item {
             if (player instanceof ServerPlayer serverPlayer) CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, pos, itemStack);
             clickedState.getBlock().setPlacedBy(level, pos, clickedState, player, itemStack);
 
-            if (level.isClientSide()) {
-                level.addParticle(ParticleTypes.GLOW_SQUID_INK, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 0.0D, 0.0D, 0.0D);
+            if (level instanceof ServerLevel server) {
+                server.sendParticles(ParticleTypes.GLOW_SQUID_INK, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, 1, 0.0D, 0.0D, 0.0D, 0);
             }
 
             if (player == null || !player.getAbilities().instabuild) {
