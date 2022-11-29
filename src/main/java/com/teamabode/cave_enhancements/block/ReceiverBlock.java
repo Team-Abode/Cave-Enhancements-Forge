@@ -52,12 +52,10 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
         return isDiode(state);
     }
 
-    @Override
     protected int getOutputSignal(@NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull BlockState state) {
-        return this.getInputSignal((Level) world, pos, state);
+        return 15;
     }
 
-    @Override
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
         if (state.getValue(POWERED)) {
             Direction direction = state.getValue(FACING);
@@ -77,38 +75,39 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
     }
 
 
-    public int getInputSignal(Level world, BlockPos pos, BlockState state) {
+    protected int getInputSignal(Level level, BlockPos pos, BlockState state) {
+        int i = super.getInputSignal(level, pos, state);
         Direction direction = state.getValue(FACING);
         BlockPos blockPos = pos.relative(direction);
-        int i = world.getSignal(blockPos, direction);
-        if (i >= 15) {
-            return i;
-        } else {
-            BlockState blockState = world.getBlockState(blockPos);
-            return Math.max(i, blockState.is(Blocks.REDSTONE_WIRE) ? blockState.getValue(RedStoneWireBlock.POWER) : 0);
+        BlockState blockState = level.getBlockState(blockPos);
+        if (blockState.hasAnalogOutputSignal()) {
+            i = blockState.getAnalogOutputSignal(level, blockPos);
+        } else if (i < 15 && blockState.isRedstoneConductor(level, blockPos)) {
+            blockPos = blockPos.relative(direction);
+            blockState = level.getBlockState(blockPos);
+            int j = Math.max(Integer.MIN_VALUE, blockState.hasAnalogOutputSignal() ? blockState.getAnalogOutputSignal(level, blockPos) : Integer.MIN_VALUE);
+            if (j != Integer.MIN_VALUE) {
+                i = j;
+            }
         }
+        return i;
     }
 
-    @Override
     public int getSignal(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
         if (!state.getValue(CAN_PASS)) {
             return 0;
         } else {
-            return state.getValue(FACING) == direction ? this.getOutputSignal(world, pos, state) : 0;
+            return state.getValue(FACING) == direction ? 1 : 0;
         }
     }
 
-    @Override
     public boolean isSignalSource(BlockState state) {
         return state.getValue(CAN_PASS);
     }
 
-    @Override
     protected int getDelay(BlockState state) {
         return 0;
     }
-
-
 
     public BlockState getStateForPlacement(BlockPlaceContext ctx) {
         BlockState blockState = super.getStateForPlacement(ctx);
@@ -125,14 +124,11 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
         };
     }
 
-    @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
-    @Override
     public boolean canConnectRedstone(BlockState state, BlockGetter level, BlockPos pos, @Nullable Direction direction) {
-
         Direction facing = state.getValue(ReceiverBlock.FACING);
         return facing == direction || facing.getOpposite() == direction;
     }
