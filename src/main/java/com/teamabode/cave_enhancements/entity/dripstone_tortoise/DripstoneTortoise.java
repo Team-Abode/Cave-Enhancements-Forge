@@ -1,6 +1,9 @@
 package com.teamabode.cave_enhancements.entity.dripstone_tortoise;
 
-import com.teamabode.cave_enhancements.entity.dripstone_tortoise.goals.*;
+import com.teamabode.cave_enhancements.entity.dripstone_tortoise.goals.DripstoneTortoiseAttackGoal;
+import com.teamabode.cave_enhancements.entity.dripstone_tortoise.goals.DripstoneTortoiseBreedGoal;
+import com.teamabode.cave_enhancements.entity.dripstone_tortoise.goals.DripstoneTortoiseLayEggGoal;
+import com.teamabode.cave_enhancements.entity.dripstone_tortoise.goals.DripstoneTortoiseOccasionalStompGoal;
 import com.teamabode.cave_enhancements.registry.ModEntities;
 import com.teamabode.cave_enhancements.registry.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -12,23 +15,29 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
+import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.*;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.LightLayer;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -173,7 +182,12 @@ public class DripstoneTortoise extends Animal implements NeutralMob {
     }
 
     public float getWalkTargetValue(BlockPos pos, LevelReader level) {
-        return 0.0F;
+        return level.getBlockState(pos.below()).is(BlockTags.BASE_STONE_OVERWORLD) ? 10.0F : 0.0F;
+    }
+
+    @Override
+    public void checkDespawn() {
+        super.checkDespawn();
     }
 
     public int getRemainingPersistentAngerTime() {

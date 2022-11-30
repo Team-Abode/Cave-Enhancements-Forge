@@ -53,7 +53,7 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
     }
 
     protected int getOutputSignal(@NotNull BlockGetter world, @NotNull BlockPos pos, @NotNull BlockState state) {
-        return 15;
+        return 1;
     }
 
     public void animateTick(BlockState state, Level world, BlockPos pos, RandomSource random) {
