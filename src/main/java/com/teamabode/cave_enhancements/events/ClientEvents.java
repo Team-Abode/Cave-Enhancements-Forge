@@ -4,7 +4,7 @@ import com.teamabode.cave_enhancements.client.model.CruncherModel;
 import com.teamabode.cave_enhancements.client.model.DripstonePikeModel;
 import com.teamabode.cave_enhancements.client.model.DripstoneTortoiseModel;
 import com.teamabode.cave_enhancements.client.model.GoopModel;
-import com.teamabode.cave_enhancements.client.renderer.blockentity.RoseQuartzChimesBlockEntityRenderer;
+import com.teamabode.cave_enhancements.client.renderer.block.RoseQuartzChimesRenderer;
 import com.teamabode.cave_enhancements.client.renderer.entity.*;
 import com.teamabode.cave_enhancements.particle.*;
 import com.teamabode.cave_enhancements.registry.ModBlockEntities;
@@ -46,7 +46,7 @@ public class ClientEvents {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_EXPOSED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_WEATHERED_REDSTONE_RECEIVER.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WAXED_OXIDIZED_REDSTONE_RECEIVER.get(), RenderType.cutout());
-
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.ROSE_QUARTZ_CHIMES.get(), RenderType.cutout());
     }
 
     @SubscribeEvent
@@ -85,7 +85,7 @@ public class ClientEvents {
         event.registerEntityRenderer(ModEntities.THROWN_GOOP.get(), ThrownItemRenderer::new);
 
         // Block Entity Renderers
-        event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES.get(), RoseQuartzChimesBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.ROSE_QUARTZ_CHIMES.get(), RoseQuartzChimesRenderer::new);
 
     }
 
@@ -99,7 +99,7 @@ public class ClientEvents {
         event.registerLayerDefinition(CruncherModel.LAYER_LOCATION, CruncherModel::createBodyLayer);
 
         // Block Entity Layers
-        event.registerLayerDefinition(RoseQuartzChimesBlockEntityRenderer.LAYER_LOCATION, RoseQuartzChimesBlockEntityRenderer::getTexturedModelData);
+        event.registerLayerDefinition(RoseQuartzChimesRenderer.LAYER_LOCATION, RoseQuartzChimesRenderer::createLayer);
 
     }
 }

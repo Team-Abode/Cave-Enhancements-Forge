@@ -186,7 +186,7 @@ public class ModBlocks {
                 "rose_quartz_chimes",
                 () -> new RoseQuartzChimesBlock(BlockBehaviour.Properties.of(Material.STONE).strength(2F, 10)
                         .requiresCorrectToolForDrops().color(MaterialColor.COLOR_PINK)
-                        .sound(SoundType.CALCITE).noOcclusion()),
+                        .sound(SoundType.CHAIN).noOcclusion()),
                 CreativeModeTab.TAB_DECORATIONS);
 
         public static final RegistryObject<Block> REDSTONE_RECEIVER = HELPER.createBlock(

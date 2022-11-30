@@ -1,5 +1,6 @@
 package com.teamabode.cave_enhancements.block;
 
+import com.google.common.collect.ImmutableMap;
 import com.teamabode.cave_enhancements.block.entity.RoseQuartzChimesBlockEntity;
 import com.teamabode.cave_enhancements.registry.ModBlockEntities;
 import net.minecraft.core.BlockPos;
@@ -18,9 +19,11 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.function.Function;
 
 @ParametersAreNonnullByDefault
 @SuppressWarnings("deprecation")
@@ -30,23 +33,12 @@ public class RoseQuartzChimesBlock extends BaseEntityBlock {
         super(properties);
     }
 
-    public static final VoxelShape COLLISION_SHAPE;
-    public static final VoxelShape RAYCAST_SHAPE;
-
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new RoseQuartzChimesBlockEntity(pos, state);
     }
 
-    public boolean propagatesSkylightDown(BlockState state, BlockGetter world, BlockPos pos) {
-        return super.propagatesSkylightDown(state, world, pos);
-    }
-
-    public VoxelShape getInteractionShape(BlockState state, BlockGetter world, BlockPos pos) {
-        return RAYCAST_SHAPE;
-    }
-
-    public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-        return COLLISION_SHAPE;
+    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
+        return Block.box(5,10,5,11,12,11);
     }
 
     public RenderShape getRenderShape(BlockState state) {
@@ -63,10 +55,5 @@ public class RoseQuartzChimesBlock extends BaseEntityBlock {
 
     public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor world, BlockPos pos, BlockPos neighborPos) {
         return direction == Direction.UP && !this.canSurvive(state, world, pos) ? Blocks.AIR.defaultBlockState() : super.updateShape(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    static {
-        COLLISION_SHAPE = box(0,12,0,16,16,16);
-        RAYCAST_SHAPE = box(0,0,0,16,16,16);
     }
 }
