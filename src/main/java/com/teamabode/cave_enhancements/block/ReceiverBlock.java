@@ -97,7 +97,7 @@ public class ReceiverBlock extends DiodeBlock implements EntityBlock, IForgeBloc
         if (!state.getValue(CAN_PASS)) {
             return 0;
         } else {
-            return state.getValue(FACING) == direction ? 1 : 0;
+            return state.getValue(FACING) == direction ? getOutputSignal(world, pos, state) : 0;
         }
     }
 
