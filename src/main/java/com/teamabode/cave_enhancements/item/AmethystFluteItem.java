@@ -34,10 +34,9 @@ public class AmethystFluteItem extends Item {
         user.level.addParticle(ModParticles.SOOTHING_NOTE.get(), user.getX(), user.getEyeY(), user.getZ(), 0.0D, 0.15D, 0.0D);
         user.level.getEntities(user, user.getBoundingBox().inflate(10D)).forEach(entity -> {
 
-            if (!world.isClientSide()) {
+            if (world.isClientSide()) {
                 if (entity instanceof PathfinderMob mob) {
-                    if ( (mob instanceof Monster || mob instanceof NeutralMob) && !mob.getType().is(ModTags.AMETHYST_FLUTE_IMMUNE) )  {
-                        mob.goalSelector.addGoal(0, new AvoidEntityGoal<>(mob, Player.class, 16.0F, 1.0D, 1.0D, AmethystFluteItem::isScary));
+                    if ((mob instanceof Monster || mob instanceof NeutralMob) && !mob.getType().is(ModTags.AMETHYST_FLUTE_IMMUNE))  {
                         mob.level.addParticle(ModParticles.SOOTHING_NOTE.get(), user.getX(), user.getEyeY(), user.getZ(), 0.0D, 0.15D, 0.0D);
                     }
                 }
