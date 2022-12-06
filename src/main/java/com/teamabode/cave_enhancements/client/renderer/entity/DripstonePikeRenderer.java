@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.client.model.DripstonePikeModel;
-import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
+import com.teamabode.cave_enhancements.common.entity.dripstone_tortoise.DripstonePike;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

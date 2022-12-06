@@ -1,8 +1,7 @@
 package com.teamabode.cave_enhancements.client.model;
 
 import com.teamabode.cave_enhancements.CaveEnhancements;
-import com.teamabode.cave_enhancements.client.animation.DripstoneTortoiseAnimation;
-import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
+import com.teamabode.cave_enhancements.common.entity.dripstone_tortoise.DripstonePike;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -10,14 +9,6 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 
-import com.teamabode.cave_enhancements.CaveEnhancements;
-import com.teamabode.cave_enhancements.entity.dripstone_tortoise.DripstonePike;
-import net.minecraft.client.model.HierarchicalModel;
-import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.client.model.geom.ModelPart;
-import net.minecraft.client.model.geom.PartPose;
-import net.minecraft.client.model.geom.builders.*;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class DripstonePikeModel extends HierarchicalModel<DripstonePike> {

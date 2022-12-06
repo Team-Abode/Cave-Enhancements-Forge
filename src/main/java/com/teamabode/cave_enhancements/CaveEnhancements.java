@@ -1,5 +1,9 @@
 package com.teamabode.cave_enhancements;
 
+import com.teamabode.cave_enhancements.common.dispenser.GoopDispenseBehavior;
+import com.teamabode.cave_enhancements.common.dispenser.HarmonicArrowDispenseBehavior;
+import com.teamabode.cave_enhancements.common.dispenser.VolatileGoopDispenseBehavior;
+import com.teamabode.cave_enhancements.core.registry.*;
 import com.teamabode.cave_enhancements.dispenser.*;
 import com.teamabode.cave_enhancements.registry.*;
 import com.mojang.logging.LogUtils;
