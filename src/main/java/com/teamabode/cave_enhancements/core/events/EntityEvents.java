@@ -42,16 +42,16 @@ public class EntityEvents {
         IDataManager attackerDataManager = (IDataManager) attacker;
         float hurtAmount = event.getAmount();
 
-        if (attacker instanceof LivingEntity livingAttacker && livingAttacker.hasEffect(ModEffects.REVERSAL.get())) {
-            if (attackerDataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) > 0) {
-                livingAttacker.level.playSound(null, livingAttacker.blockPosition(), ModSounds.EFFECT_REVERSAL_REVERSE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-            }
+        if (attacker instanceof LivingEntity livingAttacker &&
+        livingAttacker.hasEffect(ModEffects.REVERSAL.get()) &&
+        attackerDataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) > 0)
+        {
+            livingAttacker.level.playSound(null, livingAttacker.blockPosition(), ModSounds.EFFECT_REVERSAL_REVERSE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             attackerDataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, 0);
         }
 
         if (hurtAmount > 0 && entity.hasEffect(ModEffects.REVERSAL.get())) {
             if (entity.getRandom().nextFloat() < (hurtAmount / 5) ) {
-                System.out.println("Incremented reversal damage");
                 dataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, Math.min(dataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) + 1, 5));
             }
         }
