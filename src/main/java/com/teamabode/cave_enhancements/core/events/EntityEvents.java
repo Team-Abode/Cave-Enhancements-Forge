@@ -1,15 +1,17 @@
 package com.teamabode.cave_enhancements.core.events;
 
+import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.common.item.AmethystFluteItem;
 import com.teamabode.cave_enhancements.core.registry.ModEffects;
 import com.teamabode.cave_enhancements.core.registry.ModSounds;
-import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
 import com.teamabode.cave_enhancements.core.registry.ModTags;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.NeutralMob;
+import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -38,16 +40,20 @@ public class EntityEvents {
         Entity attacker = source.getDirectEntity();
         IDataManager dataManager = (IDataManager) entity;
         IDataManager attackerDataManager = (IDataManager) attacker;
+        float hurtAmount = event.getAmount();
 
         if (attacker instanceof LivingEntity livingAttacker && livingAttacker.hasEffect(ModEffects.REVERSAL.get())) {
             if (attackerDataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) > 0) {
-                livingAttacker.level.playSound(null, livingAttacker.getOnPos(), ModSounds.EFFECT_REVERSAL_REVERSE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                livingAttacker.level.playSound(null, livingAttacker.blockPosition(), ModSounds.EFFECT_REVERSAL_REVERSE.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
             attackerDataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, 0);
         }
 
-        if (event.getAmount() > 0 && entity.hasEffect(ModEffects.REVERSAL.get())) {
-            dataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, Mth.log2(Mth.ceil(event.getAmount() - 1)));
+        if (hurtAmount > 0 && entity.hasEffect(ModEffects.REVERSAL.get())) {
+            if (entity.getRandom().nextFloat() < (hurtAmount / 5) ) {
+                System.out.println("Incremented reversal damage");
+                dataManager.setValue(CaveEnhancements.REVERSAL_DAMAGE, Math.min(dataManager.getValue(CaveEnhancements.REVERSAL_DAMAGE) + 1, 5));
+            }
         }
     }
 }

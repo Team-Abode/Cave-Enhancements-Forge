@@ -2,7 +2,6 @@ package com.teamabode.cave_enhancements.common.entity.cruncher;
 
 import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.common.entity.cruncher.goals.*;
-import com.teamabode.cave_enhancements.entity.cruncher.goals.*;
 import com.teamabode.cave_enhancements.core.registry.ModEntities;
 import com.teamabode.cave_enhancements.core.registry.ModItems;
 import com.teamabode.cave_enhancements.core.registry.ModSounds;

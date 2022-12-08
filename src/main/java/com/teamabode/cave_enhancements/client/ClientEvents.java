@@ -7,7 +7,6 @@ import com.teamabode.cave_enhancements.client.model.GoopModel;
 import com.teamabode.cave_enhancements.client.particle.*;
 import com.teamabode.cave_enhancements.client.renderer.block.RoseQuartzChimesRenderer;
 import com.teamabode.cave_enhancements.client.renderer.entity.*;
-import com.teamabode.cave_enhancements.particle.*;
 import com.teamabode.cave_enhancements.core.registry.ModBlockEntities;
 import com.teamabode.cave_enhancements.core.registry.ModBlocks;
 import com.teamabode.cave_enhancements.core.registry.ModEntities;

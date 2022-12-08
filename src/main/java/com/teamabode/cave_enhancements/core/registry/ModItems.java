@@ -1,13 +1,13 @@
 package com.teamabode.cave_enhancements.core.registry;
 
 
-import com.teamabode.cave_enhancements.CaveEnhancements;
-import com.teamabode.cave_enhancements.common.item.*;
-import com.teamabode.cave_enhancements.item.*;
 import com.teamabnormals.blueprint.common.item.BlueprintBannerPatternItem;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
+import com.teamabode.cave_enhancements.CaveEnhancements;
+import com.teamabode.cave_enhancements.common.item.*;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.RegistryObject;

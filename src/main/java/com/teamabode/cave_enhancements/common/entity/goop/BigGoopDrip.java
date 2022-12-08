@@ -1,7 +1,6 @@
 package com.teamabode.cave_enhancements.common.entity.goop;
 
 import com.teamabode.cave_enhancements.core.registry.*;
-import com.teamabode.cave_enhancements.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;

@@ -5,7 +5,6 @@ import java.util.List;
 import com.teamabode.cave_enhancements.core.registry.ModBlockEntities;
 import com.teamabode.cave_enhancements.core.registry.ModParticles;
 import com.teamabode.cave_enhancements.core.registry.ModSounds;
-import com.teamabode.cave_enhancements.registry.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffect;

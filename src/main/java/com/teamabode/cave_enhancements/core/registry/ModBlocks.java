@@ -1,9 +1,8 @@
 package com.teamabode.cave_enhancements.core.registry;
 
-import com.teamabode.cave_enhancements.CaveEnhancements;
-import com.teamabode.cave_enhancements.block.*;
 import com.teamabnormals.blueprint.common.block.VerticalSlabBlock;
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
+import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.common.block.*;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.block.*;
