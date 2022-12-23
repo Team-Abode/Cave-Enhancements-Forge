@@ -7,8 +7,6 @@ import net.minecraft.world.entity.item.ItemEntity;
 import java.util.EnumSet;
 import java.util.List;
 
-import java.util.Objects;
-
 public class CruncherMoveToItemGoal extends Goal {
 
     private final Cruncher cruncher;
@@ -20,7 +18,7 @@ public class CruncherMoveToItemGoal extends Goal {
 
     public boolean canUse() {
         if (!cruncher.getMainHandItem().isEmpty()) return false;
-        if (!Objects.equals(cruncher.getEatingState(), "none")) return false;
+        if (cruncher.getEatingState() != 0) return false;
         if (cruncher.getSearchCooldownTime() > 0) return false;
         return cruncher.getRandom().nextFloat() > 0.2F;
     }

@@ -1,14 +1,14 @@
 package com.teamabode.cave_enhancements.common.entity.cruncher.goals;
 
 import com.teamabode.cave_enhancements.common.entity.cruncher.Cruncher;
-import net.minecraft.core.BlockPos;;
+import com.teamabode.cave_enhancements.core.registry.ModTags;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.level.Level;
-import com.teamabode.cave_enhancements.core.registry.ModTags;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Objects;
+;
 
 public class CruncherEatBlockGoal extends Goal {
 
@@ -20,7 +20,7 @@ public class CruncherEatBlockGoal extends Goal {
     }
 
     public boolean canUse() {
-        return Objects.equals(cruncher.getEatingState(), "mining");
+        return cruncher.getEatingState() == 2;
     }
 
     public boolean canContinueToUse() {
@@ -30,7 +30,7 @@ public class CruncherEatBlockGoal extends Goal {
         if (cruncher.level.getBlockState(cruncher.blockPosition().below()).is(ModTags.CRUNCHER_SEARCHABLES)) return false;
         if (cruncher.getLastHurtByMob() == null) return true;
 
-        return Objects.equals(cruncher.getEatingState(), "mining");
+        return cruncher.getEatingState() == 2;
     }
 
     public void tick() {
@@ -65,7 +65,7 @@ public class CruncherEatBlockGoal extends Goal {
     }
 
     public void stop() {
-        cruncher.setEatingState("none");
+        cruncher.setEatingState(0);
         cruncher.setSearchCooldownTime(240);
     }
 

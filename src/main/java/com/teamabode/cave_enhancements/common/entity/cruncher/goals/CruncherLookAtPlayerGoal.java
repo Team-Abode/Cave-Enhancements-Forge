@@ -5,8 +5,6 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.player.Player;
 
-import java.util.Objects;
-
 public class CruncherLookAtPlayerGoal extends LookAtPlayerGoal {
 
     private final Cruncher cruncher;
@@ -17,12 +15,12 @@ public class CruncherLookAtPlayerGoal extends LookAtPlayerGoal {
     }
 
     public boolean canUse() {
-        if (!Objects.equals(cruncher.getEatingState(), "none")) return false;
+        if (cruncher.getEatingState() != 0) return false;
         return super.canUse();
     }
 
     public boolean canContinueToUse() {
-        if (!Objects.equals(cruncher.getEatingState(), "none")) return false;
+        if (cruncher.getEatingState() != 0) return false;
         return super.canContinueToUse();
     }
 }

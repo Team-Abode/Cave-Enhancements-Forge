@@ -8,9 +8,14 @@ import com.teamabnormals.blueprint.core.util.registry.RegistryHelper;
 import com.teamabode.cave_enhancements.common.dispenser.GoopDispenseBehavior;
 import com.teamabode.cave_enhancements.common.dispenser.HarmonicArrowDispenseBehavior;
 import com.teamabode.cave_enhancements.common.dispenser.VolatileGoopDispenseBehavior;
+import com.teamabode.cave_enhancements.core.data.server.RecipeGenerator;
+import com.teamabode.cave_enhancements.core.data.server.TagGenerator;
 import com.teamabode.cave_enhancements.core.registry.*;
+import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -33,6 +38,7 @@ public class CaveEnhancements
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::setupData);
 
         REGISTRY_HELPER.register(modEventBus);
 
@@ -65,5 +71,17 @@ public class CaveEnhancements
             ModSpawnPlacements.register();
             ModPotions.registerRecipes();
         });
+    }
+
+    private void setupData(GatherDataEvent event) {
+        DataGenerator dataGenerator = event.getGenerator();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        boolean includeServer = event.includeServer();
+
+        TagGenerator.BlockTagGenerator blockTagGenerator = new TagGenerator.BlockTagGenerator(dataGenerator, existingFileHelper);
+        dataGenerator.addProvider(includeServer, blockTagGenerator);
+        dataGenerator.addProvider(includeServer, new TagGenerator.ItemGenerator(dataGenerator, blockTagGenerator, existingFileHelper));
+        dataGenerator.addProvider(includeServer, new TagGenerator.EntityTypeGenerator(dataGenerator, existingFileHelper));
+        dataGenerator.addProvider(includeServer, new RecipeGenerator(dataGenerator));
     }
 }

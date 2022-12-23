@@ -1,5 +1,6 @@
 package com.teamabode.cave_enhancements.client;
 
+import com.teamabode.cave_enhancements.CaveEnhancements;
 import com.teamabode.cave_enhancements.client.model.CruncherModel;
 import com.teamabode.cave_enhancements.client.model.DripstonePikeModel;
 import com.teamabode.cave_enhancements.client.model.DripstoneTortoiseModel;
@@ -28,7 +29,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @SuppressWarnings("deprecation")
 @ParametersAreNonnullByDefault
-@Mod.EventBusSubscriber(modid = "cave_enhancements", bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = CaveEnhancements.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientEvents {
 
     @SubscribeEvent
